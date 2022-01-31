@@ -1,0 +1,14 @@
+syntax = "proto3";
+package cytruslabs.zestchain.zestchain;
+
+import "gogoproto/gogo.proto";
+import "zestchain/params.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/cytruslabs/zestchain/x/zestchain/types";
+
+// GenesisState defines the zestchain module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}
