@@ -13,6 +13,10 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 	if genState.AdCount != nil {
 		k.SetAdCount(ctx, *genState.AdCount)
 	}
+	// Set all the ad
+	for _, elem := range genState.AdList {
+		k.SetAd(ctx, elem)
+	}
 	// this line is used by starport scaffolding # genesis/module/init
 	k.SetParams(ctx, genState.Params)
 }
@@ -27,6 +31,7 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	if found {
 		genesis.AdCount = &adCount
 	}
+	genesis.AdList = k.GetAllAd(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis

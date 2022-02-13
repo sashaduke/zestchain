@@ -6,6 +6,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "zestchain/params.proto";
 import "zestchain/ad_count.proto";
+import "zestchain/ad.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/cytruslabs/zestchain/x/zestchain/types";
@@ -20,6 +21,16 @@ service Query {
 	rpc AdCount(QueryGetAdCountRequest) returns (QueryGetAdCountResponse) {
 		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/ad_count";
 	}
+// Queries a Ad by index.
+	rpc Ad(QueryGetAdRequest) returns (QueryGetAdResponse) {
+		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/ad/{index}";
+	}
+
+	// Queries a list of Ad items.
+	rpc AdAll(QueryAllAdRequest) returns (QueryAllAdResponse) {
+		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/ad";
+	}
+
 // this line is used by starport scaffolding # 2
 }
 
@@ -37,4 +48,22 @@ message QueryGetAdCountRequest {}
 message QueryGetAdCountResponse {
 	AdCount AdCount = 1 [(gogoproto.nullable) = false];
 }
+message QueryGetAdRequest {
+	  string index = 1;
+
+}
+
+message QueryGetAdResponse {
+	Ad ad = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllAdRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllAdResponse {
+	repeated Ad ad = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
 // this line is used by starport scaffolding # 3

@@ -1,7 +1,7 @@
 package types
 
 import (
-// this line is used by starport scaffolding # genesis/types/import
+	"fmt"
 )
 
 // DefaultIndex is the default capability global index
@@ -11,6 +11,7 @@ const DefaultIndex uint64 = 1
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
 		AdCount: nil,
+		AdList:  []Ad{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -19,6 +20,16 @@ func DefaultGenesis() *GenesisState {
 // Validate performs basic genesis state validation returning an error upon any
 // failure.
 func (gs GenesisState) Validate() error {
+	// Check for duplicated index in ad
+	adIndexMap := make(map[string]struct{})
+
+	for _, elem := range gs.AdList {
+		index := string(AdKey(elem.Index))
+		if _, ok := adIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for ad")
+		}
+		adIndexMap[index] = struct{}{}
+	}
 	// this line is used by starport scaffolding # genesis/types/validate
 
 	return gs.Params.Validate()
