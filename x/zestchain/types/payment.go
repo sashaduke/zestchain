@@ -8,7 +8,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	crypto "github.com/cosmos/cosmos-sdk/crypto/types"
 	cosm "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/types/tx"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
@@ -34,7 +33,7 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 	var fee cosm.Coins = make([]cosm.Coin, 1)
 	fee[0] = cosm.Coin{
 		Denom:  "ZEST",
-		Amount: cosm.Int(0)}
+		Amount: cosm.NewInt(0)}
 	txBuilder.SetFeeAmount(fee)
 	txBuilder.SetGasLimit(0)
 	txBuilder.SetTimeoutHeight(0)
