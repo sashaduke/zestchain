@@ -28,6 +28,14 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgCreateAd int = 100
 
+	opWeightMsgPayView = "op_weight_msg_create_chain"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgPayView int = 100
+
+	opWeightMsgPayClick = "op_weight_msg_create_chain"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgPayClick int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -70,6 +78,28 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgCreateAd,
 		zestchainsimulation.SimulateMsgCreateAd(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgPayView int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgPayView, &weightMsgPayView, nil,
+		func(_ *rand.Rand) {
+			weightMsgPayView = defaultWeightMsgPayView
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgPayView,
+		zestchainsimulation.SimulateMsgPayView(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgPayClick int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgPayClick, &weightMsgPayClick, nil,
+		func(_ *rand.Rand) {
+			weightMsgPayClick = defaultWeightMsgPayClick
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgPayClick,
+		zestchainsimulation.SimulateMsgPayClick(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation

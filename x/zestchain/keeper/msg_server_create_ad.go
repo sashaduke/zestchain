@@ -35,4 +35,3 @@ func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*typ
 		Counter: newIndex,
 	}, nil
 }
-

@@ -17,6 +17,20 @@ export interface MsgCreateAdResponse {
   counter: string;
 }
 
+export interface MsgPayView {
+  creator: string;
+  id: string;
+}
+
+export interface MsgPayViewResponse {}
+
+export interface MsgPayClick {
+  creator: string;
+  id: string;
+}
+
+export interface MsgPayClickResponse {}
+
 const baseMsgCreateAd: object = {
   creator: "",
   title: "",
@@ -240,10 +254,232 @@ export const MsgCreateAdResponse = {
   },
 };
 
+const baseMsgPayView: object = { creator: "", id: "" };
+
+export const MsgPayView = {
+  encode(message: MsgPayView, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.id !== "") {
+      writer.uint32(18).string(message.id);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgPayView {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgPayView } as MsgPayView;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.id = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgPayView {
+    const message = { ...baseMsgPayView } as MsgPayView;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.id !== undefined && object.id !== null) {
+      message.id = String(object.id);
+    } else {
+      message.id = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgPayView): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgPayView>): MsgPayView {
+    const message = { ...baseMsgPayView } as MsgPayView;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
+    } else {
+      message.id = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgPayViewResponse: object = {};
+
+export const MsgPayViewResponse = {
+  encode(_: MsgPayViewResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgPayViewResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgPayViewResponse } as MsgPayViewResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgPayViewResponse {
+    const message = { ...baseMsgPayViewResponse } as MsgPayViewResponse;
+    return message;
+  },
+
+  toJSON(_: MsgPayViewResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: DeepPartial<MsgPayViewResponse>): MsgPayViewResponse {
+    const message = { ...baseMsgPayViewResponse } as MsgPayViewResponse;
+    return message;
+  },
+};
+
+const baseMsgPayClick: object = { creator: "", id: "" };
+
+export const MsgPayClick = {
+  encode(message: MsgPayClick, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.id !== "") {
+      writer.uint32(18).string(message.id);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgPayClick {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgPayClick } as MsgPayClick;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.id = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgPayClick {
+    const message = { ...baseMsgPayClick } as MsgPayClick;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.id !== undefined && object.id !== null) {
+      message.id = String(object.id);
+    } else {
+      message.id = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgPayClick): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgPayClick>): MsgPayClick {
+    const message = { ...baseMsgPayClick } as MsgPayClick;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
+    } else {
+      message.id = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgPayClickResponse: object = {};
+
+export const MsgPayClickResponse = {
+  encode(_: MsgPayClickResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgPayClickResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgPayClickResponse } as MsgPayClickResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgPayClickResponse {
+    const message = { ...baseMsgPayClickResponse } as MsgPayClickResponse;
+    return message;
+  },
+
+  toJSON(_: MsgPayClickResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: DeepPartial<MsgPayClickResponse>): MsgPayClickResponse {
+    const message = { ...baseMsgPayClickResponse } as MsgPayClickResponse;
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   CreateAd(request: MsgCreateAd): Promise<MsgCreateAdResponse>;
+  PayView(request: MsgPayView): Promise<MsgPayViewResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  PayClick(request: MsgPayClick): Promise<MsgPayClickResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -259,6 +495,26 @@ export class MsgClientImpl implements Msg {
       data
     );
     return promise.then((data) => MsgCreateAdResponse.decode(new Reader(data)));
+  }
+
+  PayView(request: MsgPayView): Promise<MsgPayViewResponse> {
+    const data = MsgPayView.encode(request).finish();
+    const promise = this.rpc.request(
+      "cytruslabs.zestchain.zestchain.Msg",
+      "PayView",
+      data
+    );
+    return promise.then((data) => MsgPayViewResponse.decode(new Reader(data)));
+  }
+
+  PayClick(request: MsgPayClick): Promise<MsgPayClickResponse> {
+    const data = MsgPayClick.encode(request).finish();
+    const promise = this.rpc.request(
+      "cytruslabs.zestchain.zestchain.Msg",
+      "PayClick",
+      data
+    );
+    return promise.then((data) => MsgPayClickResponse.decode(new Reader(data)));
   }
 }
 
