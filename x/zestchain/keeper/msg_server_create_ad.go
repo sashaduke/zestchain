@@ -32,7 +32,7 @@ func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*typ
 	k.Keeper.SetAdCount(ctx, adCount)
 
 	return &types.MsgCreateAdResponse{
-		IdValue: newIndex,
+		Counter: newIndex,
 	}, nil
 }
 
