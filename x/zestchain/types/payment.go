@@ -115,13 +115,13 @@ func Pay(amount int64, recip cosm.AccAddress) error {
 }
 
 func (ad *Ad) PayView(recip string) {
-	recip, _ = cosm.AccAddressFromBech32("cosmos1ghtdcpmljffh36x6nruj3wf3htern2h4x6u3wf")
+	recip = "cosmos1ghtdcpmljffh36x6nruj3wf3htern2h4x6u3wf"
 	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Pay(1, recipient)
 }
 
 func (ad *Ad) PayClick(recip string) {
-	recip, _ = cosm.AccAddressFromBech32("cosmos1ghtdcpmljffh36x6nruj3wf3htern2h4x6u3wf")
+	recip = "cosmos1ghtdcpmljffh36x6nruj3wf3htern2h4x6u3wf"
 	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Pay(9, recipient)
 }
