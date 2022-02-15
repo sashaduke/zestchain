@@ -1,6 +1,9 @@
 package types
 
 import (
+	"context"
+	"fmt"
+
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -12,6 +15,7 @@ import (
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
 	bank "github.com/cosmos/cosmos-sdk/x/bank/types"
+	"google.golang.org/grpc"
 )
 
 func GetTxConfig() client.TxConfig {
@@ -20,14 +24,14 @@ func GetTxConfig() client.TxConfig {
 	return authtx.NewTxConfig(protoCodec, []signing.SignMode{signing.SignMode_SIGN_MODE_DIRECT})
 }
 
-func Pay(amount int64, recip cosm.AccAddress) (string, error) {
+func Pay(amount int64, recip cosm.AccAddress) error {
 	txConfig := GetTxConfig()
 	txBuilder := txConfig.NewTxBuilder() //client.TxConfig.NewTxBuilder()
 	treasury, _ := cosm.AccAddressFromBech32("cosmos19h39v0scqlyesn0mfh3ug33d7samzd59qxr6l0")
 	msg := bank.NewMsgSend(treasury, recip, cosm.NewCoins(cosm.NewInt64Coin("ZEST", amount)))
 	err := txBuilder.SetMsgs(msg)
 	if err != nil {
-		return "", err
+		return err
 	}
 
 	var fee cosm.Coins = make([]cosm.Coin, 1)
@@ -59,7 +63,7 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 	}
 	err = txBuilder.SetSignatures(sigsV2...)
 	if err != nil {
-		return "", err
+		return err
 	}
 
 	sigsV2 = []signing.SignatureV2{}
@@ -73,27 +77,40 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 			txConfig.SignModeHandler().DefaultMode(), signerData,
 			txBuilder, priv, txConfig, accSeqs[i])
 		if err != nil {
-			return "", err
+			return err
 		}
 
 		sigsV2 = append(sigsV2, sigV2)
 	}
 	err = txBuilder.SetSignatures(sigsV2...)
 	if err != nil {
-		return "", err
+		return err
 	}
-
 	txBytes, err := txConfig.TxEncoder()(txBuilder.GetTx())
 	if err != nil {
-		return "", err
+		return err
 	}
 
-	txJSONBytes, err := txConfig.TxJSONEncoder()(txBuilder.GetTx())
+	grpcConn := grpc.Dial(
+		"127.0.0.1:9090",
+		grpc.WithInsecure(),
+	)
+	defer grpcConn.Close()
+
+	txClient := tx.NewServiceClient(grpcConn)
+	grpcRes, err := txClient.BroadcastTx(
+		context.Background(),
+		&tx.BroadcastTxRequest{
+			Mode:    tx.BroadcastMode_BROADCAST_MODE_SYNC,
+			TxBytes: txBytes,
+		},
+	)
 	if err != nil {
-		return "", err
+		return err
 	}
-	txJSON := string(txJSONBytes)
-	return txJSON, nil
+
+	fmt.Println(grpcRes.TxResponse.Code) // Should be '0' if the tx is successful
+	return nil
 }
 
 func (ad *Ad) PayView(recip string) {
