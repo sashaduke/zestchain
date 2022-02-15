@@ -46,8 +46,8 @@ func Pay(amount int64, recip cosm.AccAddress) error {
 
 	priv1 := secp256k1.GenPrivKeyFromSecret([]byte("test test test"))
 	privs := []crypto.PrivKey{priv1}
-	accNums := []uint64{1, 0} // The accounts' account numbers
-	accSeqs := []uint64{0, 1} // The accounts' sequence numbers
+	accNums := []uint64{0, 1} // The accounts' account numbers
+	accSeqs := []uint64{17, 0} // The accounts' sequence numbers
 
 	var sigsV2 []signing.SignatureV2
 	for i, priv := range privs {
