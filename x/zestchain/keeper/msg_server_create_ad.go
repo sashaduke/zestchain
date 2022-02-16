@@ -19,7 +19,7 @@ func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*typ
 	ad := types.Ad{
 		Index:   newIndex,
 		Title:   msg.Title,
-		Pot:     uint64(msg.Pot),
+		Pot:     strconv.ParseUint(msg.Pot, 10, 64),
 		Url:     msg.Url,
 		Msg:     msg.Msg,
 		Tags:    msg.Tags,
