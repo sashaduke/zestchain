@@ -17,12 +17,14 @@ export interface MsgPayView {
     id: string;
 }
 export interface MsgPayViewResponse {
+    resp: string;
 }
 export interface MsgPayClick {
     creator: string;
     id: string;
 }
 export interface MsgPayClickResponse {
+    resp: string;
 }
 export declare const MsgCreateAd: {
     encode(message: MsgCreateAd, writer?: Writer): Writer;
@@ -46,11 +48,11 @@ export declare const MsgPayView: {
     fromPartial(object: DeepPartial<MsgPayView>): MsgPayView;
 };
 export declare const MsgPayViewResponse: {
-    encode(_: MsgPayViewResponse, writer?: Writer): Writer;
+    encode(message: MsgPayViewResponse, writer?: Writer): Writer;
     decode(input: Reader | Uint8Array, length?: number): MsgPayViewResponse;
-    fromJSON(_: any): MsgPayViewResponse;
-    toJSON(_: MsgPayViewResponse): unknown;
-    fromPartial(_: DeepPartial<MsgPayViewResponse>): MsgPayViewResponse;
+    fromJSON(object: any): MsgPayViewResponse;
+    toJSON(message: MsgPayViewResponse): unknown;
+    fromPartial(object: DeepPartial<MsgPayViewResponse>): MsgPayViewResponse;
 };
 export declare const MsgPayClick: {
     encode(message: MsgPayClick, writer?: Writer): Writer;
@@ -60,11 +62,11 @@ export declare const MsgPayClick: {
     fromPartial(object: DeepPartial<MsgPayClick>): MsgPayClick;
 };
 export declare const MsgPayClickResponse: {
-    encode(_: MsgPayClickResponse, writer?: Writer): Writer;
+    encode(message: MsgPayClickResponse, writer?: Writer): Writer;
     decode(input: Reader | Uint8Array, length?: number): MsgPayClickResponse;
-    fromJSON(_: any): MsgPayClickResponse;
-    toJSON(_: MsgPayClickResponse): unknown;
-    fromPartial(_: DeepPartial<MsgPayClickResponse>): MsgPayClickResponse;
+    fromJSON(object: any): MsgPayClickResponse;
+    toJSON(message: MsgPayClickResponse): unknown;
+    fromPartial(object: DeepPartial<MsgPayClickResponse>): MsgPayClickResponse;
 };
 /** Msg defines the Msg service. */
 export interface Msg {

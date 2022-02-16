@@ -22,14 +22,18 @@ export interface MsgPayView {
   id: string;
 }
 
-export interface MsgPayViewResponse {}
+export interface MsgPayViewResponse {
+  resp: string;
+}
 
 export interface MsgPayClick {
   creator: string;
   id: string;
 }
 
-export interface MsgPayClickResponse {}
+export interface MsgPayClickResponse {
+  resp: string;
+}
 
 const baseMsgCreateAd: object = {
   creator: "",
@@ -326,10 +330,16 @@ export const MsgPayView = {
   },
 };
 
-const baseMsgPayViewResponse: object = {};
+const baseMsgPayViewResponse: object = { resp: "" };
 
 export const MsgPayViewResponse = {
-  encode(_: MsgPayViewResponse, writer: Writer = Writer.create()): Writer {
+  encode(
+    message: MsgPayViewResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.resp !== "") {
+      writer.uint32(10).string(message.resp);
+    }
     return writer;
   },
 
@@ -340,6 +350,9 @@ export const MsgPayViewResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1:
+          message.resp = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -348,18 +361,29 @@ export const MsgPayViewResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgPayViewResponse {
+  fromJSON(object: any): MsgPayViewResponse {
     const message = { ...baseMsgPayViewResponse } as MsgPayViewResponse;
+    if (object.resp !== undefined && object.resp !== null) {
+      message.resp = String(object.resp);
+    } else {
+      message.resp = "";
+    }
     return message;
   },
 
-  toJSON(_: MsgPayViewResponse): unknown {
+  toJSON(message: MsgPayViewResponse): unknown {
     const obj: any = {};
+    message.resp !== undefined && (obj.resp = message.resp);
     return obj;
   },
 
-  fromPartial(_: DeepPartial<MsgPayViewResponse>): MsgPayViewResponse {
+  fromPartial(object: DeepPartial<MsgPayViewResponse>): MsgPayViewResponse {
     const message = { ...baseMsgPayViewResponse } as MsgPayViewResponse;
+    if (object.resp !== undefined && object.resp !== null) {
+      message.resp = object.resp;
+    } else {
+      message.resp = "";
+    }
     return message;
   },
 };
@@ -436,10 +460,16 @@ export const MsgPayClick = {
   },
 };
 
-const baseMsgPayClickResponse: object = {};
+const baseMsgPayClickResponse: object = { resp: "" };
 
 export const MsgPayClickResponse = {
-  encode(_: MsgPayClickResponse, writer: Writer = Writer.create()): Writer {
+  encode(
+    message: MsgPayClickResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.resp !== "") {
+      writer.uint32(10).string(message.resp);
+    }
     return writer;
   },
 
@@ -450,6 +480,9 @@ export const MsgPayClickResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1:
+          message.resp = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -458,18 +491,29 @@ export const MsgPayClickResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgPayClickResponse {
+  fromJSON(object: any): MsgPayClickResponse {
     const message = { ...baseMsgPayClickResponse } as MsgPayClickResponse;
+    if (object.resp !== undefined && object.resp !== null) {
+      message.resp = String(object.resp);
+    } else {
+      message.resp = "";
+    }
     return message;
   },
 
-  toJSON(_: MsgPayClickResponse): unknown {
+  toJSON(message: MsgPayClickResponse): unknown {
     const obj: any = {};
+    message.resp !== undefined && (obj.resp = message.resp);
     return obj;
   },
 
-  fromPartial(_: DeepPartial<MsgPayClickResponse>): MsgPayClickResponse {
+  fromPartial(object: DeepPartial<MsgPayClickResponse>): MsgPayClickResponse {
     const message = { ...baseMsgPayClickResponse } as MsgPayClickResponse;
+    if (object.resp !== undefined && object.resp !== null) {
+      message.resp = object.resp;
+    } else {
+      message.resp = "";
+    }
     return message;
   },
 };

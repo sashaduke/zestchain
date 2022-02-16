@@ -66,6 +66,7 @@ export interface V1Beta1PageResponse {
 export interface ZestchainAd {
     index?: string;
     title?: string;
+    /** @format uint64 */
     pot?: string;
     url?: string;
     msg?: string;
@@ -80,8 +81,12 @@ export interface ZestchainAdCount {
 export interface ZestchainMsgCreateAdResponse {
     counter?: string;
 }
-export declare type ZestchainMsgPayClickResponse = object;
-export declare type ZestchainMsgPayViewResponse = object;
+export interface ZestchainMsgPayClickResponse {
+    resp?: string;
+}
+export interface ZestchainMsgPayViewResponse {
+    resp?: string;
+}
 /**
  * Params defines the parameters for the module.
  */
