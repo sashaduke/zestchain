@@ -10,8 +10,12 @@ import (
 func (k msgServer) PayClick(goCtx context.Context, msg *types.MsgPayClick) (*types.MsgPayClickResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	// TODO: Handling the message
-	_ = ctx
+	ad, found := k.Keeper.GetAd(ctx, msg.Id)
+        if ad.Pot >= 9 {
+                ad.PayClick(msg.Creator)
+                ad.Pot -= 9
+                k.Keeper.SetAd(ctx, ad)
+        }
 
 	return &types.MsgPayClickResponse{}, nil
 }
