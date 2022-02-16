@@ -11,6 +11,9 @@ func (k msgServer) PayClick(goCtx context.Context, msg *types.MsgPayClick) (*typ
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	ad, found := k.Keeper.GetAd(ctx, msg.Id)
+	if !found {
+                panic("Ad not found")
+        }
         if ad.Pot >= 9 {
                 ad.PayClick(msg.Creator)
                 ad.Pot -= 9
