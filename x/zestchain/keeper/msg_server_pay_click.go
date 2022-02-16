@@ -20,5 +20,7 @@ func (k msgServer) PayClick(goCtx context.Context, msg *types.MsgPayClick) (*typ
                 k.Keeper.SetAd(ctx, ad)
         }
 
-	return &types.MsgPayClickResponse{}, nil
+	return &types.MsgPayClickResponse{
+		Resp: "success",
+	}, nil
 }
