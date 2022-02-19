@@ -20055,8 +20055,14 @@ definitions:
         type: string
   cytruslabs.zestchain.zestchain.MsgPayClickResponse:
     type: object
+    properties:
+      resp:
+        type: string
   cytruslabs.zestchain.zestchain.MsgPayViewResponse:
     type: object
+    properties:
+      resp:
+        type: string
   cytruslabs.zestchain.zestchain.Params:
     type: object
     description: Params defines the parameters for the module.
