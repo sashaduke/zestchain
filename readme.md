@@ -13,7 +13,7 @@ curl https://get.starport.com/cytruslabs/zestchain! | bash
 
 ## Get started
 
-cd to the zestchain directory and execute the following command:
+`cd` to the `zestchain` directory and execute the following command:
 ```
 starport chain serve
 ```
