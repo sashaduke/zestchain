@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import Welcome from '../components/Welcome'
 export default {
   name: 'Index',
   computed: {
@@ -16,5 +17,8 @@ export default {
       return this.$store.getters['common/wallet/address']
     },
   },
+  components : {
+    Welcome
+  }
 }
 </script>
