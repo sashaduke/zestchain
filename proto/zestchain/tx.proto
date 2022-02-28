@@ -7,42 +7,42 @@ option go_package = "github.com/cytruslabs/zestchain/x/zestchain/types";
 
 // Msg defines the Msg service.
 service Msg {
-      rpc CreateAd(MsgCreateAd) returns (MsgCreateAdResponse);
-  rpc PayView(MsgPayView) returns (MsgPayViewResponse);
-  rpc PayClick(MsgPayClick) returns (MsgPayClickResponse);
+      rpc CreatePromo(MsgCreatePromo) returns (MsgCreatePromoResponse);
+  rpc PromoViewed(MsgPromoViewed) returns (MsgPromoViewedResponse);
+  rpc PromoClicked(MsgPromoClicked) returns (MsgPromoClickedResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
-message MsgCreateAd {
+message MsgCreatePromo {
   string creator = 1;
   string title = 2;
-  string pot = 3;
+  uint64 pot = 3;
   string url = 4;
-  string msg = 5;
+  string message = 5;
   string tags = 6;
   string prefs = 7;
 }
 
-message MsgCreateAdResponse {
-  string counter = 1;
+message MsgCreatePromoResponse {
+  string total = 1;
 }
 
-message MsgPayView {
+message MsgPromoViewed {
   string creator = 1;
   string id = 2;
+  string addr = 3;
 }
 
-message MsgPayViewResponse {
-  string resp = 1;
+message MsgPromoViewedResponse {
 }
 
-message MsgPayClick {
+message MsgPromoClicked {
   string creator = 1;
   string id = 2;
+  string addr = 3;
 }
 
-message MsgPayClickResponse {
-  string resp = 1;
+message MsgPromoClickedResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

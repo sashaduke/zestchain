@@ -5,8 +5,8 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "zestchain/params.proto";
-import "zestchain/ad_count.proto";
-import "zestchain/ad.proto";
+import "zestchain/promo_count.proto";
+import "zestchain/promo.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/cytruslabs/zestchain/x/zestchain/types";
@@ -17,18 +17,18 @@ service Query {
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/cytruslabs/zestchain/zestchain/params";
   }
-  // Queries a AdCount by index.
-	rpc AdCount(QueryGetAdCountRequest) returns (QueryGetAdCountResponse) {
-		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/ad_count";
+  // Queries a PromoCount by index.
+	rpc PromoCount(QueryGetPromoCountRequest) returns (QueryGetPromoCountResponse) {
+		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/promo_count";
 	}
-// Queries a Ad by index.
-	rpc Ad(QueryGetAdRequest) returns (QueryGetAdResponse) {
-		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/ad/{index}";
+// Queries a Promo by index.
+	rpc Promo(QueryGetPromoRequest) returns (QueryGetPromoResponse) {
+		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/promo/{index}";
 	}
 
-	// Queries a list of Ad items.
-	rpc AdAll(QueryAllAdRequest) returns (QueryAllAdResponse) {
-		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/ad";
+	// Queries a list of Promo items.
+	rpc PromoAll(QueryAllPromoRequest) returns (QueryAllPromoResponse) {
+		option (google.api.http).get = "/cytruslabs/zestchain/zestchain/promo";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -43,26 +43,26 @@ message QueryParamsResponse {
   Params params = 1 [(gogoproto.nullable) = false];
 }
 
-message QueryGetAdCountRequest {}
+message QueryGetPromoCountRequest {}
 
-message QueryGetAdCountResponse {
-	AdCount AdCount = 1 [(gogoproto.nullable) = false];
+message QueryGetPromoCountResponse {
+	PromoCount PromoCount = 1 [(gogoproto.nullable) = false];
 }
-message QueryGetAdRequest {
+message QueryGetPromoRequest {
 	  string index = 1;
 
 }
 
-message QueryGetAdResponse {
-	Ad ad = 1 [(gogoproto.nullable) = false];
+message QueryGetPromoResponse {
+	Promo promo = 1 [(gogoproto.nullable) = false];
 }
 
-message QueryAllAdRequest {
+message QueryAllPromoRequest {
 	cosmos.base.query.v1beta1.PageRequest pagination = 1;
 }
 
-message QueryAllAdResponse {
-	repeated Ad ad = 1 [(gogoproto.nullable) = false];
+message QueryAllPromoResponse {
+	repeated Promo promo = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

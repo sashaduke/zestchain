@@ -11842,17 +11842,53 @@ paths:
           type: boolean
       tags:
         - Query
-  /cytruslabs/zestchain/zestchain/ad:
+  /cytruslabs/zestchain/zestchain/params:
     get:
-      summary: Queries a list of Ad items.
-      operationId: CytruslabsZestchainZestchainAdAll
+      summary: Parameters queries the parameters of the module.
+      operationId: CytruslabsZestchainZestchainParams
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              ad:
+              params:
+                description: params holds all the parameters of this module.
+                type: object
+            description: >-
+              QueryParamsResponse is response type for the Query/Params RPC
+              method.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
+  /cytruslabs/zestchain/zestchain/promo:
+    get:
+      summary: Queries a list of Promo items.
+      operationId: CytruslabsZestchainZestchainPromoAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              promo:
                 type: array
                 items:
                   type: object
@@ -11871,8 +11907,6 @@ paths:
                     tags:
                       type: string
                     prefs:
-                      type: string
-                    creator:
                       type: string
               pagination:
                 type: object
@@ -11978,17 +12012,17 @@ paths:
           type: boolean
       tags:
         - Query
-  '/cytruslabs/zestchain/zestchain/ad/{index}':
+  '/cytruslabs/zestchain/zestchain/promo/{index}':
     get:
-      summary: Queries a Ad by index.
-      operationId: CytruslabsZestchainZestchainAd
+      summary: Queries a Promo by index.
+      operationId: CytruslabsZestchainZestchainPromo
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              ad:
+              promo:
                 type: object
                 properties:
                   index:
@@ -12005,8 +12039,6 @@ paths:
                   tags:
                     type: string
                   prefs:
-                    type: string
-                  creator:
                     type: string
         default:
           description: An unexpected error response.
@@ -12033,58 +12065,22 @@ paths:
           type: string
       tags:
         - Query
-  /cytruslabs/zestchain/zestchain/ad_count:
+  /cytruslabs/zestchain/zestchain/promo_count:
     get:
-      summary: Queries a AdCount by index.
-      operationId: CytruslabsZestchainZestchainAdCount
+      summary: Queries a PromoCount by index.
+      operationId: CytruslabsZestchainZestchainPromoCount
       responses:
         '200':
           description: A successful response.
           schema:
             type: object
             properties:
-              AdCount:
+              PromoCount:
                 type: object
                 properties:
-                  counter:
+                  total:
                     type: string
                     format: uint64
-        default:
-          description: An unexpected error response.
-          schema:
-            type: object
-            properties:
-              code:
-                type: integer
-                format: int32
-              message:
-                type: string
-              details:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    '@type':
-                      type: string
-                  additionalProperties: {}
-      tags:
-        - Query
-  /cytruslabs/zestchain/zestchain/params:
-    get:
-      summary: Parameters queries the parameters of the module.
-      operationId: CytruslabsZestchainZestchainParams
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            type: object
-            properties:
-              params:
-                description: params holds all the parameters of this module.
-                type: object
-            description: >-
-              QueryParamsResponse is response type for the Query/Params RPC
-              method.
         default:
           description: An unexpected error response.
           schema:
@@ -20022,7 +20018,19 @@ definitions:
     description: >-
       MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount
       response type.
-  cytruslabs.zestchain.zestchain.Ad:
+  cytruslabs.zestchain.zestchain.MsgCreatePromoResponse:
+    type: object
+    properties:
+      total:
+        type: string
+  cytruslabs.zestchain.zestchain.MsgPromoClickedResponse:
+    type: object
+  cytruslabs.zestchain.zestchain.MsgPromoViewedResponse:
+    type: object
+  cytruslabs.zestchain.zestchain.Params:
+    type: object
+    description: Params defines the parameters for the module.
+  cytruslabs.zestchain.zestchain.Promo:
     type: object
     properties:
       index:
@@ -20040,36 +20048,16 @@ definitions:
         type: string
       prefs:
         type: string
-      creator:
-        type: string
-  cytruslabs.zestchain.zestchain.AdCount:
+  cytruslabs.zestchain.zestchain.PromoCount:
     type: object
     properties:
-      counter:
+      total:
         type: string
         format: uint64
-  cytruslabs.zestchain.zestchain.MsgCreateAdResponse:
+  cytruslabs.zestchain.zestchain.QueryAllPromoResponse:
     type: object
     properties:
-      counter:
-        type: string
-  cytruslabs.zestchain.zestchain.MsgPayClickResponse:
-    type: object
-    properties:
-      resp:
-        type: string
-  cytruslabs.zestchain.zestchain.MsgPayViewResponse:
-    type: object
-    properties:
-      resp:
-        type: string
-  cytruslabs.zestchain.zestchain.Params:
-    type: object
-    description: Params defines the parameters for the module.
-  cytruslabs.zestchain.zestchain.QueryAllAdResponse:
-    type: object
-    properties:
-      ad:
+      promo:
         type: array
         items:
           type: object
@@ -20088,8 +20076,6 @@ definitions:
             tags:
               type: string
             prefs:
-              type: string
-            creator:
               type: string
       pagination:
         type: object
@@ -20116,19 +20102,19 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
-  cytruslabs.zestchain.zestchain.QueryGetAdCountResponse:
+  cytruslabs.zestchain.zestchain.QueryGetPromoCountResponse:
     type: object
     properties:
-      AdCount:
+      PromoCount:
         type: object
         properties:
-          counter:
+          total:
             type: string
             format: uint64
-  cytruslabs.zestchain.zestchain.QueryGetAdResponse:
+  cytruslabs.zestchain.zestchain.QueryGetPromoResponse:
     type: object
     properties:
-      ad:
+      promo:
         type: object
         properties:
           index:
@@ -20145,8 +20131,6 @@ definitions:
           tags:
             type: string
           prefs:
-            type: string
-          creator:
             type: string
   cytruslabs.zestchain.zestchain.QueryParamsResponse:
     type: object

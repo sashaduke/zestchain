@@ -22,5 +22,5 @@ func KeyPrefix(p string) []byte {
 }
 
 const (
-	AdCountKey = "AdCount-value-"
+	PromoCountKey = "PromoCount-value-"
 )

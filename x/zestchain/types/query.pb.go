@@ -113,21 +113,21 @@ func (m *QueryParamsResponse) GetParams() Params {
 	return Params{}
 }
 
-type QueryGetAdCountRequest struct {
+type QueryGetPromoCountRequest struct {
 }
 
-func (m *QueryGetAdCountRequest) Reset()         { *m = QueryGetAdCountRequest{} }
-func (m *QueryGetAdCountRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryGetAdCountRequest) ProtoMessage()    {}
-func (*QueryGetAdCountRequest) Descriptor() ([]byte, []int) {
+func (m *QueryGetPromoCountRequest) Reset()         { *m = QueryGetPromoCountRequest{} }
+func (m *QueryGetPromoCountRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetPromoCountRequest) ProtoMessage()    {}
+func (*QueryGetPromoCountRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3b96b9adafafa773, []int{2}
 }
-func (m *QueryGetAdCountRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetPromoCountRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetAdCountRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetPromoCountRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetAdCountRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetPromoCountRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -137,34 +137,34 @@ func (m *QueryGetAdCountRequest) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return b[:n], nil
 	}
 }
-func (m *QueryGetAdCountRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetAdCountRequest.Merge(m, src)
+func (m *QueryGetPromoCountRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetPromoCountRequest.Merge(m, src)
 }
-func (m *QueryGetAdCountRequest) XXX_Size() int {
+func (m *QueryGetPromoCountRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetAdCountRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetAdCountRequest.DiscardUnknown(m)
+func (m *QueryGetPromoCountRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetPromoCountRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetAdCountRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetPromoCountRequest proto.InternalMessageInfo
 
-type QueryGetAdCountResponse struct {
-	AdCount AdCount `protobuf:"bytes,1,opt,name=AdCount,proto3" json:"AdCount"`
+type QueryGetPromoCountResponse struct {
+	PromoCount PromoCount `protobuf:"bytes,1,opt,name=PromoCount,proto3" json:"PromoCount"`
 }
 
-func (m *QueryGetAdCountResponse) Reset()         { *m = QueryGetAdCountResponse{} }
-func (m *QueryGetAdCountResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryGetAdCountResponse) ProtoMessage()    {}
-func (*QueryGetAdCountResponse) Descriptor() ([]byte, []int) {
+func (m *QueryGetPromoCountResponse) Reset()         { *m = QueryGetPromoCountResponse{} }
+func (m *QueryGetPromoCountResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetPromoCountResponse) ProtoMessage()    {}
+func (*QueryGetPromoCountResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3b96b9adafafa773, []int{3}
 }
-func (m *QueryGetAdCountResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetPromoCountResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetAdCountResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetPromoCountResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetAdCountResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetPromoCountResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -174,41 +174,41 @@ func (m *QueryGetAdCountResponse) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return b[:n], nil
 	}
 }
-func (m *QueryGetAdCountResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetAdCountResponse.Merge(m, src)
+func (m *QueryGetPromoCountResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetPromoCountResponse.Merge(m, src)
 }
-func (m *QueryGetAdCountResponse) XXX_Size() int {
+func (m *QueryGetPromoCountResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetAdCountResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetAdCountResponse.DiscardUnknown(m)
+func (m *QueryGetPromoCountResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetPromoCountResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetAdCountResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetPromoCountResponse proto.InternalMessageInfo
 
-func (m *QueryGetAdCountResponse) GetAdCount() AdCount {
+func (m *QueryGetPromoCountResponse) GetPromoCount() PromoCount {
 	if m != nil {
-		return m.AdCount
+		return m.PromoCount
 	}
-	return AdCount{}
+	return PromoCount{}
 }
 
-type QueryGetAdRequest struct {
+type QueryGetPromoRequest struct {
 	Index string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
 }
 
-func (m *QueryGetAdRequest) Reset()         { *m = QueryGetAdRequest{} }
-func (m *QueryGetAdRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryGetAdRequest) ProtoMessage()    {}
-func (*QueryGetAdRequest) Descriptor() ([]byte, []int) {
+func (m *QueryGetPromoRequest) Reset()         { *m = QueryGetPromoRequest{} }
+func (m *QueryGetPromoRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetPromoRequest) ProtoMessage()    {}
+func (*QueryGetPromoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3b96b9adafafa773, []int{4}
 }
-func (m *QueryGetAdRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetPromoRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetAdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetPromoRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetAdRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetPromoRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -218,41 +218,41 @@ func (m *QueryGetAdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return b[:n], nil
 	}
 }
-func (m *QueryGetAdRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetAdRequest.Merge(m, src)
+func (m *QueryGetPromoRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetPromoRequest.Merge(m, src)
 }
-func (m *QueryGetAdRequest) XXX_Size() int {
+func (m *QueryGetPromoRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetAdRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetAdRequest.DiscardUnknown(m)
+func (m *QueryGetPromoRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetPromoRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetAdRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetPromoRequest proto.InternalMessageInfo
 
-func (m *QueryGetAdRequest) GetIndex() string {
+func (m *QueryGetPromoRequest) GetIndex() string {
 	if m != nil {
 		return m.Index
 	}
 	return ""
 }
 
-type QueryGetAdResponse struct {
-	Ad Ad `protobuf:"bytes,1,opt,name=ad,proto3" json:"ad"`
+type QueryGetPromoResponse struct {
+	Promo Promo `protobuf:"bytes,1,opt,name=promo,proto3" json:"promo"`
 }
 
-func (m *QueryGetAdResponse) Reset()         { *m = QueryGetAdResponse{} }
-func (m *QueryGetAdResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryGetAdResponse) ProtoMessage()    {}
-func (*QueryGetAdResponse) Descriptor() ([]byte, []int) {
+func (m *QueryGetPromoResponse) Reset()         { *m = QueryGetPromoResponse{} }
+func (m *QueryGetPromoResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetPromoResponse) ProtoMessage()    {}
+func (*QueryGetPromoResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3b96b9adafafa773, []int{5}
 }
-func (m *QueryGetAdResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryGetPromoResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryGetAdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryGetPromoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryGetAdResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryGetPromoResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -262,41 +262,41 @@ func (m *QueryGetAdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-func (m *QueryGetAdResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryGetAdResponse.Merge(m, src)
+func (m *QueryGetPromoResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetPromoResponse.Merge(m, src)
 }
-func (m *QueryGetAdResponse) XXX_Size() int {
+func (m *QueryGetPromoResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryGetAdResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryGetAdResponse.DiscardUnknown(m)
+func (m *QueryGetPromoResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetPromoResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryGetAdResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryGetPromoResponse proto.InternalMessageInfo
 
-func (m *QueryGetAdResponse) GetAd() Ad {
+func (m *QueryGetPromoResponse) GetPromo() Promo {
 	if m != nil {
-		return m.Ad
+		return m.Promo
 	}
-	return Ad{}
+	return Promo{}
 }
 
-type QueryAllAdRequest struct {
+type QueryAllPromoRequest struct {
 	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (m *QueryAllAdRequest) Reset()         { *m = QueryAllAdRequest{} }
-func (m *QueryAllAdRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryAllAdRequest) ProtoMessage()    {}
-func (*QueryAllAdRequest) Descriptor() ([]byte, []int) {
+func (m *QueryAllPromoRequest) Reset()         { *m = QueryAllPromoRequest{} }
+func (m *QueryAllPromoRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllPromoRequest) ProtoMessage()    {}
+func (*QueryAllPromoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3b96b9adafafa773, []int{6}
 }
-func (m *QueryAllAdRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryAllPromoRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllAdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryAllPromoRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllAdRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryAllPromoRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -306,42 +306,42 @@ func (m *QueryAllAdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, e
 		return b[:n], nil
 	}
 }
-func (m *QueryAllAdRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllAdRequest.Merge(m, src)
+func (m *QueryAllPromoRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllPromoRequest.Merge(m, src)
 }
-func (m *QueryAllAdRequest) XXX_Size() int {
+func (m *QueryAllPromoRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllAdRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllAdRequest.DiscardUnknown(m)
+func (m *QueryAllPromoRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllPromoRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllAdRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryAllPromoRequest proto.InternalMessageInfo
 
-func (m *QueryAllAdRequest) GetPagination() *query.PageRequest {
+func (m *QueryAllPromoRequest) GetPagination() *query.PageRequest {
 	if m != nil {
 		return m.Pagination
 	}
 	return nil
 }
 
-type QueryAllAdResponse struct {
-	Ad         []Ad                `protobuf:"bytes,1,rep,name=ad,proto3" json:"ad"`
+type QueryAllPromoResponse struct {
+	Promo      []Promo             `protobuf:"bytes,1,rep,name=promo,proto3" json:"promo"`
 	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
 }
 
-func (m *QueryAllAdResponse) Reset()         { *m = QueryAllAdResponse{} }
-func (m *QueryAllAdResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryAllAdResponse) ProtoMessage()    {}
-func (*QueryAllAdResponse) Descriptor() ([]byte, []int) {
+func (m *QueryAllPromoResponse) Reset()         { *m = QueryAllPromoResponse{} }
+func (m *QueryAllPromoResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllPromoResponse) ProtoMessage()    {}
+func (*QueryAllPromoResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3b96b9adafafa773, []int{7}
 }
-func (m *QueryAllAdResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryAllPromoResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryAllAdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryAllPromoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryAllAdResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryAllPromoResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -351,26 +351,26 @@ func (m *QueryAllAdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-func (m *QueryAllAdResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryAllAdResponse.Merge(m, src)
+func (m *QueryAllPromoResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllPromoResponse.Merge(m, src)
 }
-func (m *QueryAllAdResponse) XXX_Size() int {
+func (m *QueryAllPromoResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryAllAdResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryAllAdResponse.DiscardUnknown(m)
+func (m *QueryAllPromoResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllPromoResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryAllAdResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryAllPromoResponse proto.InternalMessageInfo
 
-func (m *QueryAllAdResponse) GetAd() []Ad {
+func (m *QueryAllPromoResponse) GetPromo() []Promo {
 	if m != nil {
-		return m.Ad
+		return m.Promo
 	}
 	return nil
 }
 
-func (m *QueryAllAdResponse) GetPagination() *query.PageResponse {
+func (m *QueryAllPromoResponse) GetPagination() *query.PageResponse {
 	if m != nil {
 		return m.Pagination
 	}
@@ -380,53 +380,53 @@ func (m *QueryAllAdResponse) GetPagination() *query.PageResponse {
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "cytruslabs.zestchain.zestchain.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "cytruslabs.zestchain.zestchain.QueryParamsResponse")
-	proto.RegisterType((*QueryGetAdCountRequest)(nil), "cytruslabs.zestchain.zestchain.QueryGetAdCountRequest")
-	proto.RegisterType((*QueryGetAdCountResponse)(nil), "cytruslabs.zestchain.zestchain.QueryGetAdCountResponse")
-	proto.RegisterType((*QueryGetAdRequest)(nil), "cytruslabs.zestchain.zestchain.QueryGetAdRequest")
-	proto.RegisterType((*QueryGetAdResponse)(nil), "cytruslabs.zestchain.zestchain.QueryGetAdResponse")
-	proto.RegisterType((*QueryAllAdRequest)(nil), "cytruslabs.zestchain.zestchain.QueryAllAdRequest")
-	proto.RegisterType((*QueryAllAdResponse)(nil), "cytruslabs.zestchain.zestchain.QueryAllAdResponse")
+	proto.RegisterType((*QueryGetPromoCountRequest)(nil), "cytruslabs.zestchain.zestchain.QueryGetPromoCountRequest")
+	proto.RegisterType((*QueryGetPromoCountResponse)(nil), "cytruslabs.zestchain.zestchain.QueryGetPromoCountResponse")
+	proto.RegisterType((*QueryGetPromoRequest)(nil), "cytruslabs.zestchain.zestchain.QueryGetPromoRequest")
+	proto.RegisterType((*QueryGetPromoResponse)(nil), "cytruslabs.zestchain.zestchain.QueryGetPromoResponse")
+	proto.RegisterType((*QueryAllPromoRequest)(nil), "cytruslabs.zestchain.zestchain.QueryAllPromoRequest")
+	proto.RegisterType((*QueryAllPromoResponse)(nil), "cytruslabs.zestchain.zestchain.QueryAllPromoResponse")
 }
 
 func init() { proto.RegisterFile("zestchain/query.proto", fileDescriptor_3b96b9adafafa773) }
 
 var fileDescriptor_3b96b9adafafa773 = []byte{
-	// 550 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0x41, 0x8b, 0xd3, 0x40,
-	0x14, 0xc7, 0x3b, 0xd5, 0x56, 0x1c, 0x4f, 0x8e, 0x75, 0x2d, 0x45, 0xa2, 0x0c, 0xb2, 0xd6, 0x22,
-	0x19, 0xdb, 0x05, 0xf5, 0xda, 0x55, 0xec, 0x41, 0x90, 0xb5, 0x47, 0xf7, 0x20, 0x93, 0x66, 0xc8,
-	0x06, 0xd2, 0x4c, 0xb6, 0x33, 0x91, 0xad, 0xe2, 0xc5, 0x4f, 0x20, 0x78, 0x10, 0xbd, 0x88, 0x77,
-	0x3f, 0xc8, 0x1e, 0x17, 0xbc, 0x78, 0x12, 0x69, 0xfd, 0x20, 0xd2, 0x99, 0x97, 0x4d, 0xba, 0x95,
-	0x4d, 0x7b, 0x9b, 0xce, 0xbc, 0xff, 0xfb, 0xff, 0x78, 0xfd, 0xbf, 0xe0, 0xeb, 0x6f, 0x85, 0xd2,
-	0xa3, 0x03, 0x1e, 0xc6, 0xec, 0x30, 0x15, 0x93, 0xa9, 0x9b, 0x4c, 0xa4, 0x96, 0xc4, 0x19, 0x4d,
-	0xf5, 0x24, 0x55, 0x11, 0xf7, 0x94, 0x7b, 0x5a, 0x91, 0x9f, 0x5a, 0x8d, 0x40, 0x06, 0xd2, 0x94,
-	0xb2, 0xc5, 0xc9, 0xaa, 0x5a, 0x37, 0x03, 0x29, 0x83, 0x48, 0x30, 0x9e, 0x84, 0x8c, 0xc7, 0xb1,
-	0xd4, 0x5c, 0x87, 0x32, 0x56, 0xf0, 0xda, 0x19, 0x49, 0x35, 0x96, 0x8a, 0x79, 0x5c, 0x09, 0x6b,
-	0xc6, 0xde, 0x74, 0x3d, 0xa1, 0x79, 0x97, 0x25, 0x3c, 0x08, 0x63, 0x53, 0x0c, 0xb5, 0x5b, 0x39,
-	0x56, 0xc2, 0x27, 0x7c, 0x9c, 0xf5, 0x68, 0xe6, 0xf7, 0xdc, 0x7f, 0x3d, 0x92, 0x69, 0xac, 0xe1,
-	0x85, 0x14, 0x5f, 0xec, 0x1d, 0x6d, 0x60, 0xf2, 0x72, 0xe1, 0xb3, 0x67, 0x5a, 0x0c, 0xc5, 0x61,
-	0x2a, 0x94, 0xa6, 0xfb, 0xf8, 0xda, 0xd2, 0xad, 0x4a, 0x64, 0xac, 0x04, 0x79, 0x8a, 0xeb, 0xd6,
-	0xaa, 0x89, 0x6e, 0xa3, 0xf6, 0x95, 0xde, 0xb6, 0x7b, 0xfe, 0x0c, 0x5c, 0xab, 0xdf, 0xbd, 0x78,
-	0xfc, 0xfb, 0x56, 0x65, 0x08, 0x5a, 0xda, 0xc4, 0x5b, 0xa6, 0xf9, 0x40, 0xe8, 0xbe, 0xff, 0x64,
-	0xc1, 0x97, 0xd9, 0x7a, 0xf8, 0xc6, 0xca, 0x0b, 0x58, 0x0f, 0xf0, 0x25, 0xb8, 0x02, 0xef, 0xbb,
-	0x65, 0xde, 0x50, 0x0e, 0xe6, 0x99, 0x9a, 0xde, 0xc3, 0x57, 0x73, 0x0f, 0x30, 0x26, 0x0d, 0x5c,
-	0x0b, 0x63, 0x5f, 0x1c, 0x99, 0xde, 0x97, 0x87, 0xf6, 0x07, 0x7d, 0x01, 0xb3, 0x81, 0x52, 0x20,
-	0x79, 0x8c, 0xab, 0xdc, 0x07, 0x08, 0x5a, 0x0e, 0x01, 0xfe, 0x55, 0xee, 0xd3, 0x7d, 0xb0, 0xee,
-	0x47, 0x51, 0x6e, 0xfd, 0x0c, 0xe3, 0xfc, 0xaf, 0xcd, 0xe7, 0x6a, 0x72, 0xe0, 0x2e, 0x72, 0xe0,
-	0xda, 0xd0, 0x41, 0x0e, 0xdc, 0x3d, 0x1e, 0x08, 0xd0, 0x0e, 0x0b, 0x4a, 0xfa, 0x19, 0x01, 0x2d,
-	0x74, 0x3f, 0x43, 0x7b, 0x61, 0x53, 0x5a, 0x32, 0x58, 0x02, 0xab, 0x66, 0x43, 0x2f, 0x01, 0xb3,
-	0xb6, 0x45, 0xb2, 0xde, 0x97, 0x1a, 0xae, 0x19, 0x32, 0xf2, 0x1d, 0xe1, 0xba, 0x8d, 0x04, 0xe9,
-	0x95, 0xb1, 0xac, 0xa6, 0xb2, 0xb5, 0xb3, 0x91, 0xc6, 0x92, 0x50, 0xf7, 0xc3, 0xcf, 0xbf, 0x9f,
-	0xaa, 0x6d, 0xb2, 0xcd, 0x72, 0x31, 0xcb, 0x17, 0xe1, 0xec, 0x12, 0x91, 0x1f, 0xe8, 0x34, 0x69,
-	0xe4, 0xe1, 0x5a, 0x86, 0x2b, 0x39, 0x6e, 0x3d, 0xda, 0x58, 0x07, 0xb0, 0x0f, 0x0c, 0x6c, 0x87,
-	0xb4, 0xcb, 0x60, 0xb3, 0xcd, 0x26, 0xdf, 0x10, 0xae, 0xf6, 0x7d, 0xd2, 0x5d, 0xdf, 0x31, 0x83,
-	0xec, 0x6d, 0x22, 0x01, 0xbe, 0x9e, 0xe1, 0xbb, 0x4f, 0x3a, 0xe5, 0x7c, 0xec, 0x9d, 0x59, 0xa2,
-	0xf7, 0xe4, 0x2b, 0xc2, 0xb5, 0xbe, 0xdf, 0x8f, 0xa2, 0x35, 0x21, 0x8b, 0xdb, 0xb1, 0x26, 0xe4,
-	0x52, 0xe4, 0x69, 0xc7, 0x40, 0xde, 0x21, 0xb4, 0x1c, 0x72, 0xf7, 0xf9, 0xf1, 0xcc, 0x41, 0x27,
-	0x33, 0x07, 0xfd, 0x99, 0x39, 0xe8, 0xe3, 0xdc, 0xa9, 0x9c, 0xcc, 0x9d, 0xca, 0xaf, 0xb9, 0x53,
-	0x79, 0xd5, 0x0d, 0x42, 0x7d, 0x90, 0x7a, 0xee, 0x48, 0x8e, 0xff, 0xdf, 0xe7, 0xa8, 0x70, 0xd6,
-	0xd3, 0x44, 0x28, 0xaf, 0x6e, 0x3e, 0xa9, 0x3b, 0xff, 0x02, 0x00, 0x00, 0xff, 0xff, 0x74, 0x5a,
-	0x0f, 0xca, 0x31, 0x06, 0x00, 0x00,
+	// 559 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x4f, 0x6f, 0xd3, 0x30,
+	0x18, 0xc6, 0xeb, 0x41, 0x2b, 0x30, 0x37, 0xd3, 0x22, 0xc8, 0x50, 0x40, 0x91, 0xf6, 0x47, 0x83,
+	0xc6, 0x6a, 0xcb, 0x0e, 0x70, 0xeb, 0x40, 0xec, 0xc0, 0xa5, 0xf4, 0x38, 0x24, 0x90, 0x13, 0xac,
+	0x2c, 0x52, 0x1a, 0x67, 0xb1, 0x83, 0x56, 0x10, 0x17, 0x3e, 0x01, 0x12, 0x9f, 0x00, 0x21, 0x71,
+	0xe1, 0x0b, 0x70, 0xe1, 0xbe, 0xe3, 0x24, 0x2e, 0x9c, 0x10, 0x6a, 0xf9, 0x20, 0x28, 0xb6, 0x3b,
+	0xa7, 0x59, 0x45, 0xd3, 0xdd, 0x1c, 0xbf, 0xef, 0xf3, 0x3e, 0x3f, 0x59, 0xcf, 0x1b, 0xd8, 0x7a,
+	0x4b, 0xb9, 0xf0, 0x0f, 0x49, 0x18, 0xe3, 0xa3, 0x8c, 0xa6, 0x63, 0x37, 0x49, 0x99, 0x60, 0xc8,
+	0xf6, 0xc7, 0x22, 0xcd, 0x78, 0x44, 0x3c, 0xee, 0x9e, 0x75, 0x98, 0x93, 0xd5, 0x0c, 0x58, 0xc0,
+	0x64, 0x2b, 0xce, 0x4f, 0x4a, 0x65, 0xdd, 0x0e, 0x18, 0x0b, 0x22, 0x8a, 0x49, 0x12, 0x62, 0x12,
+	0xc7, 0x4c, 0x10, 0x11, 0xb2, 0x98, 0xeb, 0xea, 0x8e, 0xcf, 0xf8, 0x88, 0x71, 0xec, 0x11, 0x4e,
+	0x95, 0x19, 0x7e, 0xd3, 0xf1, 0xa8, 0x20, 0x1d, 0x9c, 0x90, 0x20, 0x8c, 0x65, 0xb3, 0xee, 0xbd,
+	0x61, 0xb0, 0x12, 0x92, 0x92, 0xd1, 0x6c, 0xc6, 0x7a, 0xe1, 0x3e, 0x65, 0x23, 0xf6, 0xca, 0x67,
+	0x59, 0x2c, 0x74, 0xb1, 0x55, 0x2a, 0xaa, 0x6b, 0xa7, 0x09, 0xd1, 0xf3, 0xdc, 0x6d, 0x20, 0x07,
+	0x0d, 0xe9, 0x51, 0x46, 0xb9, 0x70, 0x5e, 0xc0, 0xeb, 0x73, 0xb7, 0x3c, 0x61, 0x31, 0xa7, 0xe8,
+	0x09, 0x6c, 0x28, 0xc3, 0x9b, 0xe0, 0x2e, 0xd8, 0xbe, 0xd6, 0xdd, 0x74, 0xff, 0xff, 0x12, 0xae,
+	0xd2, 0xef, 0x5d, 0x3e, 0xf9, 0x7d, 0xa7, 0x36, 0xd4, 0x5a, 0x67, 0x1d, 0xde, 0x92, 0xc3, 0xf7,
+	0xa9, 0x18, 0xe4, 0x24, 0x8f, 0x73, 0xca, 0x99, 0x73, 0x0c, 0xad, 0x45, 0x45, 0x0d, 0x30, 0x80,
+	0xd0, 0xdc, 0x6a, 0x88, 0x9d, 0xa5, 0x10, 0x67, 0x0a, 0x0d, 0x52, 0x98, 0xe1, 0xdc, 0x87, 0xcd,
+	0x39, 0x3f, 0xcd, 0x81, 0x9a, 0xb0, 0x1e, 0xc6, 0xaf, 0xe9, 0xb1, 0x34, 0xb9, 0x3a, 0x54, 0x1f,
+	0xce, 0x01, 0x6c, 0x95, 0xba, 0x35, 0x58, 0x1f, 0xd6, 0xe5, 0xab, 0x6a, 0xa6, 0x8d, 0x4a, 0x4c,
+	0x1a, 0x47, 0x29, 0x9d, 0x97, 0x9a, 0xa4, 0x1f, 0x45, 0x73, 0x24, 0x4f, 0x21, 0x34, 0x09, 0x30,
+	0x0f, 0x2f, 0xe3, 0xe2, 0xe6, 0x71, 0x71, 0x55, 0x36, 0x75, 0x5c, 0xdc, 0x01, 0x09, 0xa8, 0xd6,
+	0x0e, 0x0b, 0x4a, 0xe7, 0x0b, 0xd0, 0xf0, 0xc6, 0xe0, 0x3c, 0xfc, 0xa5, 0x8b, 0xc1, 0xa3, 0xfd,
+	0x39, 0xc8, 0x35, 0x09, 0xb9, 0xb5, 0x14, 0x52, 0xf9, 0x17, 0x29, 0xbb, 0x3f, 0xea, 0xb0, 0x2e,
+	0x29, 0xd1, 0x67, 0x00, 0x1b, 0x2a, 0x3f, 0xa8, 0xbb, 0x8c, 0xe8, 0x7c, 0x84, 0xad, 0xde, 0x4a,
+	0x1a, 0x45, 0xe2, 0xb8, 0x1f, 0x7e, 0xfe, 0xfd, 0xb4, 0xb6, 0x8d, 0x36, 0xb1, 0x11, 0x63, 0xb3,
+	0x38, 0xe5, 0xbd, 0x43, 0xdf, 0x41, 0x31, 0x90, 0xe8, 0x61, 0x25, 0xcf, 0x45, 0xb9, 0xb7, 0x1e,
+	0x5d, 0x44, 0xaa, 0xa9, 0x7b, 0x92, 0xba, 0x8d, 0xee, 0x2d, 0xa5, 0x36, 0x7f, 0x05, 0xf4, 0x0d,
+	0xc0, 0xba, 0x9c, 0x85, 0x1e, 0xac, 0x64, 0x3d, 0x03, 0xde, 0x5d, 0x51, 0xa5, 0x59, 0x77, 0x25,
+	0x2b, 0x46, 0xed, 0x4a, 0xac, 0xf8, 0x9d, 0xdc, 0xbb, 0xf7, 0xe8, 0x2b, 0x80, 0x57, 0xe4, 0xa0,
+	0x7e, 0x14, 0x55, 0x04, 0x2e, 0xed, 0x51, 0x45, 0xe0, 0xf2, 0x72, 0x38, 0x6d, 0x09, 0xbc, 0x85,
+	0x36, 0x2a, 0x01, 0xef, 0x3d, 0x3b, 0x99, 0xd8, 0xe0, 0x74, 0x62, 0x83, 0x3f, 0x13, 0x1b, 0x7c,
+	0x9c, 0xda, 0xb5, 0xd3, 0xa9, 0x5d, 0xfb, 0x35, 0xb5, 0x6b, 0x07, 0x9d, 0x20, 0x14, 0x87, 0x99,
+	0xe7, 0xfa, 0x6c, 0xb4, 0x78, 0xd4, 0x71, 0xe1, 0x2c, 0xc6, 0x09, 0xe5, 0x5e, 0x43, 0xfe, 0xa3,
+	0x7b, 0xff, 0x02, 0x00, 0x00, 0xff, 0xff, 0x64, 0xcb, 0x1e, 0x6a, 0x88, 0x06, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -443,12 +443,12 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
-	// Queries a AdCount by index.
-	AdCount(ctx context.Context, in *QueryGetAdCountRequest, opts ...grpc.CallOption) (*QueryGetAdCountResponse, error)
-	// Queries a Ad by index.
-	Ad(ctx context.Context, in *QueryGetAdRequest, opts ...grpc.CallOption) (*QueryGetAdResponse, error)
-	// Queries a list of Ad items.
-	AdAll(ctx context.Context, in *QueryAllAdRequest, opts ...grpc.CallOption) (*QueryAllAdResponse, error)
+	// Queries a PromoCount by index.
+	PromoCount(ctx context.Context, in *QueryGetPromoCountRequest, opts ...grpc.CallOption) (*QueryGetPromoCountResponse, error)
+	// Queries a Promo by index.
+	Promo(ctx context.Context, in *QueryGetPromoRequest, opts ...grpc.CallOption) (*QueryGetPromoResponse, error)
+	// Queries a list of Promo items.
+	PromoAll(ctx context.Context, in *QueryAllPromoRequest, opts ...grpc.CallOption) (*QueryAllPromoResponse, error)
 }
 
 type queryClient struct {
@@ -468,27 +468,27 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
-func (c *queryClient) AdCount(ctx context.Context, in *QueryGetAdCountRequest, opts ...grpc.CallOption) (*QueryGetAdCountResponse, error) {
-	out := new(QueryGetAdCountResponse)
-	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Query/AdCount", in, out, opts...)
+func (c *queryClient) PromoCount(ctx context.Context, in *QueryGetPromoCountRequest, opts ...grpc.CallOption) (*QueryGetPromoCountResponse, error) {
+	out := new(QueryGetPromoCountResponse)
+	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Query/PromoCount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) Ad(ctx context.Context, in *QueryGetAdRequest, opts ...grpc.CallOption) (*QueryGetAdResponse, error) {
-	out := new(QueryGetAdResponse)
-	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Query/Ad", in, out, opts...)
+func (c *queryClient) Promo(ctx context.Context, in *QueryGetPromoRequest, opts ...grpc.CallOption) (*QueryGetPromoResponse, error) {
+	out := new(QueryGetPromoResponse)
+	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Query/Promo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *queryClient) AdAll(ctx context.Context, in *QueryAllAdRequest, opts ...grpc.CallOption) (*QueryAllAdResponse, error) {
-	out := new(QueryAllAdResponse)
-	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Query/AdAll", in, out, opts...)
+func (c *queryClient) PromoAll(ctx context.Context, in *QueryAllPromoRequest, opts ...grpc.CallOption) (*QueryAllPromoResponse, error) {
+	out := new(QueryAllPromoResponse)
+	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Query/PromoAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -499,12 +499,12 @@ func (c *queryClient) AdAll(ctx context.Context, in *QueryAllAdRequest, opts ...
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
-	// Queries a AdCount by index.
-	AdCount(context.Context, *QueryGetAdCountRequest) (*QueryGetAdCountResponse, error)
-	// Queries a Ad by index.
-	Ad(context.Context, *QueryGetAdRequest) (*QueryGetAdResponse, error)
-	// Queries a list of Ad items.
-	AdAll(context.Context, *QueryAllAdRequest) (*QueryAllAdResponse, error)
+	// Queries a PromoCount by index.
+	PromoCount(context.Context, *QueryGetPromoCountRequest) (*QueryGetPromoCountResponse, error)
+	// Queries a Promo by index.
+	Promo(context.Context, *QueryGetPromoRequest) (*QueryGetPromoResponse, error)
+	// Queries a list of Promo items.
+	PromoAll(context.Context, *QueryAllPromoRequest) (*QueryAllPromoResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -514,14 +514,14 @@ type UnimplementedQueryServer struct {
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
 }
-func (*UnimplementedQueryServer) AdCount(ctx context.Context, req *QueryGetAdCountRequest) (*QueryGetAdCountResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AdCount not implemented")
+func (*UnimplementedQueryServer) PromoCount(ctx context.Context, req *QueryGetPromoCountRequest) (*QueryGetPromoCountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PromoCount not implemented")
 }
-func (*UnimplementedQueryServer) Ad(ctx context.Context, req *QueryGetAdRequest) (*QueryGetAdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ad not implemented")
+func (*UnimplementedQueryServer) Promo(ctx context.Context, req *QueryGetPromoRequest) (*QueryGetPromoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Promo not implemented")
 }
-func (*UnimplementedQueryServer) AdAll(ctx context.Context, req *QueryAllAdRequest) (*QueryAllAdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AdAll not implemented")
+func (*UnimplementedQueryServer) PromoAll(ctx context.Context, req *QueryAllPromoRequest) (*QueryAllPromoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PromoAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -546,56 +546,56 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_AdCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetAdCountRequest)
+func _Query_PromoCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetPromoCountRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).AdCount(ctx, in)
+		return srv.(QueryServer).PromoCount(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cytruslabs.zestchain.zestchain.Query/AdCount",
+		FullMethod: "/cytruslabs.zestchain.zestchain.Query/PromoCount",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).AdCount(ctx, req.(*QueryGetAdCountRequest))
+		return srv.(QueryServer).PromoCount(ctx, req.(*QueryGetPromoCountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_Ad_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryGetAdRequest)
+func _Query_Promo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetPromoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).Ad(ctx, in)
+		return srv.(QueryServer).Promo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cytruslabs.zestchain.zestchain.Query/Ad",
+		FullMethod: "/cytruslabs.zestchain.zestchain.Query/Promo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).Ad(ctx, req.(*QueryGetAdRequest))
+		return srv.(QueryServer).Promo(ctx, req.(*QueryGetPromoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Query_AdAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryAllAdRequest)
+func _Query_PromoAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllPromoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).AdAll(ctx, in)
+		return srv.(QueryServer).PromoAll(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cytruslabs.zestchain.zestchain.Query/AdAll",
+		FullMethod: "/cytruslabs.zestchain.zestchain.Query/PromoAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).AdAll(ctx, req.(*QueryAllAdRequest))
+		return srv.(QueryServer).PromoAll(ctx, req.(*QueryAllPromoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -609,16 +609,16 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Query_Params_Handler,
 		},
 		{
-			MethodName: "AdCount",
-			Handler:    _Query_AdCount_Handler,
+			MethodName: "PromoCount",
+			Handler:    _Query_PromoCount_Handler,
 		},
 		{
-			MethodName: "Ad",
-			Handler:    _Query_Ad_Handler,
+			MethodName: "Promo",
+			Handler:    _Query_Promo_Handler,
 		},
 		{
-			MethodName: "AdAll",
-			Handler:    _Query_AdAll_Handler,
+			MethodName: "PromoAll",
+			Handler:    _Query_PromoAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -681,7 +681,7 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetAdCountRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetPromoCountRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -691,12 +691,12 @@ func (m *QueryGetAdCountRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetAdCountRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetPromoCountRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetAdCountRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetPromoCountRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -704,7 +704,7 @@ func (m *QueryGetAdCountRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) 
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetAdCountResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetPromoCountResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -714,18 +714,18 @@ func (m *QueryGetAdCountResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetAdCountResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetPromoCountResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetAdCountResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetPromoCountResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	{
-		size, err := m.AdCount.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.PromoCount.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -737,7 +737,7 @@ func (m *QueryGetAdCountResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetAdRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetPromoRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -747,12 +747,12 @@ func (m *QueryGetAdRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetAdRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetPromoRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetAdRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetPromoRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -767,7 +767,7 @@ func (m *QueryGetAdRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryGetAdResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryGetPromoResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -777,18 +777,18 @@ func (m *QueryGetAdResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryGetAdResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryGetPromoResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryGetAdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryGetPromoResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
 	{
-		size, err := m.Ad.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.Promo.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -800,7 +800,7 @@ func (m *QueryGetAdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllAdRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllPromoRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -810,12 +810,12 @@ func (m *QueryAllAdRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllAdRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllPromoRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllAdRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllPromoRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -835,7 +835,7 @@ func (m *QueryAllAdRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryAllAdResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryAllPromoResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -845,12 +845,12 @@ func (m *QueryAllAdResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryAllAdResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryAllPromoResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryAllAdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryAllPromoResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -867,10 +867,10 @@ func (m *QueryAllAdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.Ad) > 0 {
-		for iNdEx := len(m.Ad) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.Promo) > 0 {
+		for iNdEx := len(m.Promo) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.Ad[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.Promo[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -915,7 +915,7 @@ func (m *QueryParamsResponse) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetAdCountRequest) Size() (n int) {
+func (m *QueryGetPromoCountRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -924,18 +924,18 @@ func (m *QueryGetAdCountRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetAdCountResponse) Size() (n int) {
+func (m *QueryGetPromoCountResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = m.AdCount.Size()
+	l = m.PromoCount.Size()
 	n += 1 + l + sovQuery(uint64(l))
 	return n
 }
 
-func (m *QueryGetAdRequest) Size() (n int) {
+func (m *QueryGetPromoRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -948,18 +948,18 @@ func (m *QueryGetAdRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryGetAdResponse) Size() (n int) {
+func (m *QueryGetPromoResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = m.Ad.Size()
+	l = m.Promo.Size()
 	n += 1 + l + sovQuery(uint64(l))
 	return n
 }
 
-func (m *QueryAllAdRequest) Size() (n int) {
+func (m *QueryAllPromoRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -972,14 +972,14 @@ func (m *QueryAllAdRequest) Size() (n int) {
 	return n
 }
 
-func (m *QueryAllAdResponse) Size() (n int) {
+func (m *QueryAllPromoResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if len(m.Ad) > 0 {
-		for _, e := range m.Ad {
+	if len(m.Promo) > 0 {
+		for _, e := range m.Promo {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1130,7 +1130,7 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetAdCountRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryGetPromoCountRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1153,10 +1153,10 @@ func (m *QueryGetAdCountRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetAdCountRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetPromoCountRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetAdCountRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetPromoCountRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
@@ -1180,7 +1180,7 @@ func (m *QueryGetAdCountRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetAdCountResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryGetPromoCountResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1203,15 +1203,15 @@ func (m *QueryGetAdCountResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetAdCountResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetPromoCountResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetAdCountResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetPromoCountResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field AdCount", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field PromoCount", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1238,7 +1238,7 @@ func (m *QueryGetAdCountResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.AdCount.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.PromoCount.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -1263,7 +1263,7 @@ func (m *QueryGetAdCountResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetAdRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryGetPromoRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1286,10 +1286,10 @@ func (m *QueryGetAdRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetAdRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetPromoRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetAdRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetPromoRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1345,7 +1345,7 @@ func (m *QueryGetAdRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryGetAdResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryGetPromoResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1368,15 +1368,15 @@ func (m *QueryGetAdResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryGetAdResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryGetPromoResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryGetAdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryGetPromoResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Ad", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Promo", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1403,7 +1403,7 @@ func (m *QueryGetAdResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.Ad.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.Promo.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -1428,7 +1428,7 @@ func (m *QueryGetAdResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllAdRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryAllPromoRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1451,10 +1451,10 @@ func (m *QueryAllAdRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllAdRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllPromoRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllAdRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllPromoRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1514,7 +1514,7 @@ func (m *QueryAllAdRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryAllAdResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryAllPromoResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1537,15 +1537,15 @@ func (m *QueryAllAdResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryAllAdResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryAllPromoResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryAllAdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryAllPromoResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Ad", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Promo", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1572,8 +1572,8 @@ func (m *QueryAllAdResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Ad = append(m.Ad, Ad{})
-			if err := m.Ad[len(m.Ad)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.Promo = append(m.Promo, Promo{})
+			if err := m.Promo[len(m.Promo)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

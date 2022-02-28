@@ -1,13 +1,13 @@
 accounts:
   - name: treasury
-    coins: ["50000000ZEST", "100000000ZESTAKE"]
+    coins: ["50000000ZEST", "100000000stkZEST"]
   - name: shulgin
     coins: ["10000000ZEST"]
   - name: rancidrocker24
     coins: ["50000ZEST"]
 validator:
   name: treasury
-  staked: "100000000ZESTAKE"
+  staked: "100000000stkZEST"
 client:
   openapi:
     path: "docs/static/openapi.yml"
@@ -21,5 +21,4 @@ genesis:
   app_state:
     staking:
       params:
-        bond_denom: "ZESTAKE"
-
+        bond_denom: "stkZEST"

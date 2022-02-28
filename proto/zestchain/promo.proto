@@ -1,0 +1,16 @@
+syntax = "proto3";
+package cytruslabs.zestchain.zestchain;
+
+option go_package = "github.com/cytruslabs/zestchain/x/zestchain/types";
+
+message Promo {
+  string index = 1; 
+  string title = 2; 
+  uint64 pot = 3; 
+  string url = 4; 
+  string msg = 5; 
+  string tags = 6; 
+  string prefs = 7; 
+  
+}
+
