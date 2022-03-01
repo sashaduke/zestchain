@@ -17,11 +17,11 @@
           class="sp-welcome__btns__github"
           >Github</SpButton
         >
-      </div>
+      </div>   
     </div>
   </div>
 </template>
-<script lang="ts">
+<script>
 //import SpButton from '@starport/vue/src/components/SpButton/SpButton.vue'
 export default {
   name: 'Welcome',
