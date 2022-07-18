@@ -7,6 +7,7 @@
       <p>
         Cytrus is a decentralised advertising platform that passively earns you crypto while you browse.<br>
         You can create a wallet, transfer your ZEST, and launch new advertisements all from this site!
+        For help setting up, try the help section linked in the sidebar.
       </p><br>
       <div>
         <SpButton href="https://chrome.google.com/webstore/detail/cytrus-chromium-extension/nlocmejmnonmncopfmfcchbbpfdhpmfi" target="_blank" type="secondary">Chromium Extension</SpButton>

@@ -11,8 +11,7 @@
       </div>
       <div class="sp-box sp-shadow">
         <span style="font-size: 1.28rem">Make sure that you are signed in using the menu in the corner and your wallet is unlocked.
-          <br>You also need to have the Cytrus Chromium Extension installed.<br>
-          <br>For help setting up, try the help section linked in the sidebar.<br></span>
+          <br>You also need to have the Cytrus Chromium Extension installed.<br><br></span>
         <div>
           <form ref="form1" onsubmit="return false" style="display: inline">
             <button class="sp-button" type="submit">Connect</button>
