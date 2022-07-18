@@ -11,6 +11,9 @@ func (k msgServer) PayView(goCtx context.Context, msg *types.MsgPayView) (*types
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	ad, found := k.Keeper.GetAd(ctx, msg.Id)
+	if !found {
+                panic("Ad not found")
+        }
 	if ad.Pot >= 1 {
 		ad.PayView(msg.Creator)
 		ad.Pot--
