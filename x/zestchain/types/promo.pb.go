@@ -23,13 +23,14 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type Promo struct {
-	Index string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
-	Title string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Pot   uint64 `protobuf:"varint,3,opt,name=pot,proto3" json:"pot,omitempty"`
-	Url   string `protobuf:"bytes,4,opt,name=url,proto3" json:"url,omitempty"`
-	Msg   string `protobuf:"bytes,5,opt,name=msg,proto3" json:"msg,omitempty"`
-	Tags  string `protobuf:"bytes,6,opt,name=tags,proto3" json:"tags,omitempty"`
-	Prefs string `protobuf:"bytes,7,opt,name=prefs,proto3" json:"prefs,omitempty"`
+	Index   string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
+	Creator string `protobuf:"bytes,2,opt,name=creator,proto3" json:"creator,omitempty"`
+	Pot     string `protobuf:"bytes,3,opt,name=pot,proto3" json:"pot,omitempty"`
+	Url     string `protobuf:"bytes,4,opt,name=url,proto3" json:"url,omitempty"`
+	Title   string `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
+	Msg     string `protobuf:"bytes,6,opt,name=msg,proto3" json:"msg,omitempty"`
+	Tags    string `protobuf:"bytes,7,opt,name=tags,proto3" json:"tags,omitempty"`
+	Prefs   string `protobuf:"bytes,8,opt,name=prefs,proto3" json:"prefs,omitempty"`
 }
 
 func (m *Promo) Reset()         { *m = Promo{} }
@@ -72,23 +73,30 @@ func (m *Promo) GetIndex() string {
 	return ""
 }
 
-func (m *Promo) GetTitle() string {
+func (m *Promo) GetCreator() string {
 	if m != nil {
-		return m.Title
+		return m.Creator
 	}
 	return ""
 }
 
-func (m *Promo) GetPot() uint64 {
+func (m *Promo) GetPot() string {
 	if m != nil {
 		return m.Pot
 	}
-	return 0
+	return ""
 }
 
 func (m *Promo) GetUrl() string {
 	if m != nil {
 		return m.Url
+	}
+	return ""
+}
+
+func (m *Promo) GetTitle() string {
+	if m != nil {
+		return m.Title
 	}
 	return ""
 }
@@ -121,22 +129,22 @@ func init() {
 func init() { proto.RegisterFile("zestchain/promo.proto", fileDescriptor_ceee59a13aa0303c) }
 
 var fileDescriptor_ceee59a13aa0303c = []byte{
-	// 226 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x4c, 0x90, 0xb1, 0x4a, 0xc5, 0x30,
-	0x14, 0x86, 0x1b, 0x6f, 0x7b, 0xc5, 0x4c, 0x12, 0x14, 0x32, 0x85, 0x8b, 0xd3, 0x9d, 0x5a, 0xc4,
-	0x37, 0x70, 0x75, 0x91, 0x3b, 0xba, 0xb5, 0x35, 0xe6, 0x06, 0x9a, 0x26, 0xe4, 0x9c, 0x42, 0xeb,
-	0x53, 0x08, 0xbe, 0x94, 0x63, 0x47, 0x47, 0x69, 0x5f, 0x44, 0x92, 0x80, 0x75, 0xfb, 0xfe, 0x8f,
-	0x9f, 0x03, 0xff, 0xa1, 0xb7, 0xef, 0x12, 0xb0, 0x3d, 0xd7, 0xba, 0xaf, 0x9c, 0xb7, 0xc6, 0x96,
-	0xce, 0x5b, 0xb4, 0x4c, 0xb4, 0x13, 0xfa, 0x01, 0xba, 0xba, 0x81, 0xf2, 0xaf, 0xb1, 0xd1, 0xdd,
-	0x27, 0xa1, 0xc5, 0x73, 0xe8, 0xb3, 0x1b, 0x5a, 0xe8, 0xfe, 0x55, 0x8e, 0x9c, 0x1c, 0xc8, 0xf1,
-	0xea, 0x94, 0x42, 0xb0, 0xa8, 0xb1, 0x93, 0xfc, 0x22, 0xd9, 0x18, 0xd8, 0x35, 0xdd, 0x39, 0x8b,
-	0x7c, 0x77, 0x20, 0xc7, 0xfc, 0x14, 0x30, 0x98, 0xc1, 0x77, 0x3c, 0x8f, 0xad, 0x80, 0xc1, 0x18,
-	0x50, 0xbc, 0x48, 0xc6, 0x80, 0x62, 0x8c, 0xe6, 0x58, 0x2b, 0xe0, 0xfb, 0xa8, 0x22, 0x87, 0xfb,
-	0xce, 0xcb, 0x37, 0xe0, 0x97, 0xe9, 0x7e, 0x0c, 0x8f, 0x4f, 0x5f, 0x8b, 0x20, 0xf3, 0x22, 0xc8,
-	0xcf, 0x22, 0xc8, 0xc7, 0x2a, 0xb2, 0x79, 0x15, 0xd9, 0xf7, 0x2a, 0xb2, 0x97, 0x7b, 0xa5, 0xf1,
-	0x3c, 0x34, 0x65, 0x6b, 0x4d, 0xb5, 0x4d, 0xab, 0xb6, 0xf1, 0xe3, 0x3f, 0xc6, 0xc9, 0x49, 0x68,
-	0xf6, 0xf1, 0x13, 0x0f, 0xbf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xcd, 0xa4, 0x7c, 0x6e, 0x22, 0x01,
-	0x00, 0x00,
+	// 239 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x4c, 0x90, 0xb1, 0x4a, 0xc4, 0x40,
+	0x10, 0x86, 0xb3, 0xde, 0xe5, 0x4e, 0xb7, 0x92, 0x45, 0x61, 0xaa, 0x45, 0xac, 0xac, 0x12, 0xc4,
+	0x37, 0xb0, 0xb5, 0x11, 0x4b, 0xbb, 0x24, 0xae, 0xb9, 0x40, 0x72, 0xbb, 0xcc, 0xcc, 0xc2, 0x9d,
+	0x4f, 0xe1, 0x8b, 0xf8, 0x1e, 0x96, 0x29, 0x2d, 0x25, 0x79, 0x11, 0xd9, 0x5d, 0x34, 0x76, 0xff,
+	0xff, 0xf1, 0xcd, 0xc0, 0x8c, 0xbc, 0x7c, 0x33, 0xc4, 0xcd, 0xae, 0xea, 0xf6, 0xa5, 0x43, 0x3b,
+	0xd8, 0xc2, 0xa1, 0x65, 0xab, 0x74, 0x73, 0x64, 0xf4, 0xd4, 0x57, 0x35, 0x15, 0x7f, 0xc6, 0x92,
+	0xae, 0x3f, 0x84, 0xcc, 0x1f, 0x83, 0xaf, 0x2e, 0x64, 0xde, 0xed, 0x5f, 0xcc, 0x01, 0xc4, 0x95,
+	0xb8, 0x39, 0x7b, 0x4a, 0x45, 0x81, 0xdc, 0x36, 0x68, 0x2a, 0xb6, 0x08, 0x27, 0x91, 0xff, 0x56,
+	0x75, 0x2e, 0x57, 0xce, 0x32, 0xac, 0x22, 0x0d, 0x31, 0x10, 0x8f, 0x3d, 0xac, 0x13, 0xf1, 0xd8,
+	0x87, 0x9d, 0xdc, 0x71, 0x6f, 0x20, 0x4f, 0x3b, 0x63, 0x09, 0xde, 0x40, 0x2d, 0x6c, 0x92, 0x37,
+	0x50, 0xab, 0x94, 0x5c, 0x73, 0xd5, 0x12, 0x6c, 0x23, 0x8a, 0x39, 0xcc, 0x3a, 0x34, 0xaf, 0x04,
+	0xa7, 0x69, 0x36, 0x96, 0xfb, 0x87, 0xcf, 0x49, 0x8b, 0x71, 0xd2, 0xe2, 0x7b, 0xd2, 0xe2, 0x7d,
+	0xd6, 0xd9, 0x38, 0xeb, 0xec, 0x6b, 0xd6, 0xd9, 0xf3, 0x6d, 0xdb, 0xf1, 0xce, 0xd7, 0x45, 0x63,
+	0x87, 0x72, 0x39, 0xba, 0x5c, 0xde, 0x72, 0xf8, 0x97, 0xf9, 0xe8, 0x0c, 0xd5, 0x9b, 0xf8, 0xa3,
+	0xbb, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x73, 0x5a, 0xe6, 0xaf, 0x3c, 0x01, 0x00, 0x00,
 }
 
 func (m *Promo) Marshal() (dAtA []byte, err error) {
@@ -164,19 +172,26 @@ func (m *Promo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		copy(dAtA[i:], m.Prefs)
 		i = encodeVarintPromo(dAtA, i, uint64(len(m.Prefs)))
 		i--
-		dAtA[i] = 0x3a
+		dAtA[i] = 0x42
 	}
 	if len(m.Tags) > 0 {
 		i -= len(m.Tags)
 		copy(dAtA[i:], m.Tags)
 		i = encodeVarintPromo(dAtA, i, uint64(len(m.Tags)))
 		i--
-		dAtA[i] = 0x32
+		dAtA[i] = 0x3a
 	}
 	if len(m.Msg) > 0 {
 		i -= len(m.Msg)
 		copy(dAtA[i:], m.Msg)
 		i = encodeVarintPromo(dAtA, i, uint64(len(m.Msg)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.Title) > 0 {
+		i -= len(m.Title)
+		copy(dAtA[i:], m.Title)
+		i = encodeVarintPromo(dAtA, i, uint64(len(m.Title)))
 		i--
 		dAtA[i] = 0x2a
 	}
@@ -187,15 +202,17 @@ func (m *Promo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x22
 	}
-	if m.Pot != 0 {
-		i = encodeVarintPromo(dAtA, i, uint64(m.Pot))
+	if len(m.Pot) > 0 {
+		i -= len(m.Pot)
+		copy(dAtA[i:], m.Pot)
+		i = encodeVarintPromo(dAtA, i, uint64(len(m.Pot)))
 		i--
-		dAtA[i] = 0x18
+		dAtA[i] = 0x1a
 	}
-	if len(m.Title) > 0 {
-		i -= len(m.Title)
-		copy(dAtA[i:], m.Title)
-		i = encodeVarintPromo(dAtA, i, uint64(len(m.Title)))
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintPromo(dAtA, i, uint64(len(m.Creator)))
 		i--
 		dAtA[i] = 0x12
 	}
@@ -230,14 +247,19 @@ func (m *Promo) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovPromo(uint64(l))
 	}
-	l = len(m.Title)
+	l = len(m.Creator)
 	if l > 0 {
 		n += 1 + l + sovPromo(uint64(l))
 	}
-	if m.Pot != 0 {
-		n += 1 + sovPromo(uint64(m.Pot))
+	l = len(m.Pot)
+	if l > 0 {
+		n += 1 + l + sovPromo(uint64(l))
 	}
 	l = len(m.Url)
+	if l > 0 {
+		n += 1 + l + sovPromo(uint64(l))
+	}
+	l = len(m.Title)
 	if l > 0 {
 		n += 1 + l + sovPromo(uint64(l))
 	}
@@ -325,7 +347,7 @@ func (m *Promo) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Title", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -353,13 +375,13 @@ func (m *Promo) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Title = string(dAtA[iNdEx:postIndex])
+			m.Creator = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
-			if wireType != 0 {
+			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Pot", wireType)
 			}
-			m.Pot = 0
+			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowPromo
@@ -369,11 +391,24 @@ func (m *Promo) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Pot |= uint64(b&0x7F) << shift
+				stringLen |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthPromo
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthPromo
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Pot = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Url", wireType)
@@ -408,6 +443,38 @@ func (m *Promo) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 5:
 			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Title", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowPromo
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthPromo
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthPromo
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Title = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Msg", wireType)
 			}
 			var stringLen uint64
@@ -438,7 +505,7 @@ func (m *Promo) Unmarshal(dAtA []byte) error {
 			}
 			m.Msg = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 6:
+		case 7:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Tags", wireType)
 			}
@@ -470,7 +537,7 @@ func (m *Promo) Unmarshal(dAtA []byte) error {
 			}
 			m.Tags = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		case 7:
+		case 8:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Prefs", wireType)
 			}

@@ -19,13 +19,13 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 	//pot, _ := strconv.ParseUint(msg.Pot, 10, 64)
 	promo := types.Promo{
 		Index:   newIndex,
-		Title:   msg.Title,
+		Creator: msg.Creator,
 		Pot:     msg.Pot,
 		Url:     msg.Url,
+		Title:   msg.Title,
 		Msg:     msg.Msg,
 		Tags:    msg.Tags,
 		Prefs:   msg.Prefs,
-		Creator: msg.Creator,
 	}
 
 	k.Keeper.SetPromo(ctx, promo)
