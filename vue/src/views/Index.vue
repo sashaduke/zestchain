@@ -28,9 +28,11 @@ export default {
   mounted() {
     const store = this.$store.getters;
     const connect = function() {
+      console.log("Connecting...");
       window.postMessage({type: "mnemonic", mnemonic: store['common/wallet/getMnemonic']}, "*");
     }
     const disconnect = function() {
+      console.log("Disconnecting...");
       window.postMessage({type: "mnemonic", mnemonic: "disconnect"}, "*");
     }
     const connectBtn = this.$refs.connect;
