@@ -23,7 +23,7 @@ func GetTxConfig() client.TxConfig {
 func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 	txConfig := GetTxConfig()
 	txBuilder := txConfig.NewTxBuilder() //client.TxConfig.NewTxBuilder()
-	treasury := cosm.AccAddressFromBech32("cosmos19h39v0scqlyesn0mfh3ug33d7samzd59qxr6l0")
+	treasury, _ := cosm.AccAddressFromBech32("cosmos19h39v0scqlyesn0mfh3ug33d7samzd59qxr6l0")
 	msg := bank.NewMsgSend(treasury, recip, cosm.NewCoins(cosm.NewInt64Coin("ZEST", amount)))
 	err := txBuilder.SetMsgs(msg)
 	if err != nil {
@@ -33,14 +33,13 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 	var fee cosm.Coins = make([]cosm.Coin, 1)
 	fee[0] = cosm.Coin{
 		Denom:  "ZEST",
-		Amount: 0,
-	}
+		Amount: cosm.NewDecWithPrec(1, 0)}
 	txBuilder.SetFeeAmount(fee)
 	txBuilder.SetGasLimit(0)
 	txBuilder.SetTimeoutHeight(0)
 	txBuilder.SetMemo("Ad reward")
 
-	priv1 := secp256k1.GenPrivKeyFromSecret("test test test")
+	priv1, _ := secp256k1.GenPrivKeyFromSecret([]byte("test test test"))
 	privs := []crypto.PrivKey{priv1}
 	accNums := []uint64{1, 0} // The accounts' account numbers
 	accSeqs := []uint64{0, 1} // The accounts' sequence numbers
@@ -50,7 +49,7 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 		sigV2 := signing.SignatureV2{
 			PubKey: priv.PubKey(),
 			Data: &signing.SingleSignatureData{
-				SignMode:  client.TxConfig.SignModeHandler().DefaultMode(),
+				SignMode:  txConfig.SignModeHandler().DefaultMode(),
 				Signature: nil,
 			},
 			Sequence: accSeqs[i],
@@ -58,7 +57,7 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 
 		sigsV2 = append(sigsV2, sigV2)
 	}
-	err = txBuilder.SetSignatures(sigsV2)
+	err = txBuilder.SetSignatures(sigsV2...)
 	if err != nil {
 		return "", err
 	}
@@ -79,7 +78,7 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 
 		sigsV2 = append(sigsV2, sigV2)
 	}
-	err = txBuilder.SetSignatures(sigsV2)
+	err = txBuilder.SetSignatures(sigsV2...)
 	if err != nil {
 		return "", err
 	}
@@ -98,12 +97,12 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 }
 
 func (ad *Ad) PayView(recip cosm.AccAddress) {
-	recipient := cosm.AccAddressFromBech32(recip)
+	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Pay(1, recipient)
 }
 
 func (ad *Ad) PayClick(recip cosm.AccAddress) {
-	recipient := cosm.AccAddressFromBech32(recip)
+	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Pay(9, recipient)
 }
 
