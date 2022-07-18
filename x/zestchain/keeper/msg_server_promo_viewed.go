@@ -11,6 +11,9 @@ func (k msgServer) PromoViewed(goCtx context.Context, msg *types.MsgPromoViewed)
 	ctx := cosm.UnwrapSDKContext(goCtx)
 
 	promo, found := k.Keeper.GetPromo(ctx, msg.Id)
+	if !found {
+        	panic("Promo not found!")
+        }
         if promo.Pot >= 1 {
                 //ViewReward(msg.Id, msg.Creator)
                 promo.Pot -= 1
