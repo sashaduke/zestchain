@@ -9,12 +9,20 @@ import (
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterConcrete(&MsgCreateAd{}, "zestchain/CreateAd", nil)
+	cdc.RegisterConcrete(&MsgPayView{}, "zestchain/PayView", nil)
+	cdc.RegisterConcrete(&MsgPayClick{}, "zestchain/PayClick", nil)
 	// this line is used by starport scaffolding # 2
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgCreateAd{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgPayView{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgPayClick{},
 	)
 	// this line is used by starport scaffolding # 3
 

@@ -103,6 +103,10 @@ export interface ZestchainMsgCreateAdResponse {
   counter?: string;
 }
 
+export type ZestchainMsgPayClickResponse = object;
+
+export type ZestchainMsgPayViewResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */

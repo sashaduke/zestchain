@@ -20050,6 +20050,10 @@ definitions:
     properties:
       counter:
         type: string
+  cytruslabs.zestchain.zestchain.MsgPayClickResponse:
+    type: object
+  cytruslabs.zestchain.zestchain.MsgPayViewResponse:
+    type: object
   cytruslabs.zestchain.zestchain.Params:
     type: object
     description: Params defines the parameters for the module.

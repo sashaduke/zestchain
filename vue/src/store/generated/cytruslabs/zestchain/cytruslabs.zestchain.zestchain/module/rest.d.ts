@@ -80,6 +80,8 @@ export interface ZestchainAdCount {
 export interface ZestchainMsgCreateAdResponse {
     counter?: string;
 }
+export declare type ZestchainMsgPayClickResponse = object;
+export declare type ZestchainMsgPayViewResponse = object;
 /**
  * Params defines the parameters for the module.
  */
