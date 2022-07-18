@@ -6,7 +6,7 @@ option go_package = "github.com/cytruslabs/zestchain/x/zestchain/types";
 message Promo {
   string index = 1; 
   string creator = 2; 
-  string pot = 3; 
+  uint64 pot = 3; 
   string url = 4;  
   string title = 5; 
   string msg = 6; 
