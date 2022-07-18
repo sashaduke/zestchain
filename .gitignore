@@ -4,3 +4,7 @@ release/
 .idea/
 .vscode/
 .DS_Store
+err.log
+out.log
+vue/err.log
+vue/out.log
