@@ -17,14 +17,14 @@ func NewHandler(k keeper.Keeper) sdk.Handler {
 		ctx = ctx.WithEventManager(sdk.NewEventManager())
 
 		switch msg := msg.(type) {
-		case *types.MsgCreateAd:
-			res, err := msgServer.CreateAd(sdk.WrapSDKContext(ctx), msg)
+		case *types.MsgCreatePromo:
+			res, err := msgServer.CreatePromo(sdk.WrapSDKContext(ctx), msg)
 			return sdk.WrapServiceResult(ctx, res, err)
-		case *types.MsgPayView:
-			res, err := msgServer.PayView(sdk.WrapSDKContext(ctx), msg)
+		case *types.MsgPromoViewed:
+			res, err := msgServer.PromoViewed(sdk.WrapSDKContext(ctx), msg)
 			return sdk.WrapServiceResult(ctx, res, err)
-		case *types.MsgPayClick:
-			res, err := msgServer.PayClick(sdk.WrapSDKContext(ctx), msg)
+		case *types.MsgPromoClicked:
+			res, err := msgServer.PromoClicked(sdk.WrapSDKContext(ctx), msg)
 			return sdk.WrapServiceResult(ctx, res, err)
 			// this line is used by starport scaffolding # 1
 		default:

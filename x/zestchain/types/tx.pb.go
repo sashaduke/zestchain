@@ -27,28 +27,28 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-type MsgCreateAd struct {
+type MsgCreatePromo struct {
 	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
 	Title   string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Pot     string `protobuf:"bytes,3,opt,name=pot,proto3" json:"pot,omitempty"`
+	Pot     uint64 `protobuf:"varint,3,opt,name=pot,proto3" json:"pot,omitempty"`
 	Url     string `protobuf:"bytes,4,opt,name=url,proto3" json:"url,omitempty"`
-	Msg     string `protobuf:"bytes,5,opt,name=msg,proto3" json:"msg,omitempty"`
+	Message string `protobuf:"bytes,5,opt,name=message,proto3" json:"message,omitempty"`
 	Tags    string `protobuf:"bytes,6,opt,name=tags,proto3" json:"tags,omitempty"`
 	Prefs   string `protobuf:"bytes,7,opt,name=prefs,proto3" json:"prefs,omitempty"`
 }
 
-func (m *MsgCreateAd) Reset()         { *m = MsgCreateAd{} }
-func (m *MsgCreateAd) String() string { return proto.CompactTextString(m) }
-func (*MsgCreateAd) ProtoMessage()    {}
-func (*MsgCreateAd) Descriptor() ([]byte, []int) {
+func (m *MsgCreatePromo) Reset()         { *m = MsgCreatePromo{} }
+func (m *MsgCreatePromo) String() string { return proto.CompactTextString(m) }
+func (*MsgCreatePromo) ProtoMessage()    {}
+func (*MsgCreatePromo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ad62989248de80a, []int{0}
 }
-func (m *MsgCreateAd) XXX_Unmarshal(b []byte) error {
+func (m *MsgCreatePromo) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgCreateAd) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgCreatePromo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgCreateAd.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgCreatePromo.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -58,83 +58,83 @@ func (m *MsgCreateAd) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return b[:n], nil
 	}
 }
-func (m *MsgCreateAd) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgCreateAd.Merge(m, src)
+func (m *MsgCreatePromo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreatePromo.Merge(m, src)
 }
-func (m *MsgCreateAd) XXX_Size() int {
+func (m *MsgCreatePromo) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgCreateAd) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgCreateAd.DiscardUnknown(m)
+func (m *MsgCreatePromo) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreatePromo.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgCreateAd proto.InternalMessageInfo
+var xxx_messageInfo_MsgCreatePromo proto.InternalMessageInfo
 
-func (m *MsgCreateAd) GetCreator() string {
+func (m *MsgCreatePromo) GetCreator() string {
 	if m != nil {
 		return m.Creator
 	}
 	return ""
 }
 
-func (m *MsgCreateAd) GetTitle() string {
+func (m *MsgCreatePromo) GetTitle() string {
 	if m != nil {
 		return m.Title
 	}
 	return ""
 }
 
-func (m *MsgCreateAd) GetPot() string {
+func (m *MsgCreatePromo) GetPot() uint64 {
 	if m != nil {
 		return m.Pot
 	}
-	return ""
+	return 0
 }
 
-func (m *MsgCreateAd) GetUrl() string {
+func (m *MsgCreatePromo) GetUrl() string {
 	if m != nil {
 		return m.Url
 	}
 	return ""
 }
 
-func (m *MsgCreateAd) GetMsg() string {
+func (m *MsgCreatePromo) GetMessage() string {
 	if m != nil {
-		return m.Msg
+		return m.Message
 	}
 	return ""
 }
 
-func (m *MsgCreateAd) GetTags() string {
+func (m *MsgCreatePromo) GetTags() string {
 	if m != nil {
 		return m.Tags
 	}
 	return ""
 }
 
-func (m *MsgCreateAd) GetPrefs() string {
+func (m *MsgCreatePromo) GetPrefs() string {
 	if m != nil {
 		return m.Prefs
 	}
 	return ""
 }
 
-type MsgCreateAdResponse struct {
-	Counter string `protobuf:"bytes,1,opt,name=counter,proto3" json:"counter,omitempty"`
+type MsgCreatePromoResponse struct {
+	Total string `protobuf:"bytes,1,opt,name=total,proto3" json:"total,omitempty"`
 }
 
-func (m *MsgCreateAdResponse) Reset()         { *m = MsgCreateAdResponse{} }
-func (m *MsgCreateAdResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgCreateAdResponse) ProtoMessage()    {}
-func (*MsgCreateAdResponse) Descriptor() ([]byte, []int) {
+func (m *MsgCreatePromoResponse) Reset()         { *m = MsgCreatePromoResponse{} }
+func (m *MsgCreatePromoResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreatePromoResponse) ProtoMessage()    {}
+func (*MsgCreatePromoResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ad62989248de80a, []int{1}
 }
-func (m *MsgCreateAdResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgCreatePromoResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgCreateAdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgCreatePromoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgCreateAdResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgCreatePromoResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -144,42 +144,43 @@ func (m *MsgCreateAdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return b[:n], nil
 	}
 }
-func (m *MsgCreateAdResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgCreateAdResponse.Merge(m, src)
+func (m *MsgCreatePromoResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreatePromoResponse.Merge(m, src)
 }
-func (m *MsgCreateAdResponse) XXX_Size() int {
+func (m *MsgCreatePromoResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgCreateAdResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgCreateAdResponse.DiscardUnknown(m)
+func (m *MsgCreatePromoResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreatePromoResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgCreateAdResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgCreatePromoResponse proto.InternalMessageInfo
 
-func (m *MsgCreateAdResponse) GetCounter() string {
+func (m *MsgCreatePromoResponse) GetTotal() string {
 	if m != nil {
-		return m.Counter
+		return m.Total
 	}
 	return ""
 }
 
-type MsgPayView struct {
+type MsgPromoViewed struct {
 	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
 	Id      string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Addr    string `protobuf:"bytes,3,opt,name=addr,proto3" json:"addr,omitempty"`
 }
 
-func (m *MsgPayView) Reset()         { *m = MsgPayView{} }
-func (m *MsgPayView) String() string { return proto.CompactTextString(m) }
-func (*MsgPayView) ProtoMessage()    {}
-func (*MsgPayView) Descriptor() ([]byte, []int) {
+func (m *MsgPromoViewed) Reset()         { *m = MsgPromoViewed{} }
+func (m *MsgPromoViewed) String() string { return proto.CompactTextString(m) }
+func (*MsgPromoViewed) ProtoMessage()    {}
+func (*MsgPromoViewed) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ad62989248de80a, []int{2}
 }
-func (m *MsgPayView) XXX_Unmarshal(b []byte) error {
+func (m *MsgPromoViewed) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgPayView) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgPromoViewed) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgPayView.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgPromoViewed.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -189,48 +190,54 @@ func (m *MsgPayView) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *MsgPayView) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgPayView.Merge(m, src)
+func (m *MsgPromoViewed) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgPromoViewed.Merge(m, src)
 }
-func (m *MsgPayView) XXX_Size() int {
+func (m *MsgPromoViewed) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgPayView) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgPayView.DiscardUnknown(m)
+func (m *MsgPromoViewed) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgPromoViewed.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgPayView proto.InternalMessageInfo
+var xxx_messageInfo_MsgPromoViewed proto.InternalMessageInfo
 
-func (m *MsgPayView) GetCreator() string {
+func (m *MsgPromoViewed) GetCreator() string {
 	if m != nil {
 		return m.Creator
 	}
 	return ""
 }
 
-func (m *MsgPayView) GetId() string {
+func (m *MsgPromoViewed) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-type MsgPayViewResponse struct {
-	Resp string `protobuf:"bytes,1,opt,name=resp,proto3" json:"resp,omitempty"`
+func (m *MsgPromoViewed) GetAddr() string {
+	if m != nil {
+		return m.Addr
+	}
+	return ""
 }
 
-func (m *MsgPayViewResponse) Reset()         { *m = MsgPayViewResponse{} }
-func (m *MsgPayViewResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgPayViewResponse) ProtoMessage()    {}
-func (*MsgPayViewResponse) Descriptor() ([]byte, []int) {
+type MsgPromoViewedResponse struct {
+}
+
+func (m *MsgPromoViewedResponse) Reset()         { *m = MsgPromoViewedResponse{} }
+func (m *MsgPromoViewedResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgPromoViewedResponse) ProtoMessage()    {}
+func (*MsgPromoViewedResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ad62989248de80a, []int{3}
 }
-func (m *MsgPayViewResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgPromoViewedResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgPayViewResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgPromoViewedResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgPayViewResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgPromoViewedResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -240,42 +247,36 @@ func (m *MsgPayViewResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-func (m *MsgPayViewResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgPayViewResponse.Merge(m, src)
+func (m *MsgPromoViewedResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgPromoViewedResponse.Merge(m, src)
 }
-func (m *MsgPayViewResponse) XXX_Size() int {
+func (m *MsgPromoViewedResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgPayViewResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgPayViewResponse.DiscardUnknown(m)
+func (m *MsgPromoViewedResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgPromoViewedResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgPayViewResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgPromoViewedResponse proto.InternalMessageInfo
 
-func (m *MsgPayViewResponse) GetResp() string {
-	if m != nil {
-		return m.Resp
-	}
-	return ""
-}
-
-type MsgPayClick struct {
+type MsgPromoClicked struct {
 	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
 	Id      string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Addr    string `protobuf:"bytes,3,opt,name=addr,proto3" json:"addr,omitempty"`
 }
 
-func (m *MsgPayClick) Reset()         { *m = MsgPayClick{} }
-func (m *MsgPayClick) String() string { return proto.CompactTextString(m) }
-func (*MsgPayClick) ProtoMessage()    {}
-func (*MsgPayClick) Descriptor() ([]byte, []int) {
+func (m *MsgPromoClicked) Reset()         { *m = MsgPromoClicked{} }
+func (m *MsgPromoClicked) String() string { return proto.CompactTextString(m) }
+func (*MsgPromoClicked) ProtoMessage()    {}
+func (*MsgPromoClicked) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ad62989248de80a, []int{4}
 }
-func (m *MsgPayClick) XXX_Unmarshal(b []byte) error {
+func (m *MsgPromoClicked) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgPayClick) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgPromoClicked) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgPayClick.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgPromoClicked.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -285,48 +286,54 @@ func (m *MsgPayClick) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return b[:n], nil
 	}
 }
-func (m *MsgPayClick) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgPayClick.Merge(m, src)
+func (m *MsgPromoClicked) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgPromoClicked.Merge(m, src)
 }
-func (m *MsgPayClick) XXX_Size() int {
+func (m *MsgPromoClicked) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgPayClick) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgPayClick.DiscardUnknown(m)
+func (m *MsgPromoClicked) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgPromoClicked.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgPayClick proto.InternalMessageInfo
+var xxx_messageInfo_MsgPromoClicked proto.InternalMessageInfo
 
-func (m *MsgPayClick) GetCreator() string {
+func (m *MsgPromoClicked) GetCreator() string {
 	if m != nil {
 		return m.Creator
 	}
 	return ""
 }
 
-func (m *MsgPayClick) GetId() string {
+func (m *MsgPromoClicked) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-type MsgPayClickResponse struct {
-	Resp string `protobuf:"bytes,1,opt,name=resp,proto3" json:"resp,omitempty"`
+func (m *MsgPromoClicked) GetAddr() string {
+	if m != nil {
+		return m.Addr
+	}
+	return ""
 }
 
-func (m *MsgPayClickResponse) Reset()         { *m = MsgPayClickResponse{} }
-func (m *MsgPayClickResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgPayClickResponse) ProtoMessage()    {}
-func (*MsgPayClickResponse) Descriptor() ([]byte, []int) {
+type MsgPromoClickedResponse struct {
+}
+
+func (m *MsgPromoClickedResponse) Reset()         { *m = MsgPromoClickedResponse{} }
+func (m *MsgPromoClickedResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgPromoClickedResponse) ProtoMessage()    {}
+func (*MsgPromoClickedResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ad62989248de80a, []int{5}
 }
-func (m *MsgPayClickResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgPromoClickedResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgPayClickResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgPromoClickedResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgPayClickResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgPromoClickedResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -336,62 +343,56 @@ func (m *MsgPayClickResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return b[:n], nil
 	}
 }
-func (m *MsgPayClickResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgPayClickResponse.Merge(m, src)
+func (m *MsgPromoClickedResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgPromoClickedResponse.Merge(m, src)
 }
-func (m *MsgPayClickResponse) XXX_Size() int {
+func (m *MsgPromoClickedResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgPayClickResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgPayClickResponse.DiscardUnknown(m)
+func (m *MsgPromoClickedResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgPromoClickedResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgPayClickResponse proto.InternalMessageInfo
-
-func (m *MsgPayClickResponse) GetResp() string {
-	if m != nil {
-		return m.Resp
-	}
-	return ""
-}
+var xxx_messageInfo_MsgPromoClickedResponse proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*MsgCreateAd)(nil), "cytruslabs.zestchain.zestchain.MsgCreateAd")
-	proto.RegisterType((*MsgCreateAdResponse)(nil), "cytruslabs.zestchain.zestchain.MsgCreateAdResponse")
-	proto.RegisterType((*MsgPayView)(nil), "cytruslabs.zestchain.zestchain.MsgPayView")
-	proto.RegisterType((*MsgPayViewResponse)(nil), "cytruslabs.zestchain.zestchain.MsgPayViewResponse")
-	proto.RegisterType((*MsgPayClick)(nil), "cytruslabs.zestchain.zestchain.MsgPayClick")
-	proto.RegisterType((*MsgPayClickResponse)(nil), "cytruslabs.zestchain.zestchain.MsgPayClickResponse")
+	proto.RegisterType((*MsgCreatePromo)(nil), "cytruslabs.zestchain.zestchain.MsgCreatePromo")
+	proto.RegisterType((*MsgCreatePromoResponse)(nil), "cytruslabs.zestchain.zestchain.MsgCreatePromoResponse")
+	proto.RegisterType((*MsgPromoViewed)(nil), "cytruslabs.zestchain.zestchain.MsgPromoViewed")
+	proto.RegisterType((*MsgPromoViewedResponse)(nil), "cytruslabs.zestchain.zestchain.MsgPromoViewedResponse")
+	proto.RegisterType((*MsgPromoClicked)(nil), "cytruslabs.zestchain.zestchain.MsgPromoClicked")
+	proto.RegisterType((*MsgPromoClickedResponse)(nil), "cytruslabs.zestchain.zestchain.MsgPromoClickedResponse")
 }
 
 func init() { proto.RegisterFile("zestchain/tx.proto", fileDescriptor_8ad62989248de80a) }
 
 var fileDescriptor_8ad62989248de80a = []byte{
-	// 376 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x53, 0xcd, 0x4e, 0xf2, 0x40,
-	0x14, 0xa5, 0xe5, 0xf7, 0xbb, 0x5f, 0x62, 0xcc, 0xe8, 0x62, 0xc2, 0xa2, 0x31, 0x5d, 0xa1, 0x24,
-	0x6d, 0x84, 0x44, 0xd7, 0xca, 0xd2, 0x90, 0x10, 0x16, 0x2e, 0xdc, 0x95, 0x32, 0x96, 0x89, 0x85,
-	0x69, 0xe6, 0x4e, 0x23, 0xf5, 0x29, 0x7c, 0x01, 0xdf, 0xc7, 0x85, 0x0b, 0x96, 0x2e, 0x0d, 0xbc,
-	0x88, 0xe9, 0x14, 0x5a, 0xe2, 0x82, 0x94, 0xdd, 0xb9, 0x67, 0xee, 0xb9, 0x3f, 0x67, 0x72, 0x81,
-	0xbc, 0x31, 0x54, 0xfe, 0xcc, 0xe3, 0x0b, 0x57, 0x2d, 0x9d, 0x48, 0x0a, 0x25, 0x88, 0xe5, 0x27,
-	0x4a, 0xc6, 0x18, 0x7a, 0x13, 0x74, 0xf2, 0xe7, 0x02, 0xd9, 0x1f, 0x06, 0xfc, 0x1f, 0x62, 0x30,
-	0x90, 0xcc, 0x53, 0xec, 0x6e, 0x4a, 0x28, 0x34, 0xfd, 0x14, 0x0b, 0x49, 0x8d, 0x0b, 0xa3, 0xf3,
-	0x6f, 0xbc, 0x0b, 0xc9, 0x39, 0xd4, 0x15, 0x57, 0x21, 0xa3, 0xa6, 0xe6, 0xb3, 0x80, 0x9c, 0x42,
-	0x35, 0x12, 0x8a, 0x56, 0x35, 0x97, 0xc2, 0x94, 0x89, 0x65, 0x48, 0x6b, 0x19, 0x13, 0xcb, 0x30,
-	0x65, 0xe6, 0x18, 0xd0, 0x7a, 0xc6, 0xcc, 0x31, 0x20, 0x04, 0x6a, 0xca, 0x0b, 0x90, 0x36, 0x34,
-	0xa5, 0x71, 0x5a, 0x3f, 0x92, 0xec, 0x19, 0x69, 0x33, 0xab, 0xaf, 0x03, 0xdb, 0x85, 0xb3, 0xbd,
-	0xf1, 0xc6, 0x0c, 0x23, 0xb1, 0x40, 0xa6, 0xc7, 0x14, 0xf1, 0x42, 0xb1, 0x62, 0xcc, 0x2c, 0xb4,
-	0x6f, 0x00, 0x86, 0x18, 0x8c, 0xbc, 0xe4, 0x91, 0xb3, 0xd7, 0x03, 0xeb, 0x9c, 0x80, 0xc9, 0xa7,
-	0xdb, 0x5d, 0x4c, 0x3e, 0xb5, 0x3b, 0x40, 0x0a, 0x5d, 0xde, 0x87, 0x40, 0x4d, 0x32, 0x8c, 0xb6,
-	0x62, 0x8d, 0xed, 0x5b, 0xed, 0xd8, 0xc8, 0x4b, 0x06, 0x21, 0xf7, 0x5f, 0x8e, 0x68, 0x71, 0xa9,
-	0x77, 0xd9, 0x09, 0x0f, 0xf5, 0xe8, 0x7d, 0x99, 0x50, 0x1d, 0x62, 0x40, 0x42, 0x68, 0xe5, 0x5f,
-	0xd3, 0x75, 0x0e, 0xff, 0xa5, 0xb3, 0x67, 0x54, 0xbb, 0x7f, 0x44, 0x72, 0x3e, 0x09, 0x87, 0xe6,
-	0xce, 0xb8, 0xab, 0x12, 0xfa, 0x6d, 0x6e, 0xbb, 0x57, 0x3e, 0x37, 0x6f, 0x15, 0x42, 0x2b, 0x77,
-	0xb0, 0x5b, 0x4e, 0xaf, 0x93, 0x4b, 0x2d, 0xf6, 0xd7, 0xe2, 0xfb, 0x87, 0xcf, 0xb5, 0x65, 0xac,
-	0xd6, 0x96, 0xf1, 0xb3, 0xb6, 0x8c, 0xf7, 0x8d, 0x55, 0x59, 0x6d, 0xac, 0xca, 0xf7, 0xc6, 0xaa,
-	0x3c, 0x5d, 0x07, 0x5c, 0xcd, 0xe2, 0x89, 0xe3, 0x8b, 0xb9, 0x5b, 0x14, 0x76, 0x8b, 0x4b, 0x5a,
-	0xee, 0x61, 0x95, 0x44, 0x0c, 0x27, 0x0d, 0x7d, 0x59, 0xfd, 0xdf, 0x00, 0x00, 0x00, 0xff, 0xff,
-	0x7d, 0x09, 0x20, 0x24, 0x6f, 0x03, 0x00, 0x00,
+	// 385 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x53, 0x3d, 0x4f, 0xeb, 0x30,
+	0x14, 0x6d, 0xd2, 0x2f, 0xf5, 0xf6, 0xa9, 0xef, 0xc9, 0x7a, 0x7a, 0xcf, 0x74, 0x88, 0xaa, 0x4c,
+	0x9d, 0x12, 0x01, 0x12, 0xec, 0x74, 0x44, 0x05, 0x94, 0x81, 0x81, 0x2d, 0x4d, 0x4c, 0x6a, 0x91,
+	0xd6, 0x91, 0xed, 0x88, 0x96, 0x5f, 0xc1, 0xcf, 0xe0, 0xa7, 0x30, 0x76, 0x64, 0x44, 0xed, 0xcc,
+	0x7f, 0x40, 0x76, 0x92, 0x36, 0x45, 0xa8, 0x6a, 0xc5, 0x76, 0xce, 0xf5, 0xf5, 0x39, 0xf7, 0x1e,
+	0xcb, 0x80, 0x9e, 0x88, 0x90, 0xc1, 0xd8, 0xa7, 0x53, 0x57, 0xce, 0x9c, 0x84, 0x33, 0xc9, 0x90,
+	0x15, 0xcc, 0x25, 0x4f, 0x45, 0xec, 0x8f, 0x84, 0xb3, 0x3e, 0xde, 0x20, 0xfb, 0xc5, 0x80, 0xce,
+	0x50, 0x44, 0x03, 0x4e, 0x7c, 0x49, 0x6e, 0x38, 0x9b, 0x30, 0x84, 0xa1, 0x19, 0x28, 0xca, 0x38,
+	0x36, 0x7a, 0x46, 0xbf, 0xe5, 0x15, 0x14, 0xfd, 0x85, 0xba, 0xa4, 0x32, 0x26, 0xd8, 0xd4, 0xf5,
+	0x8c, 0xa0, 0x3f, 0x50, 0x4d, 0x98, 0xc4, 0xd5, 0x9e, 0xd1, 0xaf, 0x79, 0x0a, 0xaa, 0x4a, 0xca,
+	0x63, 0x5c, 0xd3, 0x5d, 0x0a, 0x2a, 0xcd, 0x09, 0x11, 0xc2, 0x8f, 0x08, 0xae, 0x67, 0x9a, 0x39,
+	0x45, 0x08, 0x6a, 0xd2, 0x8f, 0x04, 0x6e, 0xe8, 0xb2, 0xc6, 0xca, 0x27, 0xe1, 0xe4, 0x5e, 0xe0,
+	0x66, 0xe6, 0xa3, 0x89, 0xed, 0xc0, 0xbf, 0xed, 0x49, 0x3d, 0x22, 0x12, 0x36, 0x15, 0x44, 0xcf,
+	0xc5, 0xa4, 0x1f, 0xe7, 0xf3, 0x66, 0xc4, 0xbe, 0xd2, 0x9b, 0xe9, 0xce, 0x5b, 0x4a, 0x1e, 0x49,
+	0xb8, 0x63, 0xb3, 0x0e, 0x98, 0x34, 0xcc, 0xd7, 0x32, 0x69, 0xa8, 0xa6, 0xf2, 0xc3, 0x90, 0xeb,
+	0xa5, 0x5a, 0x9e, 0xc6, 0x36, 0xd6, 0xfe, 0x25, 0xbd, 0xc2, 0xdf, 0xbe, 0x86, 0xdf, 0xc5, 0xc9,
+	0x20, 0xa6, 0xc1, 0xc3, 0x8f, 0xad, 0x8e, 0xe0, 0xff, 0x17, 0xc1, 0xc2, 0xeb, 0xe4, 0xc3, 0x84,
+	0xea, 0x50, 0x44, 0x28, 0x85, 0x76, 0xf9, 0xd1, 0x1c, 0x67, 0xf7, 0x43, 0x3b, 0xdb, 0xd1, 0x75,
+	0xcf, 0x0e, 0xeb, 0x5f, 0x47, 0x9d, 0x42, 0xbb, 0x9c, 0xe8, 0x3e, 0xb6, 0xa5, 0xfe, 0xbd, 0x6c,
+	0xbf, 0x49, 0x18, 0xcd, 0xe0, 0xd7, 0x56, 0xbc, 0xee, 0xbe, 0x3a, 0xf9, 0x85, 0xee, 0xf9, 0x81,
+	0x17, 0x0a, 0xe7, 0x8b, 0xcb, 0xd7, 0xa5, 0x65, 0x2c, 0x96, 0x96, 0xf1, 0xbe, 0xb4, 0x8c, 0xe7,
+	0x95, 0x55, 0x59, 0xac, 0xac, 0xca, 0xdb, 0xca, 0xaa, 0xdc, 0x1d, 0x47, 0x54, 0x8e, 0xd3, 0x91,
+	0x13, 0xb0, 0x89, 0xbb, 0x11, 0x77, 0x37, 0x9f, 0x70, 0x56, 0xc2, 0x72, 0x9e, 0x10, 0x31, 0x6a,
+	0xe8, 0x4f, 0x79, 0xfa, 0x19, 0x00, 0x00, 0xff, 0xff, 0x2d, 0x18, 0x8a, 0x14, 0xaa, 0x03, 0x00,
+	0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -406,9 +407,9 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
-	CreateAd(ctx context.Context, in *MsgCreateAd, opts ...grpc.CallOption) (*MsgCreateAdResponse, error)
-	PayView(ctx context.Context, in *MsgPayView, opts ...grpc.CallOption) (*MsgPayViewResponse, error)
-	PayClick(ctx context.Context, in *MsgPayClick, opts ...grpc.CallOption) (*MsgPayClickResponse, error)
+	CreatePromo(ctx context.Context, in *MsgCreatePromo, opts ...grpc.CallOption) (*MsgCreatePromoResponse, error)
+	PromoViewed(ctx context.Context, in *MsgPromoViewed, opts ...grpc.CallOption) (*MsgPromoViewedResponse, error)
+	PromoClicked(ctx context.Context, in *MsgPromoClicked, opts ...grpc.CallOption) (*MsgPromoClickedResponse, error)
 }
 
 type msgClient struct {
@@ -419,27 +420,27 @@ func NewMsgClient(cc grpc1.ClientConn) MsgClient {
 	return &msgClient{cc}
 }
 
-func (c *msgClient) CreateAd(ctx context.Context, in *MsgCreateAd, opts ...grpc.CallOption) (*MsgCreateAdResponse, error) {
-	out := new(MsgCreateAdResponse)
-	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Msg/CreateAd", in, out, opts...)
+func (c *msgClient) CreatePromo(ctx context.Context, in *MsgCreatePromo, opts ...grpc.CallOption) (*MsgCreatePromoResponse, error) {
+	out := new(MsgCreatePromoResponse)
+	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Msg/CreatePromo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *msgClient) PayView(ctx context.Context, in *MsgPayView, opts ...grpc.CallOption) (*MsgPayViewResponse, error) {
-	out := new(MsgPayViewResponse)
-	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Msg/PayView", in, out, opts...)
+func (c *msgClient) PromoViewed(ctx context.Context, in *MsgPromoViewed, opts ...grpc.CallOption) (*MsgPromoViewedResponse, error) {
+	out := new(MsgPromoViewedResponse)
+	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Msg/PromoViewed", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *msgClient) PayClick(ctx context.Context, in *MsgPayClick, opts ...grpc.CallOption) (*MsgPayClickResponse, error) {
-	out := new(MsgPayClickResponse)
-	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Msg/PayClick", in, out, opts...)
+func (c *msgClient) PromoClicked(ctx context.Context, in *MsgPromoClicked, opts ...grpc.CallOption) (*MsgPromoClickedResponse, error) {
+	out := new(MsgPromoClickedResponse)
+	err := c.cc.Invoke(ctx, "/cytruslabs.zestchain.zestchain.Msg/PromoClicked", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -448,79 +449,79 @@ func (c *msgClient) PayClick(ctx context.Context, in *MsgPayClick, opts ...grpc.
 
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
-	CreateAd(context.Context, *MsgCreateAd) (*MsgCreateAdResponse, error)
-	PayView(context.Context, *MsgPayView) (*MsgPayViewResponse, error)
-	PayClick(context.Context, *MsgPayClick) (*MsgPayClickResponse, error)
+	CreatePromo(context.Context, *MsgCreatePromo) (*MsgCreatePromoResponse, error)
+	PromoViewed(context.Context, *MsgPromoViewed) (*MsgPromoViewedResponse, error)
+	PromoClicked(context.Context, *MsgPromoClicked) (*MsgPromoClickedResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
 type UnimplementedMsgServer struct {
 }
 
-func (*UnimplementedMsgServer) CreateAd(ctx context.Context, req *MsgCreateAd) (*MsgCreateAdResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateAd not implemented")
+func (*UnimplementedMsgServer) CreatePromo(ctx context.Context, req *MsgCreatePromo) (*MsgCreatePromoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePromo not implemented")
 }
-func (*UnimplementedMsgServer) PayView(ctx context.Context, req *MsgPayView) (*MsgPayViewResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PayView not implemented")
+func (*UnimplementedMsgServer) PromoViewed(ctx context.Context, req *MsgPromoViewed) (*MsgPromoViewedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PromoViewed not implemented")
 }
-func (*UnimplementedMsgServer) PayClick(ctx context.Context, req *MsgPayClick) (*MsgPayClickResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PayClick not implemented")
+func (*UnimplementedMsgServer) PromoClicked(ctx context.Context, req *MsgPromoClicked) (*MsgPromoClickedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PromoClicked not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
 	s.RegisterService(&_Msg_serviceDesc, srv)
 }
 
-func _Msg_CreateAd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgCreateAd)
+func _Msg_CreatePromo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreatePromo)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).CreateAd(ctx, in)
+		return srv.(MsgServer).CreatePromo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cytruslabs.zestchain.zestchain.Msg/CreateAd",
+		FullMethod: "/cytruslabs.zestchain.zestchain.Msg/CreatePromo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).CreateAd(ctx, req.(*MsgCreateAd))
+		return srv.(MsgServer).CreatePromo(ctx, req.(*MsgCreatePromo))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_PayView_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgPayView)
+func _Msg_PromoViewed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgPromoViewed)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).PayView(ctx, in)
+		return srv.(MsgServer).PromoViewed(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cytruslabs.zestchain.zestchain.Msg/PayView",
+		FullMethod: "/cytruslabs.zestchain.zestchain.Msg/PromoViewed",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).PayView(ctx, req.(*MsgPayView))
+		return srv.(MsgServer).PromoViewed(ctx, req.(*MsgPromoViewed))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_PayClick_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgPayClick)
+func _Msg_PromoClicked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgPromoClicked)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).PayClick(ctx, in)
+		return srv.(MsgServer).PromoClicked(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/cytruslabs.zestchain.zestchain.Msg/PayClick",
+		FullMethod: "/cytruslabs.zestchain.zestchain.Msg/PromoClicked",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).PayClick(ctx, req.(*MsgPayClick))
+		return srv.(MsgServer).PromoClicked(ctx, req.(*MsgPromoClicked))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -530,23 +531,23 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MsgServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateAd",
-			Handler:    _Msg_CreateAd_Handler,
+			MethodName: "CreatePromo",
+			Handler:    _Msg_CreatePromo_Handler,
 		},
 		{
-			MethodName: "PayView",
-			Handler:    _Msg_PayView_Handler,
+			MethodName: "PromoViewed",
+			Handler:    _Msg_PromoViewed_Handler,
 		},
 		{
-			MethodName: "PayClick",
-			Handler:    _Msg_PayClick_Handler,
+			MethodName: "PromoClicked",
+			Handler:    _Msg_PromoClicked_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "zestchain/tx.proto",
 }
 
-func (m *MsgCreateAd) Marshal() (dAtA []byte, err error) {
+func (m *MsgCreatePromo) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -556,12 +557,12 @@ func (m *MsgCreateAd) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgCreateAd) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgCreatePromo) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgCreateAd) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgCreatePromo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -580,10 +581,10 @@ func (m *MsgCreateAd) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x32
 	}
-	if len(m.Msg) > 0 {
-		i -= len(m.Msg)
-		copy(dAtA[i:], m.Msg)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Msg)))
+	if len(m.Message) > 0 {
+		i -= len(m.Message)
+		copy(dAtA[i:], m.Message)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Message)))
 		i--
 		dAtA[i] = 0x2a
 	}
@@ -594,12 +595,10 @@ func (m *MsgCreateAd) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x22
 	}
-	if len(m.Pot) > 0 {
-		i -= len(m.Pot)
-		copy(dAtA[i:], m.Pot)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Pot)))
+	if m.Pot != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Pot))
 		i--
-		dAtA[i] = 0x1a
+		dAtA[i] = 0x18
 	}
 	if len(m.Title) > 0 {
 		i -= len(m.Title)
@@ -618,7 +617,7 @@ func (m *MsgCreateAd) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgCreateAdResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgCreatePromoResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -628,27 +627,27 @@ func (m *MsgCreateAdResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgCreateAdResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgCreatePromoResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgCreateAdResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgCreatePromoResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Counter) > 0 {
-		i -= len(m.Counter)
-		copy(dAtA[i:], m.Counter)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Counter)))
+	if len(m.Total) > 0 {
+		i -= len(m.Total)
+		copy(dAtA[i:], m.Total)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Total)))
 		i--
 		dAtA[i] = 0xa
 	}
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgPayView) Marshal() (dAtA []byte, err error) {
+func (m *MsgPromoViewed) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -658,16 +657,23 @@ func (m *MsgPayView) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgPayView) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgPromoViewed) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgPayView) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgPromoViewed) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	if len(m.Addr) > 0 {
+		i -= len(m.Addr)
+		copy(dAtA[i:], m.Addr)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Addr)))
+		i--
+		dAtA[i] = 0x1a
+	}
 	if len(m.Id) > 0 {
 		i -= len(m.Id)
 		copy(dAtA[i:], m.Id)
@@ -685,7 +691,7 @@ func (m *MsgPayView) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgPayViewResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgPromoViewedResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -695,27 +701,20 @@ func (m *MsgPayViewResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgPayViewResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgPromoViewedResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgPayViewResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgPromoViewedResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Resp) > 0 {
-		i -= len(m.Resp)
-		copy(dAtA[i:], m.Resp)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Resp)))
-		i--
-		dAtA[i] = 0xa
-	}
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgPayClick) Marshal() (dAtA []byte, err error) {
+func (m *MsgPromoClicked) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -725,16 +724,23 @@ func (m *MsgPayClick) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgPayClick) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgPromoClicked) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgPayClick) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgPromoClicked) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
+	if len(m.Addr) > 0 {
+		i -= len(m.Addr)
+		copy(dAtA[i:], m.Addr)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Addr)))
+		i--
+		dAtA[i] = 0x1a
+	}
 	if len(m.Id) > 0 {
 		i -= len(m.Id)
 		copy(dAtA[i:], m.Id)
@@ -752,7 +758,7 @@ func (m *MsgPayClick) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgPayClickResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgPromoClickedResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -762,23 +768,16 @@ func (m *MsgPayClickResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgPayClickResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgPromoClickedResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgPayClickResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgPromoClickedResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Resp) > 0 {
-		i -= len(m.Resp)
-		copy(dAtA[i:], m.Resp)
-		i = encodeVarintTx(dAtA, i, uint64(len(m.Resp)))
-		i--
-		dAtA[i] = 0xa
-	}
 	return len(dAtA) - i, nil
 }
 
@@ -793,7 +792,7 @@ func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *MsgCreateAd) Size() (n int) {
+func (m *MsgCreatePromo) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -807,15 +806,14 @@ func (m *MsgCreateAd) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
-	l = len(m.Pot)
-	if l > 0 {
-		n += 1 + l + sovTx(uint64(l))
+	if m.Pot != 0 {
+		n += 1 + sovTx(uint64(m.Pot))
 	}
 	l = len(m.Url)
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
-	l = len(m.Msg)
+	l = len(m.Message)
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
@@ -830,20 +828,20 @@ func (m *MsgCreateAd) Size() (n int) {
 	return n
 }
 
-func (m *MsgCreateAdResponse) Size() (n int) {
+func (m *MsgCreatePromoResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.Counter)
+	l = len(m.Total)
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
 	return n
 }
 
-func (m *MsgPayView) Size() (n int) {
+func (m *MsgPromoViewed) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -857,23 +855,23 @@ func (m *MsgPayView) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
-	return n
-}
-
-func (m *MsgPayViewResponse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.Resp)
+	l = len(m.Addr)
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
 	return n
 }
 
-func (m *MsgPayClick) Size() (n int) {
+func (m *MsgPromoViewedResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgPromoClicked) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -887,19 +885,19 @@ func (m *MsgPayClick) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovTx(uint64(l))
 	}
+	l = len(m.Addr)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
 	return n
 }
 
-func (m *MsgPayClickResponse) Size() (n int) {
+func (m *MsgPromoClickedResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.Resp)
-	if l > 0 {
-		n += 1 + l + sovTx(uint64(l))
-	}
 	return n
 }
 
@@ -909,7 +907,7 @@ func sovTx(x uint64) (n int) {
 func sozTx(x uint64) (n int) {
 	return sovTx(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *MsgCreateAd) Unmarshal(dAtA []byte) error {
+func (m *MsgCreatePromo) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -932,10 +930,10 @@ func (m *MsgCreateAd) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgCreateAd: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgCreatePromo: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgCreateAd: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgCreatePromo: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1003,10 +1001,10 @@ func (m *MsgCreateAd) Unmarshal(dAtA []byte) error {
 			m.Title = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 3:
-			if wireType != 2 {
+			if wireType != 0 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Pot", wireType)
 			}
-			var stringLen uint64
+			m.Pot = 0
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowTx
@@ -1016,24 +1014,11 @@ func (m *MsgCreateAd) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
+				m.Pot |= uint64(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthTx
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthTx
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Pot = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
 				return fmt.Errorf("proto: wrong wireType = %d for field Url", wireType)
@@ -1068,7 +1053,7 @@ func (m *MsgCreateAd) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 5:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Msg", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Message", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1096,7 +1081,7 @@ func (m *MsgCreateAd) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Msg = string(dAtA[iNdEx:postIndex])
+			m.Message = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 6:
 			if wireType != 2 {
@@ -1183,7 +1168,7 @@ func (m *MsgCreateAd) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgCreateAdResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgCreatePromoResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1206,15 +1191,15 @@ func (m *MsgCreateAdResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgCreateAdResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgCreatePromoResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgCreateAdResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgCreatePromoResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Counter", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Total", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1242,7 +1227,7 @@ func (m *MsgCreateAdResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Counter = string(dAtA[iNdEx:postIndex])
+			m.Total = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -1265,7 +1250,7 @@ func (m *MsgCreateAdResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgPayView) Unmarshal(dAtA []byte) error {
+func (m *MsgPromoViewed) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1288,10 +1273,10 @@ func (m *MsgPayView) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgPayView: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgPromoViewed: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgPayView: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgPromoViewed: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1358,59 +1343,9 @@ func (m *MsgPayView) Unmarshal(dAtA []byte) error {
 			}
 			m.Id = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTx(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthTx
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MsgPayViewResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTx
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MsgPayViewResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgPayViewResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
+		case 3:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Resp", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Addr", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1438,7 +1373,7 @@ func (m *MsgPayViewResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Resp = string(dAtA[iNdEx:postIndex])
+			m.Addr = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -1461,7 +1396,7 @@ func (m *MsgPayViewResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgPayClick) Unmarshal(dAtA []byte) error {
+func (m *MsgPromoViewedResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1484,10 +1419,60 @@ func (m *MsgPayClick) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgPayClick: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgPromoViewedResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgPayClick: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgPromoViewedResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgPromoClicked) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgPromoClicked: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgPromoClicked: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1554,59 +1539,9 @@ func (m *MsgPayClick) Unmarshal(dAtA []byte) error {
 			}
 			m.Id = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipTx(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthTx
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *MsgPayClickResponse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowTx
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: MsgPayClickResponse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgPayClickResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
+		case 3:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Resp", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Addr", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1634,8 +1569,58 @@ func (m *MsgPayClickResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Resp = string(dAtA[iNdEx:postIndex])
+			m.Addr = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgPromoClickedResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgPromoClickedResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgPromoClickedResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
 		default:
 			iNdEx = preIndex
 			skippy, err := skipTx(dAtA[iNdEx:])

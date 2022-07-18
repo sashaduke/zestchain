@@ -22,10 +22,10 @@ func TestGenesisState_Validate(t *testing.T) {
 			desc: "valid genesis state",
 			genState: &types.GenesisState{
 
-				AdCount: &types.AdCount{
-					Counter: 93,
+				PromoCount: &types.PromoCount{
+					Total: 97,
 				},
-				AdList: []types.Ad{
+				PromoList: []types.Promo{
 					{
 						Index: "0",
 					},
@@ -38,9 +38,9 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid: true,
 		},
 		{
-			desc: "duplicated ad",
+			desc: "duplicated promo",
 			genState: &types.GenesisState{
-				AdList: []types.Ad{
+				PromoList: []types.Promo{
 					{
 						Index: "0",
 					},

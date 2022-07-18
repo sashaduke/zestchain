@@ -8,21 +8,21 @@ import (
 )
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
-	cdc.RegisterConcrete(&MsgCreateAd{}, "zestchain/CreateAd", nil)
-	cdc.RegisterConcrete(&MsgPayView{}, "zestchain/PayView", nil)
-	cdc.RegisterConcrete(&MsgPayClick{}, "zestchain/PayClick", nil)
+	cdc.RegisterConcrete(&MsgCreatePromo{}, "zestchain/CreatePromo", nil)
+	cdc.RegisterConcrete(&MsgPromoViewed{}, "zestchain/PromoViewed", nil)
+	cdc.RegisterConcrete(&MsgPromoClicked{}, "zestchain/PromoClicked", nil)
 	// this line is used by starport scaffolding # 2
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
-		&MsgCreateAd{},
+		&MsgCreatePromo{},
 	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),
-		&MsgPayView{},
+		&MsgPromoViewed{},
 	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),
-		&MsgPayClick{},
+		&MsgPromoClicked{},
 	)
 	// this line is used by starport scaffolding # 3
 

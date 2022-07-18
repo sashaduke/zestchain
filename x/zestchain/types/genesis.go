@@ -10,8 +10,8 @@ const DefaultIndex uint64 = 1
 // DefaultGenesis returns the default Capability genesis state
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
-		AdCount: &AdCount{uint64(0)},
-		AdList:  []Ad{},
+		PromoCount: &PromoCount{uint64(0)},
+		PromoList:  []Promo{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -20,15 +20,15 @@ func DefaultGenesis() *GenesisState {
 // Validate performs basic genesis state validation returning an error upon any
 // failure.
 func (gs GenesisState) Validate() error {
-	// Check for duplicated index in ad
-	adIndexMap := make(map[string]struct{})
+	// Check for duplicated index in promo
+	promoIndexMap := make(map[string]struct{})
 
-	for _, elem := range gs.AdList {
-		index := string(AdKey(elem.Index))
-		if _, ok := adIndexMap[index]; ok {
-			return fmt.Errorf("duplicated index for ad")
+	for _, elem := range gs.PromoList {
+		index := string(PromoKey(elem.Index))
+		if _, ok := promoIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for promo")
 		}
-		adIndexMap[index] = struct{}{}
+		promoIndexMap[index] = struct{}{}
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

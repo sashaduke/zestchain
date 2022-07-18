@@ -10,12 +10,12 @@ import (
 // state.
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// Set if defined
-	if genState.AdCount != nil {
-		k.SetAdCount(ctx, *genState.AdCount)
+	if genState.PromoCount != nil {
+		k.SetPromoCount(ctx, *genState.PromoCount)
 	}
-	// Set all the ad
-	for _, elem := range genState.AdList {
-		k.SetAd(ctx, elem)
+	// Set all the promo
+	for _, elem := range genState.PromoList {
+		k.SetPromo(ctx, elem)
 	}
 	// this line is used by starport scaffolding # genesis/module/init
 	k.SetParams(ctx, genState.Params)
@@ -26,12 +26,12 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis := types.DefaultGenesis()
 	genesis.Params = k.GetParams(ctx)
 
-	// Get all adCount
-	adCount, found := k.GetAdCount(ctx)
+	// Get all promoCount
+	promoCount, found := k.GetPromoCount(ctx)
 	if found {
-		genesis.AdCount = &adCount
+		genesis.PromoCount = &promoCount
 	}
-	genesis.AdList = k.GetAllAd(ctx)
+	genesis.PromoList = k.GetAllPromo(ctx)
 	// this line is used by starport scaffolding # genesis/module/export
 
 	return genesis

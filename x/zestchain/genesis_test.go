@@ -14,10 +14,10 @@ func TestGenesis(t *testing.T) {
 	genesisState := types.GenesisState{
 		Params: types.DefaultParams(),
 
-		AdCount: &types.AdCount{
-			Counter: 98,
+		PromoCount: &types.PromoCount{
+			Total: 29,
 		},
-		AdList: []types.Ad{
+		PromoList: []types.Promo{
 			{
 				Index: "0",
 			},
@@ -36,7 +36,7 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(&genesisState)
 	nullify.Fill(got)
 
-	require.Equal(t, genesisState.AdCount, got.AdCount)
-	require.ElementsMatch(t, genesisState.AdList, got.AdList)
+	require.Equal(t, genesisState.PromoCount, got.PromoCount)
+	require.ElementsMatch(t, genesisState.PromoList, got.PromoList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }
