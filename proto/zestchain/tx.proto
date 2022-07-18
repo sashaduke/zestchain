@@ -30,7 +30,6 @@ message MsgCreatePromoResponse {
 message MsgPromoViewed {
   string creator = 1;
   string id = 2;
-  string addr = 3;
 }
 
 message MsgPromoViewedResponse {
@@ -39,7 +38,6 @@ message MsgPromoViewedResponse {
 message MsgPromoClicked {
   string creator = 1;
   string id = 2;
-  string addr = 3;
 }
 
 message MsgPromoClickedResponse {
