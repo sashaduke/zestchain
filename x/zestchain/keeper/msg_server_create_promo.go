@@ -46,7 +46,7 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 	promo := types.Promo{
 		Index:   newIndex,
 		Creator: msg.Creator,
-		Pot:     msg.Pot,
+		Pot:     uint64(amt + rem),
 		Url:     msg.Url,
 		Title:   msg.Title,
 		Msg:     msg.Msg,

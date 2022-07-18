@@ -16,7 +16,7 @@ client:
 faucet:
   name: treasury
   coins: ["100ZEST"]
-  rate_limit_window: 604800
+  rate_limit_window: "604800s"
 genesis:
   chain_id: "zestchain"
   app_state:
