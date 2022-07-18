@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	cosm "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/x/bank/types"
+	"github.com/cosmos/zestchain/x/zestchain/types"
 )
 
 func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*types.MsgCreateAdResponse, error) {
@@ -15,7 +15,7 @@ func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*typ
 	if !found {
 		panic("AdCount not found")
 	}
-	newIndex := strconv.FormatUint(adCount.counter, 10)
+	newIndex := strconv.FormatUint(adCount.Counter, 10)
 	ad := types.Ad{
 		Index:   newIndex,
 		Title:   msg.Title,
@@ -28,7 +28,7 @@ func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*typ
 	}
 
 	k.Keeper.SetAd(ctx, ad)
-	adCount.counter++
+	adCount.Counter++
 	k.Keeper.SetAdCount(ctx, adCount)
 
 	return &types.MsgCreateAdResponse{
