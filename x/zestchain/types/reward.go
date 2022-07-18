@@ -21,10 +21,10 @@ func GetTxConfig() client.TxConfig {
 	return authtx.NewTxConfig(protoCodec, []signing.SignMode{signing.SignMode_SIGN_MODE_DIRECT})
 }
 
-func Reward(amount int64, recip cosm.AccAddress) (string, error) {
+func Reward(amount int64, recip cosm.AccAddress) error {
 	txConfig := GetTxConfig()
 	txBuilder := txConfig.NewTxBuilder() //client.TxConfig.NewTxBuilder()
-	treasury, _ := cosm.AccAddressFromBech32("cosmos19h39v0scqlyesn0mfh3ug33d7samzd59qxr6l0")
+	treasury, _ := cosm.AccAddressFromBech32("cosmos1ev6mfqxwecctpmwkef9fr7tgj83zhmdj7eha9w")
 	msg := bank.NewMsgSend(treasury, recip, cosm.NewCoins(cosm.NewInt64Coin("ZEST", amount)))
 	err := txBuilder.SetMsgs(msg)
 	if err != nil {
@@ -39,7 +39,7 @@ func Reward(amount int64, recip cosm.AccAddress) (string, error) {
 	txBuilder.SetFeeAmount(fee)
 	txBuilder.SetGasLimit(0)
 	txBuilder.SetTimeoutHeight(0)
-	txBuilder.SetMemo("Ad reward")
+	txBuilder.SetMemo("Promo reward")
 
 	priv1 := secp256k1.GenPrivKeyFromSecret([]byte("insert mnemonic here"))
 	privs := []crypto.PrivKey{priv1}
@@ -61,7 +61,7 @@ func Reward(amount int64, recip cosm.AccAddress) (string, error) {
 	}
 	err = txBuilder.SetSignatures(sigsV2...)
 	if err != nil {
-		return "", err
+		return err
 	}
 
 	sigsV2 = []signing.SignatureV2{}
@@ -75,19 +75,19 @@ func Reward(amount int64, recip cosm.AccAddress) (string, error) {
 			txConfig.SignModeHandler().DefaultMode(), signerData,
 			txBuilder, priv, txConfig, accSeqs[i])
 		if err != nil {
-			return "", err
+			return err
 		}
 
 		sigsV2 = append(sigsV2, sigV2)
 	}
 	err = txBuilder.SetSignatures(sigsV2...)
 	if err != nil {
-		return "", err
+		return err
 	}
 
 	txBytes, err := txConfig.TxEncoder()(txBuilder.GetTx())
 	if err != nil {
-		return "", err
+		return err
 	}
 
 	grpcConn, _ := grpc.Dial(
