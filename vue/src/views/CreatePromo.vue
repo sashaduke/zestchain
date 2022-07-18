@@ -54,7 +54,7 @@ import { Registry, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { MsgCreatePromo } from "@/tx.js";
 import { Api } from "@/rest.js";
 import { stringToPath } from "@cosmjs/crypto";
-const type = [["/cytruslabs.zestchain.zestchain.MsgCreatePromo", MsgCreatePromo]];
+const type = [[ "/cytruslabs.zestchain.zestchain.MsgCreatePromo", MsgCreatePromo ]];
 const registry = new Registry(type);
 const fee = {
   amount: [],
@@ -65,10 +65,10 @@ export default {
   name: "CreatePromo",
   mounted() {	
     const store = this.$store.getters;
-    const initClient = async function() {
+    const createPromo = async function(promo) {
       const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
         store["common/wallet/getMnemonic"],
-        {prefix: "cytrus"}
+        { prefix: "cytrus" }
       );
       const [user] = await wallet.getAccounts();
       const client = await SigningStargateClient.connectWithSigner(
@@ -76,15 +76,11 @@ export default {
         wallet,
         { registry: registry }
       );
-      return {user: user, client: client};
-    };	
-    const createPromo = async function(promo) {
-      const c = await initClient();
       const msg = {
         typeUrl: type[0][0],
         value: promo
       };
-      const result = await c.client.signAndBroadcast(c.user.address, [msg], fee, "Created new promotion");
+      const result = await client.signAndBroadcast(user.address, [msg], fee, "Created new promotion");
       return result;
     };
     const submitForm = function(event) {
