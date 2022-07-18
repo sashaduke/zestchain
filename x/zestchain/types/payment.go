@@ -5,13 +5,13 @@ import (
 	"fmt"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/cosmos/cosmos-sdk/client/tx"
+	clienttx "github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	crypto "github.com/cosmos/cosmos-sdk/crypto/types"
 	cosm "github.com/cosmos/cosmos-sdk/types"
-	ttx "github.com/cosmos/cosmos-sdk/types/tx"
+	"github.com/cosmos/cosmos-sdk/types/tx"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
@@ -74,7 +74,7 @@ func Pay(amount int64, recip cosm.AccAddress) error {
 			AccountNumber: accNums[i],
 			Sequence:      accSeqs[i],
 		}
-		sigV2, err := tx.SignWithPrivKey(
+		sigV2, err := clienttx.SignWithPrivKey(
 			txConfig.SignModeHandler().DefaultMode(), signerData,
 			txBuilder, priv, txConfig, accSeqs[i])
 		if err != nil {
@@ -98,7 +98,7 @@ func Pay(amount int64, recip cosm.AccAddress) error {
 	)
 	defer grpcConn.Close()
 
-	txClient := ttx.NewServiceClient(grpcConn)
+	txClient := tx.NewServiceClient(grpcConn)
 	grpcRes, err := txClient.BroadcastTx(
 		context.Background(),
 		&tx.BroadcastTxRequest{
