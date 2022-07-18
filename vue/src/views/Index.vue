@@ -13,8 +13,10 @@
         <span style="font-size: 1.28rem">Make sure that you are signed in using the menu in the corner and your wallet is unlocked.
           <br>You also need to have the Cytrus Chromium Extension installed.<br><br></span>
         <div>
-          <button class="sp-button" type="connect" ref="connect">Connect</button>
-          <button class="sp-button sp-button-secondary" type="disconnect" ref="disconnect" style="left: 10px">Disconnect</button>
+          <form ref="form" onsubmit="return false">
+            <button class="sp-button" type="connect">Connect</button>
+            <button class="sp-button sp-button-secondary" type="disconnect"style="left: 10px">Disconnect</button>
+          </form>
         </div>
       </div>
     </div>
@@ -35,10 +37,9 @@ export default {
       console.log("Disconnecting...");
       window.postMessage({type: "mnemonic", mnemonic: "disconnect"}, "*");
     }
-    const connectBtn = this.$refs.connect;
-    const disconnectBtn = this.$refs.disconnect;
-    connectBtn.addEventListener("connect", connect);
-    disconnectBtn.addEventListener("disconnect", disconnect);
+    const form = this.$refs.form;
+    form.addEventListener("connect", connect);
+    form.addEventListener("disconnect", disconnect);
   },
   computed: {
     address() {
