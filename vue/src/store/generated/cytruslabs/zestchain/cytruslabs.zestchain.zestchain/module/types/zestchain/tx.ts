@@ -21,7 +21,6 @@ export interface MsgCreatePromoResponse {
 export interface MsgPromoViewed {
   creator: string;
   id: string;
-  addr: string;
 }
 
 export interface MsgPromoViewedResponse {}
@@ -29,7 +28,6 @@ export interface MsgPromoViewedResponse {}
 export interface MsgPromoClicked {
   creator: string;
   id: string;
-  addr: string;
 }
 
 export interface MsgPromoClickedResponse {}
@@ -259,7 +257,7 @@ export const MsgCreatePromoResponse = {
   },
 };
 
-const baseMsgPromoViewed: object = { creator: "", id: "", addr: "" };
+const baseMsgPromoViewed: object = { creator: "", id: "" };
 
 export const MsgPromoViewed = {
   encode(message: MsgPromoViewed, writer: Writer = Writer.create()): Writer {
@@ -268,9 +266,6 @@ export const MsgPromoViewed = {
     }
     if (message.id !== "") {
       writer.uint32(18).string(message.id);
-    }
-    if (message.addr !== "") {
-      writer.uint32(26).string(message.addr);
     }
     return writer;
   },
@@ -287,9 +282,6 @@ export const MsgPromoViewed = {
           break;
         case 2:
           message.id = reader.string();
-          break;
-        case 3:
-          message.addr = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -311,11 +303,6 @@ export const MsgPromoViewed = {
     } else {
       message.id = "";
     }
-    if (object.addr !== undefined && object.addr !== null) {
-      message.addr = String(object.addr);
-    } else {
-      message.addr = "";
-    }
     return message;
   },
 
@@ -323,7 +310,6 @@ export const MsgPromoViewed = {
     const obj: any = {};
     message.creator !== undefined && (obj.creator = message.creator);
     message.id !== undefined && (obj.id = message.id);
-    message.addr !== undefined && (obj.addr = message.addr);
     return obj;
   },
 
@@ -338,11 +324,6 @@ export const MsgPromoViewed = {
       message.id = object.id;
     } else {
       message.id = "";
-    }
-    if (object.addr !== undefined && object.addr !== null) {
-      message.addr = object.addr;
-    } else {
-      message.addr = "";
     }
     return message;
   },
@@ -386,7 +367,7 @@ export const MsgPromoViewedResponse = {
   },
 };
 
-const baseMsgPromoClicked: object = { creator: "", id: "", addr: "" };
+const baseMsgPromoClicked: object = { creator: "", id: "" };
 
 export const MsgPromoClicked = {
   encode(message: MsgPromoClicked, writer: Writer = Writer.create()): Writer {
@@ -395,9 +376,6 @@ export const MsgPromoClicked = {
     }
     if (message.id !== "") {
       writer.uint32(18).string(message.id);
-    }
-    if (message.addr !== "") {
-      writer.uint32(26).string(message.addr);
     }
     return writer;
   },
@@ -414,9 +392,6 @@ export const MsgPromoClicked = {
           break;
         case 2:
           message.id = reader.string();
-          break;
-        case 3:
-          message.addr = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -438,11 +413,6 @@ export const MsgPromoClicked = {
     } else {
       message.id = "";
     }
-    if (object.addr !== undefined && object.addr !== null) {
-      message.addr = String(object.addr);
-    } else {
-      message.addr = "";
-    }
     return message;
   },
 
@@ -450,7 +420,6 @@ export const MsgPromoClicked = {
     const obj: any = {};
     message.creator !== undefined && (obj.creator = message.creator);
     message.id !== undefined && (obj.id = message.id);
-    message.addr !== undefined && (obj.addr = message.addr);
     return obj;
   },
 
@@ -465,11 +434,6 @@ export const MsgPromoClicked = {
       message.id = object.id;
     } else {
       message.id = "";
-    }
-    if (object.addr !== undefined && object.addr !== null) {
-      message.addr = object.addr;
-    } else {
-      message.addr = "";
     }
     return message;
   },

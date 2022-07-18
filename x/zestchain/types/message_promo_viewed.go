@@ -13,7 +13,6 @@ func NewMsgPromoViewed(creator string, id string, addr string) *MsgPromoViewed {
 	return &MsgPromoViewed{
 		Creator: creator,
 		Id:      id,
-		Addr:    addr,
 	}
 }
 

@@ -4,15 +4,15 @@ import { StdFee } from "@cosmjs/launchpad";
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Api } from "./rest";
-import { MsgPromoClicked } from "./types/zestchain/tx";
 import { MsgPromoViewed } from "./types/zestchain/tx";
 import { MsgCreatePromo } from "./types/zestchain/tx";
+import { MsgPromoClicked } from "./types/zestchain/tx";
 
 
 const types = [
-  ["/cytruslabs.zestchain.zestchain.MsgPromoClicked", MsgPromoClicked],
   ["/cytruslabs.zestchain.zestchain.MsgPromoViewed", MsgPromoViewed],
   ["/cytruslabs.zestchain.zestchain.MsgCreatePromo", MsgCreatePromo],
+  ["/cytruslabs.zestchain.zestchain.MsgPromoClicked", MsgPromoClicked],
   
 ];
 export const MissingWalletError = new Error("wallet is required");
@@ -45,9 +45,9 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
 
   return {
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
-    msgPromoClicked: (data: MsgPromoClicked): EncodeObject => ({ typeUrl: "/cytruslabs.zestchain.zestchain.MsgPromoClicked", value: MsgPromoClicked.fromPartial( data ) }),
     msgPromoViewed: (data: MsgPromoViewed): EncodeObject => ({ typeUrl: "/cytruslabs.zestchain.zestchain.MsgPromoViewed", value: MsgPromoViewed.fromPartial( data ) }),
     msgCreatePromo: (data: MsgCreatePromo): EncodeObject => ({ typeUrl: "/cytruslabs.zestchain.zestchain.MsgCreatePromo", value: MsgCreatePromo.fromPartial( data ) }),
+    msgPromoClicked: (data: MsgPromoClicked): EncodeObject => ({ typeUrl: "/cytruslabs.zestchain.zestchain.MsgPromoClicked", value: MsgPromoClicked.fromPartial( data ) }),
     
   };
 };
