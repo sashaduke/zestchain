@@ -5,6 +5,7 @@ import (
 
 	cosm "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cytruslabs/zestchain/x/zestchain/types"
+	"github.com/tendermint/tendermint/crypto"
 )
 
 func (k msgServer) PromoClicked(goCtx context.Context, msg *types.MsgPromoClicked) (*types.MsgPromoClickedResponse, error) {
@@ -19,7 +20,8 @@ func (k msgServer) PromoClicked(goCtx context.Context, msg *types.MsgPromoClicke
 		if err != nil {
 			panic("Creator address not valid")
 		}
-		err = k.bank.SendCoinsFromModuleToAccount(ctx, types.ModuleName, addr, cosm.NewCoins(cosm.NewInt64Coin("ZEST", 9)))
+		moduleAddr := cosm.AccAddress(crypto.AddressHash([]byte(types.ModuleName)))
+		err = k.bank.SendCoins(ctx, moduleAddr, addr, cosm.NewCoins(cosm.NewInt64Coin("ZEST", 9)))
 		if err != nil {
 			k.Keeper.RemovePromo(ctx, promo.Index)
 			panic("Pot empty - promo removed")
