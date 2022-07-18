@@ -7,6 +7,7 @@ import (
 	cosm "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cytruslabs/zestchain/x/zestchain/types"
+	"github.com/tendermint/tendermint/crypto"
 )
 
 func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo) (*types.MsgCreatePromoResponse, error) {
@@ -22,7 +23,9 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 	if err != nil {
 		panic("Creator address not valid")
 	}
-	err = k.bank.SendCoinsFromAccountToModule(ctx, addr, types.ModuleName, cosm.NewCoins(cosm.NewInt64Coin("ZEST", int64(msg.Pot))))
+	moduleAddr := cosm.AccAddress(crypto.AddressHash([]byte(types.ModuleName)))
+	//err = k.bank.SendCoinsFromAccountToModule(ctx, addr, "zestchain", cosm.NewCoins(cosm.NewCoin("ZEST", cosm.NewInt(int64(msg.Pot)))))
+	err = k.bank.SendCoins(ctx, addr, moduleAddr, cosm.NewCoins(cosm.NewCoin("ZEST", cosm.NewInt(int64(msg.Pot)))))
 	if err != nil {
 		return &types.MsgCreatePromoResponse{}, sdkerrors.Wrapf(err, types.ErrNotEnoughZEST.Error())
 	}

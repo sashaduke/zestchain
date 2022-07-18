@@ -17,4 +17,5 @@ type BankKeeper interface {
 	// Methods imported from bank should be defined here
 	SendCoinsFromModuleToAccount(ctx cosm.Context, senderModule string, recipientAddr cosm.AccAddress, amt cosm.Coins) error
 	SendCoinsFromAccountToModule(ctx cosm.Context, senderAddr cosm.AccAddress, recipientModule string, amt cosm.Coins) error
+	SendCoins(ctx cosm.Context, fromAddr cosm.AccAddress, toAddr cosm.AccAddress, amt cosm.Coins) error
 }
