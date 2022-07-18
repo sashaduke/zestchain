@@ -5,7 +5,7 @@ export interface MsgCreatePromo {
     title: string;
     pot: number;
     url: string;
-    message: string;
+    msg: string;
     tags: string;
     prefs: string;
 }

@@ -6,9 +6,10 @@ export const protobufPackage = "cytruslabs.zestchain.zestchain";
 
 export interface Promo {
   index: string;
-  title: string;
+  creator: string;
   pot: number;
   url: string;
+  title: string;
   msg: string;
   tags: string;
   prefs: string;
@@ -16,9 +17,10 @@ export interface Promo {
 
 const basePromo: object = {
   index: "",
-  title: "",
+  creator: "",
   pot: 0,
   url: "",
+  title: "",
   msg: "",
   tags: "",
   prefs: "",
@@ -29,8 +31,8 @@ export const Promo = {
     if (message.index !== "") {
       writer.uint32(10).string(message.index);
     }
-    if (message.title !== "") {
-      writer.uint32(18).string(message.title);
+    if (message.creator !== "") {
+      writer.uint32(18).string(message.creator);
     }
     if (message.pot !== 0) {
       writer.uint32(24).uint64(message.pot);
@@ -38,14 +40,17 @@ export const Promo = {
     if (message.url !== "") {
       writer.uint32(34).string(message.url);
     }
+    if (message.title !== "") {
+      writer.uint32(42).string(message.title);
+    }
     if (message.msg !== "") {
-      writer.uint32(42).string(message.msg);
+      writer.uint32(50).string(message.msg);
     }
     if (message.tags !== "") {
-      writer.uint32(50).string(message.tags);
+      writer.uint32(58).string(message.tags);
     }
     if (message.prefs !== "") {
-      writer.uint32(58).string(message.prefs);
+      writer.uint32(66).string(message.prefs);
     }
     return writer;
   },
@@ -61,7 +66,7 @@ export const Promo = {
           message.index = reader.string();
           break;
         case 2:
-          message.title = reader.string();
+          message.creator = reader.string();
           break;
         case 3:
           message.pot = longToNumber(reader.uint64() as Long);
@@ -70,12 +75,15 @@ export const Promo = {
           message.url = reader.string();
           break;
         case 5:
-          message.msg = reader.string();
+          message.title = reader.string();
           break;
         case 6:
-          message.tags = reader.string();
+          message.msg = reader.string();
           break;
         case 7:
+          message.tags = reader.string();
+          break;
+        case 8:
           message.prefs = reader.string();
           break;
         default:
@@ -93,10 +101,10 @@ export const Promo = {
     } else {
       message.index = "";
     }
-    if (object.title !== undefined && object.title !== null) {
-      message.title = String(object.title);
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
     } else {
-      message.title = "";
+      message.creator = "";
     }
     if (object.pot !== undefined && object.pot !== null) {
       message.pot = Number(object.pot);
@@ -107,6 +115,11 @@ export const Promo = {
       message.url = String(object.url);
     } else {
       message.url = "";
+    }
+    if (object.title !== undefined && object.title !== null) {
+      message.title = String(object.title);
+    } else {
+      message.title = "";
     }
     if (object.msg !== undefined && object.msg !== null) {
       message.msg = String(object.msg);
@@ -129,9 +142,10 @@ export const Promo = {
   toJSON(message: Promo): unknown {
     const obj: any = {};
     message.index !== undefined && (obj.index = message.index);
-    message.title !== undefined && (obj.title = message.title);
+    message.creator !== undefined && (obj.creator = message.creator);
     message.pot !== undefined && (obj.pot = message.pot);
     message.url !== undefined && (obj.url = message.url);
+    message.title !== undefined && (obj.title = message.title);
     message.msg !== undefined && (obj.msg = message.msg);
     message.tags !== undefined && (obj.tags = message.tags);
     message.prefs !== undefined && (obj.prefs = message.prefs);
@@ -145,10 +159,10 @@ export const Promo = {
     } else {
       message.index = "";
     }
-    if (object.title !== undefined && object.title !== null) {
-      message.title = object.title;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
     } else {
-      message.title = "";
+      message.creator = "";
     }
     if (object.pot !== undefined && object.pot !== null) {
       message.pot = object.pot;
@@ -159,6 +173,11 @@ export const Promo = {
       message.url = object.url;
     } else {
       message.url = "";
+    }
+    if (object.title !== undefined && object.title !== null) {
+      message.title = object.title;
+    } else {
+      message.title = "";
     }
     if (object.msg !== undefined && object.msg !== null) {
       message.msg = object.msg;

@@ -2,9 +2,10 @@ import { Writer, Reader } from "protobufjs/minimal";
 export declare const protobufPackage = "cytruslabs.zestchain.zestchain";
 export interface Promo {
     index: string;
-    title: string;
+    creator: string;
     pot: number;
     url: string;
+    title: string;
     msg: string;
     tags: string;
     prefs: string;

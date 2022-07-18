@@ -74,10 +74,11 @@ export declare type ZestchainMsgPromoViewedResponse = object;
 export declare type ZestchainParams = object;
 export interface ZestchainPromo {
     index?: string;
-    title?: string;
+    creator?: string;
     /** @format uint64 */
     pot?: string;
     url?: string;
+    title?: string;
     msg?: string;
     tags?: string;
     prefs?: string;
