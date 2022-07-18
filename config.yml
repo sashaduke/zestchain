@@ -1,16 +1,25 @@
 accounts:
-  - name: alice
-    coins: ["20000token", "200000000stake"]
-  - name: bob
-    coins: ["10000token", "100000000stake"]
+  - name: treasury
+    coins: ["50000000ZEST", "100000000ZESTAKE"]
+  - name: shulgin
+    coins: ["10000000ZEST"]
+  - name: rancidrocker24
+    coins: ["50000ZEST"]
 validator:
-  name: alice
-  staked: "100000000stake"
+  name: treasury
+  staked: "100000000ZESTAKE"
 client:
   openapi:
     path: "docs/static/openapi.yml"
   vuex:
     path: "vue/src/store"
 faucet:
-  name: bob
-  coins: ["5token", "100000stake"]
+  name: treasury
+  coins: ["10ZEST"]
+genesis:
+  chain_id: "zestchain"
+  app_state:
+    staking:
+      params:
+        bond_denom: "ZESTAKE"
+
