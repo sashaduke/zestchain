@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"strconv"	
 
 	cosm "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cytruslabs/zestchain/x/zestchain/types"
@@ -16,7 +17,7 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 	}
 	newIndex := strconv.FormatUint(promoCount.Total, 10)
 	//pot, _ := strconv.ParseUint(msg.Pot, 10, 64)
-	ad := types.Ad{
+	promo := types.Promo{
 		Index:   newIndex,
 		Title:   msg.Title,
 		Pot:     msg.Pot,
