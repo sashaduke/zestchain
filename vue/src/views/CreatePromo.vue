@@ -52,7 +52,7 @@
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { MsgCreatePromo } from "@/tx.js";
-import { Api } from "@/rest.js"
+import { Api } from "@/rest.js";
 import { stringToPath } from "@cosmjs/crypto";
 const type = [["/cytruslabs.zestchain.zestchain.MsgCreatePromo", MsgCreatePromo]];
 const registry = new Registry(type);

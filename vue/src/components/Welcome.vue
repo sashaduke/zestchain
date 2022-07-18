@@ -5,7 +5,7 @@
         <h2>Welcome to Cytrus</h2>
       </div>
       <p>
-        Cytrus is a decentralised advertising network that enables you to passively earn crypto while you browse.<br>
+        Cytrus is a decentralised advertising platform that passively earns you crypto while you browse.<br>
         You can create a wallet, transfer your ZEST, and launch new advertisements all from this site!
       </p><br>
       <div>

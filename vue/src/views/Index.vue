@@ -26,14 +26,20 @@
 </template>
 
 <script>
-import Welcome from '../components/Welcome'
+import Welcome from '../components/Welcome';
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 export default {
   name: 'Index',
   mounted() {
     const store = this.$store.getters;
-    const connect = function(event) {
+    const connect = async function(event) {
       event.preventDefault();
-      window.postMessage({type: "mnemonic", mnemonic: store['common/wallet/getMnemonic']}, "*");
+      const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
+        store["common/wallet/getMnemonic"],
+        {prefix: "cytrus"}
+      );
+      const mnemonic = await wallet.serialize("cytrus");
+      window.postMessage({type: "mnemonic", mnemonic: mnemonic}, "*");
     }
     const disconnect = function(event) {
       event.preventDefault();
