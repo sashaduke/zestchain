@@ -6,10 +6,9 @@ import (
 
 	cosm "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/cosmos/cosmos-sdk/x/bank/keeper"
 )
 
-func (k keeper.msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*types.MsgCreateAdResponse, error) {
+func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*types.MsgCreateAdResponse, error) {
 	ctx := cosm.UnwrapSDKContext(goCtx)
 
 	adCount, found := k.Keeper.GetAdCount(ctx)
