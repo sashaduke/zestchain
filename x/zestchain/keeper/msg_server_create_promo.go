@@ -35,7 +35,7 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 	if msg.Pot%2 == 1 {
 		rem = int64(1)
 	}
-	amt := int64(math.Floor(float64(msg.Pot / 2)))
+	amt := int64(math.Floor(float64(msg.Pot * 4 / 5)))
 	moduleAddr := cosm.AccAddress(crypto.AddressHash([]byte(types.ModuleName)))
 	burnAddr := cosm.AccAddress(crypto.AddressHash([]byte("burn")))
 
@@ -43,7 +43,7 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 	if err != nil {
 		return &types.MsgCreatePromoResponse{}, sdkerrors.Wrapf(err, types.ErrNotEnoughZEST.Error())
 	}
-	err = k.bank.SendCoins(ctx, addr, burnAddr, cosm.NewCoins(cosm.NewCoin("ZEST", cosm.NewInt(amt))))
+	err = k.bank.SendCoins(ctx, addr, burnAddr, cosm.NewCoins(cosm.NewCoin("ZEST", cosm.NewInt(amt/4))))
 	if err != nil {
 		return &types.MsgCreatePromoResponse{}, sdkerrors.Wrapf(err, types.ErrNotEnoughZEST.Error())
 	}
@@ -67,4 +67,3 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 		Total: newIndex,
 	}, nil
 }
-

@@ -9,7 +9,7 @@
         You can create a wallet, transfer your ZEST, and launch new advertisements all from this site!
       </p>
       <div class="sp-welcome__btns">
-        <SpButton href="http://zestcha.in/" target="_blank" type="primary">Blockchain</SpButton>
+        <SpButton href="http://zestcha.in" target="_blank" type="primary">Blockchain</SpButton>
         <SpButton
           href="https://github.com/cytruslabs/zestchain"
           target="_blank"
