@@ -8,5 +8,5 @@ import (
 
 // x/zestchain module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrNotEnoughZEST = sdkerrors.Register(ModuleName, 1100, "Not enough ZEST to create promo")
 )
