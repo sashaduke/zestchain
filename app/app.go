@@ -354,6 +354,7 @@ func New(
 	)
 
 	app.ZestchainKeeper = *zestchainmodulekeeper.NewKeeper(
+		app.BankKeeper,
 		appCodec,
 		keys[zestchainmoduletypes.StoreKey],
 		keys[zestchainmoduletypes.MemStoreKey],
