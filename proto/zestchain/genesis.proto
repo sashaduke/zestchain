@@ -3,6 +3,7 @@ package cytruslabs.zestchain.zestchain;
 
 import "gogoproto/gogo.proto";
 import "zestchain/params.proto";
+import "zestchain/ad_count.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/cytruslabs/zestchain/x/zestchain/types";
@@ -10,5 +11,6 @@ option go_package = "github.com/cytruslabs/zestchain/x/zestchain/types";
 // GenesisState defines the zestchain module's genesis state.
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
+  AdCount adCount = 2;
   // this line is used by starport scaffolding # genesis/proto/state
 }

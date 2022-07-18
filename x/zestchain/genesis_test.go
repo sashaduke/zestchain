@@ -14,6 +14,9 @@ func TestGenesis(t *testing.T) {
 	genesisState := types.GenesisState{
 		Params: types.DefaultParams(),
 
+		AdCount: &types.AdCount{
+			Counter: 98,
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -25,5 +28,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(&genesisState)
 	nullify.Fill(got)
 
+	require.Equal(t, genesisState.AdCount, got.AdCount)
 	// this line is used by starport scaffolding # genesis/test/assert
 }
