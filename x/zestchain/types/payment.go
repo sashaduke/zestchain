@@ -2,6 +2,7 @@ package types
 
 import (
 	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
@@ -33,13 +34,13 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 	var fee cosm.Coins = make([]cosm.Coin, 1)
 	fee[0] = cosm.Coin{
 		Denom:  "ZEST",
-		Amount: cosm.NewDecWithPrec(1, 0)}
+		Amount: cosm.Int(0)}
 	txBuilder.SetFeeAmount(fee)
 	txBuilder.SetGasLimit(0)
 	txBuilder.SetTimeoutHeight(0)
 	txBuilder.SetMemo("Ad reward")
 
-	priv1, _ := secp256k1.GenPrivKeyFromSecret([]byte("test test test"))
+	priv1 := secp256k1.GenPrivKeyFromSecret([]byte("test test test"))
 	privs := []crypto.PrivKey{priv1}
 	accNums := []uint64{1, 0} // The accounts' account numbers
 	accSeqs := []uint64{0, 1} // The accounts' sequence numbers
@@ -96,12 +97,12 @@ func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 	return txJSON, nil
 }
 
-func (ad *Ad) PayView(recip cosm.AccAddress) {
+func (ad *Ad) PayView(recip string) {
 	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Pay(1, recipient)
 }
 
-func (ad *Ad) PayClick(recip cosm.AccAddress) {
+func (ad *Ad) PayClick(recip string) {
 	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Pay(9, recipient)
 }
