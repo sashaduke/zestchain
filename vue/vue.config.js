@@ -8,8 +8,13 @@ module.exports = {
       symlinks: false,
       alias: {
         vue$: path.resolve('./node_modules/vue/dist/vue.esm-bundler.js'),
-      },
+      }
     },
     plugins: [new NodePolyfillPlugin()],
-  },
+
+    devServer: {
+      allowedHosts: 'all',
+      host : '0.0.0.0'
+    }
+  }
 }
