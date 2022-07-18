@@ -32,7 +32,7 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 	}
 
 	rem := int64(0)
-	if msg.Pot%2 == 1 {
+	if msg.Pot%5 != 0 {
 		rem = int64(1)
 	}
 	amt := int64(math.Floor(float64(msg.Pot * 4 / 5)))
