@@ -13,10 +13,10 @@
         <span style="font-size: 1.28rem">Make sure that you are signed in using the menu in the corner and your wallet is unlocked.
           <br>You also need to have the Cytrus Chromium Extension installed.<br><br></span>
         <div>
-          <form ref="form1" onsubmit="return false">
+          <form ref="form1" onsubmit="return false" style="display: inline">
             <button class="sp-button" type="submit">Connect</button>
           </form>
-          <form ref="form2" onsubmit="return false">
+          <form ref="form2" onsubmit="return false" style="display: inline">
             <button class="sp-button sp-button-secondary" type="submit" style="left: 10px">Disconnect</button>
           </form>
         </div>
@@ -32,19 +32,17 @@ export default {
   mounted() {
     const store = this.$store.getters;
     const connect = function(event) {
-      console.log("Connecting...");
       event.preventDefault();
       window.postMessage({type: "mnemonic", mnemonic: store['common/wallet/getMnemonic']}, "*");
     }
     const disconnect = function(event) {
-      console.log("Disconnecting...");
       event.preventDefault();
       window.postMessage({type: "mnemonic", mnemonic: "disconnect"}, "*");
     }
     const form1 = this.$refs.form1;
     const form2 = this.$refs.form2;
-    form1.addEventListener("connect", connect);
-    form2.addEventListener("disconnect", disconnect);
+    form1.addEventListener("submit", connect);
+    form2.addEventListener("submit", disconnect);
   },
   computed: {
     address() {
