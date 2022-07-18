@@ -1,8 +1,8 @@
 accounts:
   - name: treasury
-    coins: ["50000000ZEST", "100000000stkZEST"]
+    coins: ["140000000ZEST", "100000000stkZEST"]
   - name: shulgin
-    coins: ["10000000ZEST"]
+    coins: ["9950000ZEST"]
   - name: rancidrocker24
     coins: ["50000ZEST"]
 validator:
@@ -15,7 +15,8 @@ client:
     path: "vue/src/store"
 faucet:
   name: treasury
-  coins: ["1000ZEST"]
+  coins: ["100ZEST"]
+  coins_max: ["1000ZEST"]
   rate_limit_window: "604800s"
 genesis:
   chain_id: "zestchain"
