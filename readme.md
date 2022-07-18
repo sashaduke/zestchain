@@ -1,5 +1,5 @@
 # zestchain
-The **ZEST Chain** is the blockchain of the Cytrus network, making up a core part of the backend infrastructure for Cytrus' decentralised advertising platform. It was built using the Cosmos SDK, Starport, and Tendermint BFT consensus.
+The **ZEST Chain** is the blockchain powering Cytrus' decentralised advertising platform. It was built using the Cosmos SDK, Starport, and Tendermint BFT consensus.
 
 <br/><br/>
 
