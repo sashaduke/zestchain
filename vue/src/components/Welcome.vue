@@ -7,7 +7,7 @@
       <p>
         Cytrus is a decentralised advertising network that enables you to passively earn crypto while you browse.<br>
         You can create a wallet, transfer your ZEST, and launch new advertisements all from this site!
-      </p><br><br>
+      </p><br>
       <div>
         <SpButton href="http://zestcha.in" target="_blank" type="secondary">Chrome Extension</SpButton>
         <SpButton
