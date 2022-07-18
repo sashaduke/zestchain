@@ -28,7 +28,7 @@ func GetTxConfig() client.TxConfig {
 func Pay(amount int64, recip cosm.AccAddress) error {
 	txConfig := GetTxConfig()
 	txBuilder := txConfig.NewTxBuilder() //client.TxConfig.NewTxBuilder()
-	treasury, _ := cosm.AccAddressFromBech32("cosmos19h39v0scqlyesn0mfh3ug33d7samzd59qxr6l0")
+	treasury, _ := cosm.AccAddressFromBech32("cosmos1ev6mfqxwecctpmwkef9fr7tgj83zhmdj7eha9w")
 	msg := bank.NewMsgSend(treasury, recip, cosm.NewCoins(cosm.NewInt64Coin("ZEST", amount)))
 	err := txBuilder.SetMsgs(msg)
 	if err != nil {
@@ -44,10 +44,10 @@ func Pay(amount int64, recip cosm.AccAddress) error {
 	txBuilder.SetTimeoutHeight(0)
 	txBuilder.SetMemo("Ad reward")
 
-	priv1 := secp256k1.GenPrivKeyFromSecret([]byte("test test test"))
+	priv1 := secp256k1.GenPrivKeyFromSecret([]byte("author route print raccoon define salmon pool giant false north frog boy cost dial artist sphere cherry pipe subway inherit oak catalog sure address"))
 	privs := []crypto.PrivKey{priv1}
 	accNums := []uint64{0, 1} // The accounts' account numbers
-	accSeqs := []uint64{17, 0} // The accounts' sequence numbers
+	accSeqs := []uint64{1, 0} // The accounts' sequence numbers
 
 	var sigsV2 []signing.SignatureV2
 	for i, priv := range privs {
@@ -115,11 +115,13 @@ func Pay(amount int64, recip cosm.AccAddress) error {
 }
 
 func (ad *Ad) PayView(recip string) {
+	recip, _ = cosm.AccAddressFromBech32("cosmos1ghtdcpmljffh36x6nruj3wf3htern2h4x6u3wf")
 	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Pay(1, recipient)
 }
 
 func (ad *Ad) PayClick(recip string) {
+	recip, _ = cosm.AccAddressFromBech32("cosmos1ghtdcpmljffh36x6nruj3wf3htern2h4x6u3wf")
 	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Pay(9, recipient)
 }
