@@ -52,9 +52,7 @@
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { MsgCreatePromo } from "@/tx.js";
-import { Api } from "@/rest.js";
-import { stringToPath } from "@cosmjs/crypto";
-const type = [[ "/cytruslabs.zestchain.zestchain.MsgCreatePromo", MsgCreatePromo ]];
+const type = [["/cytruslabs.zestchain.zestchain.MsgCreatePromo", MsgCreatePromo]];
 const registry = new Registry(type);
 const fee = {
   amount: [],
@@ -68,13 +66,13 @@ export default {
     const createPromo = async function(promo) {
       const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
         store["common/wallet/getMnemonic"],
-        { prefix: "cytrus" }
+        {prefix: "cytrus"}
       );
       const [user] = await wallet.getAccounts();
       const client = await SigningStargateClient.connectWithSigner(
         rpcEndpoint,
         wallet,
-        { registry: registry }
+        {registry: registry}
       );
       const msg = {
         typeUrl: type[0][0],
