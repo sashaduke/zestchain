@@ -20,13 +20,12 @@ body {
 
 <script>
 import './scss/app.scss'
-import '@cytruslabs/vue/lib/starport-vue.css'
+import '@starport/vue/lib/starport-vue.css'
 import Sidebar from './components/Sidebar'
-import Welcome from './components/Welcome'
 
 export default {
   components: {
-    Sidebar, Welcome,
+    Sidebar,
   },
   data() {
     return {
