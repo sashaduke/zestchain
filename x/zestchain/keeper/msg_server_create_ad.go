@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	cosm "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/zestchain/x/zestchain/types"
+	"github.com/cytruslabs/zestchain/x/zestchain/types"
 )
 
 func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*types.MsgCreateAdResponse, error) {
