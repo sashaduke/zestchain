@@ -2,10 +2,10 @@ package keeper
 
 import (
 	"context"
-	"fmt"
 	"strconv"
 
 	cosm "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cytruslabs/zestchain/x/zestchain/types"
 )
 
@@ -24,7 +24,7 @@ func (k msgServer) CreatePromo(goCtx context.Context, msg *types.MsgCreatePromo)
 	}
 	err = k.bank.SendCoinsFromAccountToModule(ctx, addr, types.ModuleName, cosm.NewCoins(cosm.NewInt64Coin("ZEST", int64(msg.Pot))))
 	if err != nil {
-		panic(fmt.Sprintf(types.ErrNotEnoughZEST.Error()))
+		return &types.MsgCreatePromoResponse{}, sdkerrors.Wrapf(err, types.ErrNotEnoughZEST.Error())
 	}
 
 	promo := types.Promo{
