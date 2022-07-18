@@ -38,7 +38,7 @@
         class="sp-input"
         ref="msg"
         placeholder="Cytrus passively earns you crypto while you browse - no sign up needed! Join today at cytrus.io"
-  v-on:focus="focused = true"
+        v-on:focus="focused = true"
         v-on:blur="focused = false"
       /><br><br>
       <button class="sp-button" type="submit">Submit</button>
@@ -65,7 +65,6 @@ export default {
   name: "CreatePromo",
   mounted() {	
     const store = this.$store.getters;
-    window.store = store;
     const initClient = async function() {
       const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
         store["common/wallet/getMnemonic"],

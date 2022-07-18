@@ -6,6 +6,7 @@
       <SpLinkIcon link="/" text="Dashboard" icon="Dashboard" />
       <SpLinkIcon link="/createPromo" text="Create Promo" icon="Docs" />
       <div class="sp-dash"></div>
+      <SpLinkIcon href="https://github.com/cytruslabs/zestchain" target="_blank" text="Chrome Extension" icon="Download" />
       <SpLinkIcon href="https://github.com/cytruslabs/zestchain" target="_blank" text="Source Code" icon="Settings" />
     </template>
     <template v-slot:footer>
