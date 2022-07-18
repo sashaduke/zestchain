@@ -11,6 +11,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	crypto "github.com/cosmos/cosmos-sdk/crypto/types"
 	cosm "github.com/cosmos/cosmos-sdk/types"
+	ttx "github.com/cosmos/cosmos-sdk/types/tx"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
@@ -91,13 +92,13 @@ func Pay(amount int64, recip cosm.AccAddress) error {
 		return err
 	}
 
-	grpcConn := grpc.Dial(
+	grpcConn, _ := grpc.Dial(
 		"127.0.0.1:9090",
 		grpc.WithInsecure(),
 	)
 	defer grpcConn.Close()
 
-	txClient := tx.NewServiceClient(grpcConn)
+	txClient := ttx.NewServiceClient(grpcConn)
 	grpcRes, err := txClient.BroadcastTx(
 		context.Background(),
 		&tx.BroadcastTxRequest{
