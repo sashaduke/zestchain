@@ -4,13 +4,13 @@ import (
 	"context"
 	"strconv"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
-	kk "github.com/cosmos/cosmos-sdk/x/bank/keeper"
+	cosm "github.com/cosmos/cosmos-sdk/types"
+	m "zestchain/x/zestchain/types"
 	"github.com/cosmos/cosmos-sdk/x/bank/types"
 )
 
-func (k kk.msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*types.MsgCreateAdResponse, error) {
-	ctx := sdk.UnwrapSDKContext(goCtx)
+func (k m.msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*types.MsgCreateAdResponse, error) {
+	ctx := cosm.UnwrapSDKContext(goCtx)
 
 	adCount, found := k.Keeper.GetAdCount(ctx)
 	if !found {
