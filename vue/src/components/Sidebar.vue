@@ -6,9 +6,9 @@
       <SpLinkIcon link="/" text="Dashboard" icon="Dashboard" />
       <SpLinkIcon link="/createPromo" text="Create Promo" icon="Add" />
       <div class="sp-dash"></div>
-      <SpLinkIcon href="https://github.com/cytruslabs/cytrus_chromium_ext/releases/download/v0.0.2/cytrus_chromium_ext.zip" target="_blank" text="Download Extension" icon="Download" />
-      <SpLinkIcon href="https://github.com/cytruslabs/zestchain" target="_blank" text="Blockchain Github" icon="Settings" />
-      <SpLinkIcon href="https://github.com/cytruslabs/zestchain" target="_blank" text="Extension Github" icon="Docs" />
+      <SpLinkIcon href="https://chrome.google.com/webstore/detail/cytrus-chromium-extension/nlocmejmnonmncopfmfcchbbpfdhpmfi" target="_blank" text="Download Extension" icon="Download" />
+      <SpLinkIcon href="https://github.com/cytruslabs/zestchain" target="_blank" text="Blockchain Source" icon="Settings" />
+      <SpLinkIcon href="https://github.com/cytruslabs/cytrus_chromium_ext" target="_blank" text="Help / Extension Source" icon="Docs" />
     </template>
     <template v-slot:footer>
       <SpStatusAPI :showText="sidebarOpen" />

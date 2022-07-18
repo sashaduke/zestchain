@@ -9,7 +9,7 @@
         You can create a wallet, transfer your ZEST, and launch new advertisements all from this site!
       </p><br>
       <div>
-        <SpButton href="https://github.com/cytruslabs/cytrus_chromium_ext/releases/download/v0.0.2/cytrus_chromium_ext.zip" target="_blank" type="secondary">Chromium Extension</SpButton>
+        <SpButton href="https://chrome.google.com/webstore/detail/cytrus-chromium-extension/nlocmejmnonmncopfmfcchbbpfdhpmfi" target="_blank" type="secondary">Chromium Extension</SpButton>
         <SpButton
           href="http://zestcha.in:4500"
           target="_blank"
