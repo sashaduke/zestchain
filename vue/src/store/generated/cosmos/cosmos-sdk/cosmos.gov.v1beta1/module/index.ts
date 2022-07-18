@@ -6,15 +6,15 @@ import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "
 import { Api } from "./rest";
 import { MsgDeposit } from "./types/cosmos/gov/v1beta1/tx";
 import { MsgSubmitProposal } from "./types/cosmos/gov/v1beta1/tx";
-import { MsgVoteWeighted } from "./types/cosmos/gov/v1beta1/tx";
 import { MsgVote } from "./types/cosmos/gov/v1beta1/tx";
+import { MsgVoteWeighted } from "./types/cosmos/gov/v1beta1/tx";
 
 
 const types = [
   ["/cosmos.gov.v1beta1.MsgDeposit", MsgDeposit],
   ["/cosmos.gov.v1beta1.MsgSubmitProposal", MsgSubmitProposal],
-  ["/cosmos.gov.v1beta1.MsgVoteWeighted", MsgVoteWeighted],
   ["/cosmos.gov.v1beta1.MsgVote", MsgVote],
+  ["/cosmos.gov.v1beta1.MsgVoteWeighted", MsgVoteWeighted],
   
 ];
 export const MissingWalletError = new Error("wallet is required");
@@ -49,8 +49,8 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
     msgDeposit: (data: MsgDeposit): EncodeObject => ({ typeUrl: "/cosmos.gov.v1beta1.MsgDeposit", value: MsgDeposit.fromPartial( data ) }),
     msgSubmitProposal: (data: MsgSubmitProposal): EncodeObject => ({ typeUrl: "/cosmos.gov.v1beta1.MsgSubmitProposal", value: MsgSubmitProposal.fromPartial( data ) }),
-    msgVoteWeighted: (data: MsgVoteWeighted): EncodeObject => ({ typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted", value: MsgVoteWeighted.fromPartial( data ) }),
     msgVote: (data: MsgVote): EncodeObject => ({ typeUrl: "/cosmos.gov.v1beta1.MsgVote", value: MsgVote.fromPartial( data ) }),
+    msgVoteWeighted: (data: MsgVoteWeighted): EncodeObject => ({ typeUrl: "/cosmos.gov.v1beta1.MsgVoteWeighted", value: MsgVoteWeighted.fromPartial( data ) }),
     
   };
 };

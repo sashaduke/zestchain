@@ -3,8 +3,8 @@ import { Registry, OfflineSigner, EncodeObject } from "@cosmjs/proto-signing";
 import { Api } from "./rest";
 import { MsgDeposit } from "./types/cosmos/gov/v1beta1/tx";
 import { MsgSubmitProposal } from "./types/cosmos/gov/v1beta1/tx";
-import { MsgVoteWeighted } from "./types/cosmos/gov/v1beta1/tx";
 import { MsgVote } from "./types/cosmos/gov/v1beta1/tx";
+import { MsgVoteWeighted } from "./types/cosmos/gov/v1beta1/tx";
 export declare const MissingWalletError: Error;
 export declare const registry: Registry;
 interface TxClientOptions {
@@ -18,8 +18,8 @@ declare const txClient: (wallet: OfflineSigner, { addr: addr }?: TxClientOptions
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }?: SignAndBroadcastOptions) => any;
     msgDeposit: (data: MsgDeposit) => EncodeObject;
     msgSubmitProposal: (data: MsgSubmitProposal) => EncodeObject;
-    msgVoteWeighted: (data: MsgVoteWeighted) => EncodeObject;
     msgVote: (data: MsgVote) => EncodeObject;
+    msgVoteWeighted: (data: MsgVoteWeighted) => EncodeObject;
 }>;
 interface QueryClientOptions {
     addr: string;
