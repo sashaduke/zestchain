@@ -143,7 +143,7 @@ export default {
       }
     }
     const form = this.$refs.form;
-    this.form.addEventListener("submit", validateAndSubmit);
+    form.addEventListener("submit", validateAndSubmit);
   }
 };
 </script>
