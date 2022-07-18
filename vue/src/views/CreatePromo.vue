@@ -65,6 +65,7 @@ export default {
   name: "CreatePromo",
   mounted() {	
     const store = this.$store.getters;
+    window.store = store;
     const initClient = async function() {
       const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
         store["common/wallet/getMnemonic"],
