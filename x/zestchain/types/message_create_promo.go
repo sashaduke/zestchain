@@ -9,13 +9,13 @@ const TypeMsgCreatePromo = "create_promo"
 
 var _ sdk.Msg = &MsgCreatePromo{}
 
-func NewMsgCreatePromo(creator string, title string, pot uint64, url string, message string, tags string, prefs string) *MsgCreatePromo {
+func NewMsgCreatePromo(creator string, title string, pot uint64, url string, msg string, tags string, prefs string) *MsgCreatePromo {
 	return &MsgCreatePromo{
 		Creator: creator,
 		Title:   title,
 		Pot:     pot,
 		Url:     url,
-		Message: message,
+		Msg: msg,
 		Tags:    tags,
 		Prefs:   prefs,
 	}

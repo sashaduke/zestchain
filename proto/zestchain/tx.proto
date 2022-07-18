@@ -18,7 +18,7 @@ message MsgCreatePromo {
   string title = 2;
   uint64 pot = 3;
   string url = 4;
-  string message = 5;
+  string msg = 5;
   string tags = 6;
   string prefs = 7;
 }

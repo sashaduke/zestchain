@@ -15,7 +15,7 @@ var _ = strconv.Itoa(0)
 
 func CmdCreatePromo() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-promo [title] [pot] [url] [message] [tags] [prefs]",
+		Use:   "create-promo [title] [pot] [url] [msg] [tags] [prefs]",
 		Short: "Broadcast message createPromo",
 		Args:  cobra.ExactArgs(6),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
@@ -25,7 +25,7 @@ func CmdCreatePromo() *cobra.Command {
 				return err
 			}
 			argUrl := args[2]
-			argMessage := args[3]
+			argMsg := args[3]
 			argTags := args[4]
 			argPrefs := args[5]
 
@@ -39,7 +39,7 @@ func CmdCreatePromo() *cobra.Command {
 				argTitle,
 				argPot,
 				argUrl,
-				argMessage,
+				argMsg,
 				argTags,
 				argPrefs,
 			)
