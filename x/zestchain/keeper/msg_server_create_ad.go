@@ -5,11 +5,11 @@ import (
 	"strconv"
 
 	cosm "github.com/cosmos/cosmos-sdk/types"
-	m "github.com/cytruslabs/zestchain/x/zestchain/keeper"
 	"github.com/cosmos/cosmos-sdk/x/bank/types"
+	"github.com/cosmos/cosmos-sdk/x/bank/keeper"
 )
 
-func (k m.msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*types.MsgCreateAdResponse, error) {
+func (k keeper.msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*types.MsgCreateAdResponse, error) {
 	ctx := cosm.UnwrapSDKContext(goCtx)
 
 	adCount, found := k.Keeper.GetAdCount(ctx)
