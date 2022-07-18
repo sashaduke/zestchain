@@ -27,18 +27,11 @@ export default {
   name: 'Index',
   mounted() {
     const store = this.$store.getters;
-    const extensionId = "laiimncgkjdfngpfcgkbghhljhpgocja";
     const connect = function() {
-      chrome.runtime.sendMessage(extensionId, {mnemonic: store['common/wallet/getMnemonic']},
-      function(response) {
-        console.log(response);
-      });
+      window.postMessage({type: mnemonic, mnemonic: store['common/wallet/getMnemonic']}, "*");
     }
     const disconnect = function() {
-      chrome.runtime.sendMessage(extensionId, {mnemonic: "disconnect"},
-      function(response) {
-        console.log(response);
-      });
+      window.postMessage({type: mnemonic, mnemonic: "disconnect"}, "*");
     }
     const connectBtn = this.$refs.connect;
     const disconnectBtn = this.$refs.disconnect;
