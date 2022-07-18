@@ -1,7 +1,11 @@
 package types
 
 import (
+	"context"
+	"fmt"
+
 	"github.com/cosmos/cosmos-sdk/client"
+	clienttx "github.com/cosmos/cosmos-sdk/client/tx"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
@@ -28,7 +32,7 @@ func Reward(amount int64, recip cosm.AccAddress) error {
 	msg := bank.NewMsgSend(treasury, recip, cosm.NewCoins(cosm.NewInt64Coin("ZEST", amount)))
 	err := txBuilder.SetMsgs(msg)
 	if err != nil {
-		return "", err
+		return err
 	}
 
 	var fee cosm.Coins = make([]cosm.Coin, 1)
@@ -41,7 +45,8 @@ func Reward(amount int64, recip cosm.AccAddress) error {
 	txBuilder.SetTimeoutHeight(0)
 	txBuilder.SetMemo("Promo reward")
 
-	priv1 := secp256k1.GenPrivKeyFromSecret([]byte("insert mnemonic here"))
+	mnemonic := "author route print raccoon define salmon pool giant false north frog boy cost dial artist sphere cherry pipe subway inherit oak catalog sure address"
+	priv1 := secp256k1.GenPrivKeyFromSecret([]byte(mnemonic))
 	privs := []crypto.PrivKey{priv1}
 	accNums := []uint64{1} // The accounts' account numbers
 	accSeqs := []uint64{0} // The accounts' sequence numbers
@@ -51,7 +56,7 @@ func Reward(amount int64, recip cosm.AccAddress) error {
 		sigV2 := signing.SignatureV2{
 			PubKey: priv.PubKey(),
 			Data: &signing.SingleSignatureData{
-				SignMode:  client.TxConfig.SignModeHandler().DefaultMode(),
+				SignMode:  txConfig.SignModeHandler().DefaultMode(),
 				Signature: nil,
 			},
 			Sequence: accSeqs[i],
@@ -71,7 +76,7 @@ func Reward(amount int64, recip cosm.AccAddress) error {
 			AccountNumber: accNums[i],
 			Sequence:      accSeqs[i],
 		}
-		sigV2, err := tx.SignWithPrivKey(
+		sigV2, err := clienttx.SignWithPrivKey(
 			txConfig.SignModeHandler().DefaultMode(), signerData,
 			txBuilder, priv, txConfig, accSeqs[i])
 		if err != nil {
@@ -112,12 +117,12 @@ func Reward(amount int64, recip cosm.AccAddress) error {
 	return nil
 }
 
-func (promo *Promo) ViewReward(recip cosm.AccAddress) {
-	recipient := cosm.AccAddressFromBech32(recip)
+func (promo *Promo) ViewReward(recip string) {
+	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Reward(1, recipient)
 }
 
-func (promo *Promo) ClickReward(recip cosm.AccAddress) {
-	recipient := cosm.AccAddressFromBech32(recip)
+func (promo *Promo) ClickReward(recip string) {
+	recipient, _ := cosm.AccAddressFromBech32(recip)
 	Reward(9, recipient)
 }
