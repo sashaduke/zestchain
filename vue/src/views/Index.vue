@@ -14,7 +14,7 @@
           <br>You also need to have the Cytrus Chromium Extension installed.<br><br></span>
         <div>
           <button class="sp-button" type="connect" ref="connect">Connect</button>
-          <button class="sp-button-secondary" type="disconnect" ref="disconnect" style="left: 10px">Disconnect</button>
+          <button class="sp-button sp-button-secondary" type="disconnect" ref="disconnect" style="left: 10px">Disconnect</button>
         </div>
       </div>
     </div>
@@ -28,10 +28,10 @@ export default {
   mounted() {
     const store = this.$store.getters;
     const connect = function() {
-      window.postMessage({type: mnemonic, mnemonic: store['common/wallet/getMnemonic']}, "*");
+      window.postMessage({type: "mnemonic", mnemonic: store['common/wallet/getMnemonic']}, "*");
     }
     const disconnect = function() {
-      window.postMessage({type: mnemonic, mnemonic: "disconnect"}, "*");
+      window.postMessage({type: "mnemonic", mnemonic: "disconnect"}, "*");
     }
     const connectBtn = this.$refs.connect;
     const disconnectBtn = this.$refs.disconnect;

@@ -9,14 +9,15 @@
         You can create a wallet, transfer your ZEST, and launch new advertisements all from this site!
       </p>
       <div>
-        <SpButton href="http://zestcha.in" target="_blank" type="primary">Chrome Extension</SpButton>
+        <SpButton href="http://zestcha.in" target="_blank" type="secondary">Chrome Extension</SpButton>
         <SpButton
           href="https://github.com/cytruslabs/zestchain"
           target="_blank"
-          type="secondary"
+          type="primary"
+          style="left: 10px"
           >Github</SpButton
         >
-        <SpButton href="http://zestcha.in" target="_blank" type="primary">Blockchain</SpButton>
+        <SpButton href="http://zestcha.in" target="_blank" type="secondary" style="left: 10px">Blockchain</SpButton>
       </div>   
     </div>
   </div>
