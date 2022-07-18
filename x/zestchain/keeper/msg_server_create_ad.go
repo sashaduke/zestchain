@@ -16,10 +16,11 @@ func (k msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*typ
 		panic("AdCount not found")
 	}
 	newIndex := strconv.FormatUint(adCount.Counter, 10)
+	pot, _ := strconv.ParseUint(msg.Pot, 10, 64)
 	ad := types.Ad{
 		Index:   newIndex,
 		Title:   msg.Title,
-		Pot:     strconv.ParseUint(msg.Pot, 10),
+		Pot:     uint64(pot),
 		Url:     msg.Url,
 		Msg:     msg.Msg,
 		Tags:    msg.Tags,
