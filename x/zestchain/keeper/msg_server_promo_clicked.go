@@ -27,7 +27,11 @@ func (k msgServer) PromoClicked(goCtx context.Context, msg *types.MsgPromoClicke
 			k.Keeper.RemovePromo(ctx, promo.Index)
 		} else {
 			promo.Pot -= 9
-			k.Keeper.SetPromo(ctx, promo)
+			if promo.Pot <= 0 {
+				k.Keeper.RemovePromo(ctx, promo.Index)
+			} else {
+				k.Keeper.SetPromo(ctx, promo)
+			}
 		}
 	} else {
 		err = k.bank.SendCoins(ctx, moduleAddr, addr, cosm.NewCoins(cosm.NewInt64Coin("ZEST", int64(promo.Pot))))

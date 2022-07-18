@@ -27,7 +27,11 @@ func (k msgServer) PromoViewed(goCtx context.Context, msg *types.MsgPromoViewed)
 			k.Keeper.RemovePromo(ctx, promo.Index)
 		} else {
 			promo.Pot--
-			k.Keeper.SetPromo(ctx, promo)
+			if promo.Pot <= 0 {
+				k.Keeper.RemovePromo(ctx, promo.Index)
+			} else {
+				k.Keeper.SetPromo(ctx, promo)
+			}
 		}
 	} else {
 		k.Keeper.RemovePromo(ctx, promo.Index)
