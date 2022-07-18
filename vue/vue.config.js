@@ -1,5 +1,6 @@
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 const path = require('path')
+//const fs = require('fs')
 
 module.exports = {
   transpileDependencies: ['@starport/client-js'],
@@ -14,7 +15,13 @@ module.exports = {
 
     devServer: {
       allowedHosts: 'all',
-      host : '0.0.0.0'
+      host : '0.0.0.0',
+      /*
+      https: {
+        key: fs.readFileSync('/etc/letsencrypt/live/cytrus.io/privkey.pem'),
+	cert: fs.readFileSync('/etc/letsencrypt/live/cytrus.io/fullchain.pem')
+      }
+      */
     }
   }
 }

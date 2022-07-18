@@ -15,7 +15,7 @@ client:
     path: "vue/src/store"
 faucet:
   name: treasury
-  coins: ["100ZEST"]
+  coins: ["1000ZEST"]
   rate_limit_window: "604800s"
 genesis:
   chain_id: "zestchain"
@@ -23,5 +23,3 @@ genesis:
     staking:
       params:
         bond_denom: "stkZEST"
-host:
-  api: "0.0.0.0:80"
