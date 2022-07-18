@@ -19,5 +19,7 @@ func (k msgServer) PayView(goCtx context.Context, msg *types.MsgPayView) (*types
 		ad.Pot--
 		k.Keeper.SetAd(ctx, ad)
 	}
-	return &types.MsgPayViewResponse{}, nil
+	return &types.MsgPayViewResponse{
+		Resp: "success",
+	}, nil
 }
