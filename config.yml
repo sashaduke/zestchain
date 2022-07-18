@@ -15,7 +15,8 @@ client:
     path: "vue/src/store"
 faucet:
   name: treasury
-  coins: ["10ZEST"]
+  coins: ["100ZEST"]
+  rate_limit_window: 604800
 genesis:
   chain_id: "zestchain"
   app_state:
