@@ -2,42 +2,48 @@
   <div>
     <div class="container">
       <!-- this line is used by starport scaffolding # 4 -->
-      <h3>Create Promotion</h3><br>
-      <span style="font-size: 1.4rem">Title</span>
+      <div class="sp-component-title">
+        <h3>Create Promotion</h3>
+        <span>|</span>
+        <span>Launch a new ad on the network</span>
+      </div>
+      <div class="sp-box sp-shadow">
+      <span style="font-size: 1.28rem">Title</span>
       <form ref="form" onsubmit="return false">     
       <input
-        class="sp-input sp-input-large"
+        class="sp-input"
         ref="title"
         placeholder="Earn Crypto with Cytrus"
         v-on:focus="focused = true"
         v-on:blur="focused = false"
       /><br><br>
-      <span style="font-size: 1.4rem">Budget in ZEST (1000 minimum)</span>
+      <span style="font-size: 1.28rem">Budget in ZEST (1000 minimum)</span>
       <input
-        class="sp-input sp-input-large"
+        class="sp-input"
         ref="pot"
         placeholder="10000"
         v-on:focus="focused = true"
         v-on:blur="focused = false"
       /><br><br>
-      <span style="font-size: 1.4rem">URL</span>
+      <span style="font-size: 1.28rem">URL</span>
       <input
-        class="sp-input sp-input-large"
+        class="sp-input"
         ref="url"
         placeholder="cytrus.io"
         v-on:focus="focused = true"
         v-on:blur="focused = false"
       /><br><br>
-      <span style="font-size: 1.4rem">Message</span>
-      <textarea
-        class="sp-textarea"
+      <span style="font-size: 1.28rem">Message</span>
+      <input
+        class="sp-input"
         ref="msg"
         placeholder="Cytrus passively earns you crypto while you browse - no sign up needed! Join today at cytrus.io"
-	      v-on:focus="focused = true"
+	v-on:focus="focused = true"
         v-on:blur="focused = false"
-        style="resize: none"></textarea>
-      <br><br><button class="sp-button" type="submit">Submit</button>
+      /><br><br>
+      <button class="sp-button" type="submit">Submit</button>
       </form>
+      </div>
     </div>
   </div>
 </template>

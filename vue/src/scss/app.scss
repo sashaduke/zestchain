@@ -9,3 +9,10 @@ body {
 .sp-box {
   background: #ffead4 !important;
 }
+
+.sp-input {
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+}
