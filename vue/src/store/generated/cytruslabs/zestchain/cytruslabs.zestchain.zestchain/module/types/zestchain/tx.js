@@ -295,9 +295,12 @@ export const MsgPayView = {
         return message;
     },
 };
-const baseMsgPayViewResponse = {};
+const baseMsgPayViewResponse = { resp: "" };
 export const MsgPayViewResponse = {
-    encode(_, writer = Writer.create()) {
+    encode(message, writer = Writer.create()) {
+        if (message.resp !== "") {
+            writer.uint32(10).string(message.resp);
+        }
         return writer;
     },
     decode(input, length) {
@@ -307,6 +310,9 @@ export const MsgPayViewResponse = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.resp = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -314,16 +320,29 @@ export const MsgPayViewResponse = {
         }
         return message;
     },
-    fromJSON(_) {
+    fromJSON(object) {
         const message = { ...baseMsgPayViewResponse };
+        if (object.resp !== undefined && object.resp !== null) {
+            message.resp = String(object.resp);
+        }
+        else {
+            message.resp = "";
+        }
         return message;
     },
-    toJSON(_) {
+    toJSON(message) {
         const obj = {};
+        message.resp !== undefined && (obj.resp = message.resp);
         return obj;
     },
-    fromPartial(_) {
+    fromPartial(object) {
         const message = { ...baseMsgPayViewResponse };
+        if (object.resp !== undefined && object.resp !== null) {
+            message.resp = object.resp;
+        }
+        else {
+            message.resp = "";
+        }
         return message;
     },
 };
@@ -397,9 +416,12 @@ export const MsgPayClick = {
         return message;
     },
 };
-const baseMsgPayClickResponse = {};
+const baseMsgPayClickResponse = { resp: "" };
 export const MsgPayClickResponse = {
-    encode(_, writer = Writer.create()) {
+    encode(message, writer = Writer.create()) {
+        if (message.resp !== "") {
+            writer.uint32(10).string(message.resp);
+        }
         return writer;
     },
     decode(input, length) {
@@ -409,6 +431,9 @@ export const MsgPayClickResponse = {
         while (reader.pos < end) {
             const tag = reader.uint32();
             switch (tag >>> 3) {
+                case 1:
+                    message.resp = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -416,16 +441,29 @@ export const MsgPayClickResponse = {
         }
         return message;
     },
-    fromJSON(_) {
+    fromJSON(object) {
         const message = { ...baseMsgPayClickResponse };
+        if (object.resp !== undefined && object.resp !== null) {
+            message.resp = String(object.resp);
+        }
+        else {
+            message.resp = "";
+        }
         return message;
     },
-    toJSON(_) {
+    toJSON(message) {
         const obj = {};
+        message.resp !== undefined && (obj.resp = message.resp);
         return obj;
     },
-    fromPartial(_) {
+    fromPartial(object) {
         const message = { ...baseMsgPayClickResponse };
+        if (object.resp !== undefined && object.resp !== null) {
+            message.resp = object.resp;
+        }
+        else {
+            message.resp = "";
+        }
         return message;
     },
 };

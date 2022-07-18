@@ -11863,6 +11863,7 @@ paths:
                       type: string
                     pot:
                       type: string
+                      format: uint64
                     url:
                       type: string
                     msg:
@@ -11996,6 +11997,7 @@ paths:
                     type: string
                   pot:
                     type: string
+                    format: uint64
                   url:
                     type: string
                   msg:
@@ -20029,6 +20031,7 @@ definitions:
         type: string
       pot:
         type: string
+        format: uint64
       url:
         type: string
       msg:
@@ -20071,6 +20074,7 @@ definitions:
               type: string
             pot:
               type: string
+              format: uint64
             url:
               type: string
             msg:
@@ -20127,6 +20131,7 @@ definitions:
             type: string
           pot:
             type: string
+            format: uint64
           url:
             type: string
           msg:

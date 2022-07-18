@@ -1,12 +1,13 @@
 /* eslint-disable */
-import { Writer, Reader } from "protobufjs/minimal";
+import * as Long from "long";
+import { util, configure, Writer, Reader } from "protobufjs/minimal";
 
 export const protobufPackage = "cytruslabs.zestchain.zestchain";
 
 export interface Ad {
   index: string;
   title: string;
-  pot: string;
+  pot: number;
   url: string;
   msg: string;
   tags: string;
@@ -17,7 +18,7 @@ export interface Ad {
 const baseAd: object = {
   index: "",
   title: "",
-  pot: "",
+  pot: 0,
   url: "",
   msg: "",
   tags: "",
@@ -33,8 +34,8 @@ export const Ad = {
     if (message.title !== "") {
       writer.uint32(18).string(message.title);
     }
-    if (message.pot !== "") {
-      writer.uint32(26).string(message.pot);
+    if (message.pot !== 0) {
+      writer.uint32(24).uint64(message.pot);
     }
     if (message.url !== "") {
       writer.uint32(34).string(message.url);
@@ -68,7 +69,7 @@ export const Ad = {
           message.title = reader.string();
           break;
         case 3:
-          message.pot = reader.string();
+          message.pot = longToNumber(reader.uint64() as Long);
           break;
         case 4:
           message.url = reader.string();
@@ -106,9 +107,9 @@ export const Ad = {
       message.title = "";
     }
     if (object.pot !== undefined && object.pot !== null) {
-      message.pot = String(object.pot);
+      message.pot = Number(object.pot);
     } else {
-      message.pot = "";
+      message.pot = 0;
     }
     if (object.url !== undefined && object.url !== null) {
       message.url = String(object.url);
@@ -166,7 +167,7 @@ export const Ad = {
     if (object.pot !== undefined && object.pot !== null) {
       message.pot = object.pot;
     } else {
-      message.pot = "";
+      message.pot = 0;
     }
     if (object.url !== undefined && object.url !== null) {
       message.url = object.url;
@@ -197,6 +198,16 @@ export const Ad = {
   },
 };
 
+declare var self: any | undefined;
+declare var window: any | undefined;
+var globalThis: any = (() => {
+  if (typeof globalThis !== "undefined") return globalThis;
+  if (typeof self !== "undefined") return self;
+  if (typeof window !== "undefined") return window;
+  if (typeof global !== "undefined") return global;
+  throw "Unable to locate global object";
+})();
+
 type Builtin = Date | Function | Uint8Array | string | number | undefined;
 export type DeepPartial<T> = T extends Builtin
   ? T
@@ -207,3 +218,15 @@ export type DeepPartial<T> = T extends Builtin
   : T extends {}
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
+
+function longToNumber(long: Long): number {
+  if (long.gt(Number.MAX_SAFE_INTEGER)) {
+    throw new globalThis.Error("Value is larger than Number.MAX_SAFE_INTEGER");
+  }
+  return long.toNumber();
+}
+
+if (util.Long !== Long) {
+  util.Long = Long as any;
+  configure();
+}

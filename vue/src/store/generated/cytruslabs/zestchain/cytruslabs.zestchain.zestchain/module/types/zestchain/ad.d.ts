@@ -3,7 +3,7 @@ export declare const protobufPackage = "cytruslabs.zestchain.zestchain";
 export interface Ad {
     index: string;
     title: string;
-    pot: string;
+    pot: number;
     url: string;
     msg: string;
     tags: string;
