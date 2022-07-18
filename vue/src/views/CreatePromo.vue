@@ -44,26 +44,21 @@
 <script>
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
-import { MsgPromoClicked, MsgPromoViewed, MsgCreatePromo } from "@/tx.js";
+import { MsgCreatePromo } from "@/tx.js";
 import { Api } from "@/rest.js"
-const types = [
-    ["/cytruslabs.zestchain.zestchain.MsgPromoClicked", MsgPromoClicked],
-    ["/cytruslabs.zestchain.zestchain.MsgPromoViewed", MsgPromoViewed],
-    ["/cytruslabs.zestchain.zestchain.MsgCreatePromo", MsgCreatePromo],
-];
-const registry = new Registry(types);
+const type = [["/cytruslabs.zestchain.zestchain.MsgCreatePromo", MsgCreatePromo]];
+const registry = new Registry(type);
 const fee = {
     amount: [],
     gas: "200000"
 };
-const mnemonic = "six dog stable much drop wonder broccoli child slight ancient stick reunion trophy nut evoke ecology brass razor uncover robust unlock dial correct deny";
 const rpcEndpoint = "http://zestcha.in:26657";
-
 export default {
-    name: 'CreatePromo',
-    mounted() {
+    name: "CreatePromo",
+    mounted() {	
+	const store = this.$store.getters;
 	const initClient = async function() {
-	    const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic);
+	    const wallet = await DirectSecp256k1HdWallet.fromMnemonic(store["common/wallet/getMnemonic"]);
 	    const [user] = await wallet.getAccounts();
 	    const client = await SigningStargateClient.connectWithSigner(
 		rpcEndpoint,
@@ -72,20 +67,18 @@ export default {
 	    );
 	    return {user: user, client: client};
 	};	
-
 	const createPromo = async function(promo) {
 	    const c = await initClient();
 	    const msg = {
-		typeUrl: types[2][0],
+		typeUrl: type[0][0],
 		value: promo
 	    };
 	    const result = await c.client.signAndBroadcast(c.user.address, [msg], fee);
-	    console.log(result);
+	    return result;
 	};
-
 	const submitForm = function(event) {
 	    const promo = {
-		creator: 'cosmos1v7gjegh95k7mqfmhu9j9s3s7jvsfxjfrrtahp0',
+		creator: store["common/wallet/address"],
 		title: title.value,
 		pot: parseInt(pot.value),
 		url: url.value,
@@ -93,16 +86,15 @@ export default {
 		tags: '',
 		prefs: '',
 	    };
-
             event.preventDefault();
-	    createPromo(promo);
+	    console.log(createPromo(promo));
 	};
         const form = this.$refs.form;
 	const title = this.$refs.title;
         const pot = this.$refs.pot;
         const url = this.$refs.url;
         const msg = this.$refs.msg;
-        form.addEventListener('submit', submitForm);
+        form.addEventListener("submit", submitForm);
     }
 };
 </script>
