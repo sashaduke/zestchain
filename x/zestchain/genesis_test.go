@@ -17,6 +17,14 @@ func TestGenesis(t *testing.T) {
 		AdCount: &types.AdCount{
 			Counter: 98,
 		},
+		AdList: []types.Ad{
+			{
+				Index: "0",
+			},
+			{
+				Index: "1",
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -29,5 +37,6 @@ func TestGenesis(t *testing.T) {
 	nullify.Fill(got)
 
 	require.Equal(t, genesisState.AdCount, got.AdCount)
+	require.ElementsMatch(t, genesisState.AdList, got.AdList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

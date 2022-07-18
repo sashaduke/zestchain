@@ -25,9 +25,31 @@ func TestGenesisState_Validate(t *testing.T) {
 				AdCount: &types.AdCount{
 					Counter: 93,
 				},
+				AdList: []types.Ad{
+					{
+						Index: "0",
+					},
+					{
+						Index: "1",
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
+		},
+		{
+			desc: "duplicated ad",
+			genState: &types.GenesisState{
+				AdList: []types.Ad{
+					{
+						Index: "0",
+					},
+					{
+						Index: "0",
+					},
+				},
+			},
+			valid: false,
 		},
 		// this line is used by starport scaffolding # types/genesis/testcase
 	} {
