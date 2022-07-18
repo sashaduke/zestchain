@@ -1,6 +1,8 @@
 <template>
   <SpSidebar v-on:sidebar-open="sidebarOpen = true" v-on:sidebar-close="sidebarOpen = false">
     <template v-slot:default>
+      <img src="./logo.png" alt="Cytrus Logo" style="width: 75%" />
+      <br>
       <SpLinkIcon link="/" text="Dashboard" icon="Dashboard" />
       <SpLinkIcon link="/createPromo" text="Create Promo" icon="Docs" />
       <div class="sp-dash"></div>
