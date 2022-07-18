@@ -4,13 +4,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
-	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
-	"github.com/cosmos/cosmos-sdk/types"
+	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
+	crypto "github.com/cosmos/cosmos-sdk/crypto/types"
+	cosm "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/tx"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
-	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
+	bank "github.com/cosmos/cosmos-sdk/x/bank/types"
 )
 
 func GetTxConfig() client.TxConfig {
@@ -19,21 +20,28 @@ func GetTxConfig() client.TxConfig {
 	return authtx.NewTxConfig(protoCodec, []signing.SignMode{signing.SignMode_SIGN_MODE_DIRECT})
 }
 
-func Pay(amount int, recip string) string {
+func Pay(amount int64, recip cosm.AccAddress) (string, error) {
 	txConfig := GetTxConfig()
 	txBuilder := txConfig.NewTxBuilder() //client.TxConfig.NewTxBuilder()
-	msg := banktypes.NewMsgSend("cosmos19h39v0scqlyesn0mfh3ug33d7samzd59qxr6l0", recip, types.NewCoins(types.NewInt64Coin("ZEST", amount)))
+	treasury := cosm.AccAddressFromBech32("cosmos19h39v0scqlyesn0mfh3ug33d7samzd59qxr6l0")
+	msg := bank.NewMsgSend(treasury, recip, cosm.NewCoins(cosm.NewInt64Coin("ZEST", amount)))
 	err := txBuilder.SetMsgs(msg)
 	if err != nil {
-		return err
+		return "", err
 	}
 
+	var fee cosm.Coins = make([]cosm.Coin, 1)
+	fee[0] = cosm.Coin{
+		Denom:  "ZEST",
+		Amount: 0,
+	}
+	txBuilder.SetFeeAmount(fee)
 	txBuilder.SetGasLimit(0)
-	txBuilder.SetFeeAmount(0)
-	txBuilder.SetMemo("Ad reward")
 	txBuilder.SetTimeoutHeight(0)
+	txBuilder.SetMemo("Ad reward")
 
-	privs := []cryptotypes.PrivKey{"b25bb748165b6a78ff93bedac2e824697edbe98f8688a1f6b04ae6090f5afcad"}
+	priv1 := secp256k1.GenPrivKeyFromSecret("test test test")
+	privs := []crypto.PrivKey{priv1}
 	accNums := []uint64{1, 0} // The accounts' account numbers
 	accSeqs := []uint64{0, 1} // The accounts' sequence numbers
 
@@ -52,7 +60,7 @@ func Pay(amount int, recip string) string {
 	}
 	err = txBuilder.SetSignatures(sigsV2)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	sigsV2 = []signing.SignatureV2{}
@@ -66,36 +74,36 @@ func Pay(amount int, recip string) string {
 			txConfig.SignModeHandler().DefaultMode(), signerData,
 			txBuilder, priv, txConfig, accSeqs[i])
 		if err != nil {
-			return err
+			return "", err
 		}
 
 		sigsV2 = append(sigsV2, sigV2)
 	}
 	err = txBuilder.SetSignatures(sigsV2)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	txBytes, err := txConfig.TxEncoder()(txBuilder.GetTx())
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	txJSONBytes, err := txConfig.TxJSONEncoder()(txBuilder.GetTx())
 	if err != nil {
-		return err
+		return "", err
 	}
 	txJSON := string(txJSONBytes)
-	return txJSON
+	return txJSON, nil
 }
 
-func (ad *Ad) PayView(recip types.AccAddress) {
-	recipient := types.AccAddressFromBech32(recip)
+func (ad *Ad) PayView(recip cosm.AccAddress) {
+	recipient := cosm.AccAddressFromBech32(recip)
 	Pay(1, recipient)
 }
 
-func (ad *Ad) PayClick(recip types.AccAddress) {
-	recipient := types.AccAddressFromBech32(recip)
+func (ad *Ad) PayClick(recip cosm.AccAddress) {
+	recipient := cosm.AccAddressFromBech32(recip)
 	Pay(9, recipient)
 }
 
