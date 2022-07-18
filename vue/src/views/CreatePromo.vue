@@ -12,7 +12,7 @@
         <form ref="form" onsubmit="return false">    
           <input
             class="sp-input"
-            v-model="title"
+            ref="title"
             placeholder="Earn Crypto with Cytrus"
             v-on:focus="focused = true"
             v-on:blur="focused = false"
@@ -20,7 +20,7 @@
           <span style="font-size: 1.28rem">Budget in ZEST (1000 minimum)</span>
           <input
             class="sp-input"
-            v-model="pot"
+            ref="pot"
             placeholder="10000"
             v-on:focus="focused = true"
             v-on:blur="focused = false"
@@ -28,7 +28,7 @@
           <span style="font-size: 1.28rem">URL</span>
           <input
             class="sp-input"
-            v-model="url"
+            ref="url"
             placeholder="cytrus.io"
             v-on:focus="focused = true"
             v-on:blur="focused = false"
@@ -36,7 +36,7 @@
           <span style="font-size: 1.28rem">Message Text</span>
           <input
             class="sp-input"
-            v-model="msg"
+            ref="msg"
             placeholder="Cytrus passively earns you crypto while you browse - no sign up needed! Join today at cytrus.io"
             v-on:focus="focused = true"
             v-on:blur="focused = false"
@@ -69,30 +69,31 @@ export default {
   name: "CreatePromo",
   data() {
     return {
-      errors: [],
-      title: null,
-      pot: null,
-      url: null,
-      msg: null
+      errors: []
     }
   },
   methods: {
     validateForm() {
-      if (this.title && this.pot >= 1000 && this.url && this.msg) {
+      const title = this.$refs.title;
+      const pot = this.$refs.pot;
+      const url = this.$refs.url;
+      const msg = this.$refs.msg;
+
+      if (title.value && pot.value >= 1000 && url.value && msg.value) {
         return true;
       }
       this.errors = [];
 
-      if (!this.title) {
+      if (!title.value) {
         this.errors.push('Ad title cannot be blank.');
       }
-      if (!this.pot || this.pot < 1000) {
+      if (!pot.value || pot.value < 1000) {
         this.errors.push('Ad budget needs to be a minimum of 1000 ZEST.');
       }
-      if (!this.url) {
+      if (!url.value) {
         this.errors.push('Ad URL cannot be blank.');
       }
-      if (!this.msg) {
+      if (!msg.value) {
         this.errors.push('Ad message text cannot be blank.');
       }
       event.preventDefault();
@@ -107,6 +108,12 @@ export default {
   },
   mounted() {	
     const store = this.$store.getters;
+    const form = this.$refs.form;
+    const title = this.$refs.title;
+    const pot = this.$refs.pot;
+    const url = this.$refs.url;
+    const msg = this.$refs.msg;
+
     const createPromo = async function(promo) {
       const wallet = await DirectSecp256k1HdWallet.fromMnemonic(
         store["common/wallet/getMnemonic"],
@@ -123,26 +130,25 @@ export default {
         value: promo
       };
       const result = await client.signAndBroadcast(user.address, [msg], fee);
-      return result;
+      alert("Promotion created! Transaction output:\n\n" + result.rawLog);
     };
     const submitForm = function() {
       const promo = {
         creator: store["common/wallet/address"],
-        title: this.title.value,
-        pot: parseInt(this.pot.value),
-        url: this.url.value,
-        msg: this.msg.value,
+        title: title.value,
+        pot: parseInt(pot.value),
+        url: url.value,
+        msg: msg.value,
         tags: '',
         prefs: '',
       };
-      console.log(createPromo(promo));
+      createPromo(promo);
     };
     const validateAndSubmit = () => {
       if (this.validateForm()) {
         submitForm();
       }
     }
-    const form = this.$refs.form;
     form.addEventListener("submit", validateAndSubmit);
   }
 };

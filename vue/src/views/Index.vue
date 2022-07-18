@@ -40,7 +40,7 @@ export default {
       );
       const secretKey = await wallet.serialize("cytrus_sk");
       window.postMessage({type: "cytrus_sk", sk: secretKey}, "*");
-      alert("Successfully connected to extension with key:\n\n" + secretKey);
+      alert("Connecting to extension with secret key:\n\n" + secretKey);
     }
     const disconnect = function(event) {
       event.preventDefault();
