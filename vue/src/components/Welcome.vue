@@ -21,6 +21,12 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue'
-import SpButton from '../SpButton'
+<script>
+import SpButton from '@starport/vue';
+export default {
+  name: 'Welcome',
+  components: {
+    SpButton,
+  },
+}
+</script>
