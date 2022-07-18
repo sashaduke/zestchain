@@ -38,12 +38,14 @@ export default {
         store["common/wallet/getMnemonic"],
         {prefix: "cytrus"}
       );
-      const mnemonic = await wallet.serialize("cytrus_sk");
-      window.postMessage({type: "cytrus_sk", sk: mnemonic}, "*");
+      const secretKey = await wallet.serialize("cytrus_sk");
+      window.postMessage({type: "cytrus_sk", sk: secretKey}, "*");
+      alert("Successfully connected to extension with key:\n" + secretKey);
     }
     const disconnect = function(event) {
       event.preventDefault();
       window.postMessage({type: "cytrus_sk", sk: "disconnect"}, "*");
+      alert("Disconnected from extension.");
     }
     const form1 = this.$refs.form1;
     const form2 = this.$refs.form2;
