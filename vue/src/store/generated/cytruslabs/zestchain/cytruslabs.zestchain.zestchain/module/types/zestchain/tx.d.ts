@@ -15,14 +15,12 @@ export interface MsgCreatePromoResponse {
 export interface MsgPromoViewed {
     creator: string;
     id: string;
-    addr: string;
 }
 export interface MsgPromoViewedResponse {
 }
 export interface MsgPromoClicked {
     creator: string;
     id: string;
-    addr: string;
 }
 export interface MsgPromoClickedResponse {
 }

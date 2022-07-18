@@ -226,7 +226,7 @@ export const MsgCreatePromoResponse = {
         return message;
     },
 };
-const baseMsgPromoViewed = { creator: "", id: "", addr: "" };
+const baseMsgPromoViewed = { creator: "", id: "" };
 export const MsgPromoViewed = {
     encode(message, writer = Writer.create()) {
         if (message.creator !== "") {
@@ -234,9 +234,6 @@ export const MsgPromoViewed = {
         }
         if (message.id !== "") {
             writer.uint32(18).string(message.id);
-        }
-        if (message.addr !== "") {
-            writer.uint32(26).string(message.addr);
         }
         return writer;
     },
@@ -252,9 +249,6 @@ export const MsgPromoViewed = {
                     break;
                 case 2:
                     message.id = reader.string();
-                    break;
-                case 3:
-                    message.addr = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -277,19 +271,12 @@ export const MsgPromoViewed = {
         else {
             message.id = "";
         }
-        if (object.addr !== undefined && object.addr !== null) {
-            message.addr = String(object.addr);
-        }
-        else {
-            message.addr = "";
-        }
         return message;
     },
     toJSON(message) {
         const obj = {};
         message.creator !== undefined && (obj.creator = message.creator);
         message.id !== undefined && (obj.id = message.id);
-        message.addr !== undefined && (obj.addr = message.addr);
         return obj;
     },
     fromPartial(object) {
@@ -305,12 +292,6 @@ export const MsgPromoViewed = {
         }
         else {
             message.id = "";
-        }
-        if (object.addr !== undefined && object.addr !== null) {
-            message.addr = object.addr;
-        }
-        else {
-            message.addr = "";
         }
         return message;
     },
@@ -347,7 +328,7 @@ export const MsgPromoViewedResponse = {
         return message;
     },
 };
-const baseMsgPromoClicked = { creator: "", id: "", addr: "" };
+const baseMsgPromoClicked = { creator: "", id: "" };
 export const MsgPromoClicked = {
     encode(message, writer = Writer.create()) {
         if (message.creator !== "") {
@@ -355,9 +336,6 @@ export const MsgPromoClicked = {
         }
         if (message.id !== "") {
             writer.uint32(18).string(message.id);
-        }
-        if (message.addr !== "") {
-            writer.uint32(26).string(message.addr);
         }
         return writer;
     },
@@ -373,9 +351,6 @@ export const MsgPromoClicked = {
                     break;
                 case 2:
                     message.id = reader.string();
-                    break;
-                case 3:
-                    message.addr = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -398,19 +373,12 @@ export const MsgPromoClicked = {
         else {
             message.id = "";
         }
-        if (object.addr !== undefined && object.addr !== null) {
-            message.addr = String(object.addr);
-        }
-        else {
-            message.addr = "";
-        }
         return message;
     },
     toJSON(message) {
         const obj = {};
         message.creator !== undefined && (obj.creator = message.creator);
         message.id !== undefined && (obj.id = message.id);
-        message.addr !== undefined && (obj.addr = message.addr);
         return obj;
     },
     fromPartial(object) {
@@ -426,12 +394,6 @@ export const MsgPromoClicked = {
         }
         else {
             message.id = "";
-        }
-        if (object.addr !== undefined && object.addr !== null) {
-            message.addr = object.addr;
-        }
-        else {
-            message.addr = "";
         }
         return message;
     },
