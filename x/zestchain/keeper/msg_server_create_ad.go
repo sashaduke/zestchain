@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	cosm "github.com/cosmos/cosmos-sdk/types"
-	m "zestchain/x/zestchain/types"
+	m "github.com/cytruslabs/zestchain/x/zestchain/keeper"
 	"github.com/cosmos/cosmos-sdk/x/bank/types"
 )
 
@@ -27,12 +27,8 @@ func (k m.msgServer) CreateAd(goCtx context.Context, msg *types.MsgCreateAd) (*t
 		Prefs:   msg.Prefs,
 		Creator: msg.Creator,
 	}
-	err := ad.Validate()
-	if err != nil {
-		return nil, err
-	}
-	k.Keeper.SetAd(ctx, ad)
 
+	k.Keeper.SetAd(ctx, ad)
 	adCount.counter++
 	k.Keeper.SetAdCount(ctx, adCount)
 
