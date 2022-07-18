@@ -15,20 +15,23 @@ func (k msgServer) PromoClicked(goCtx context.Context, msg *types.MsgPromoClicke
 	if !found {
 		panic("Promo not found!")
 	}
+	addr, err := cosm.AccAddressFromBech32(msg.Creator)
+	if err != nil {
+		panic("Creator address not valid")
+	}
+	moduleAddr := cosm.AccAddress(crypto.AddressHash([]byte(types.ModuleName)))
+
 	if promo.Pot >= 9 {
-		addr, err := cosm.AccAddressFromBech32(msg.Creator)
-		if err != nil {
-			panic("Creator address not valid")
-		}
-		moduleAddr := cosm.AccAddress(crypto.AddressHash([]byte(types.ModuleName)))
 		err = k.bank.SendCoins(ctx, moduleAddr, addr, cosm.NewCoins(cosm.NewInt64Coin("ZEST", 9)))
 		if err != nil {
 			k.Keeper.RemovePromo(ctx, promo.Index)
-			panic("Pot empty - promo removed")
 		} else {
 			promo.Pot -= 9
 			k.Keeper.SetPromo(ctx, promo)
 		}
+	} else {
+		err = k.bank.SendCoins(ctx, moduleAddr, addr, cosm.NewCoins(cosm.NewInt64Coin("ZEST", int64(promo.Pot))))
+		k.Keeper.RemovePromo(ctx, promo.Index)
 	}
 
 	return &types.MsgPromoClickedResponse{}, nil
