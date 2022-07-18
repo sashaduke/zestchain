@@ -4,7 +4,7 @@
       <!-- this line is used by starport scaffolding # 4 -->
       <h3>Create Promotion</h3><br>
       <span style="font-size: 1.4rem">Title</span>
-      <form ref="form" onsubmit="return false"><!--action="createPromo" method="post">-->      
+      <form ref="form" onsubmit="return false">     
       <input
         class="sp-input sp-input-large"
         ref="title"
@@ -12,7 +12,7 @@
         v-on:focus="focused = true"
         v-on:blur="focused = false"
       /><br><br>
-      <span style="font-size: 1.4rem">Budget (ZEST)</span>
+      <span style="font-size: 1.4rem">Budget in ZEST (1000 minimum)</span>
       <input
         class="sp-input sp-input-large"
         ref="pot"
@@ -33,8 +33,9 @@
         class="sp-textarea"
         ref="msg"
         placeholder="Cytrus passively earns you crypto while you browse - no sign up needed! Join today at cytrus.io"
-	v-on:focus="focused = true"
-        v-on:blur="focused = false"></textarea>
+	      v-on:focus="focused = true"
+        v-on:blur="focused = false"
+        style="resize: none"></textarea>
       <br><br><button class="sp-button" type="submit">Submit</button>
       </form>
     </div>
