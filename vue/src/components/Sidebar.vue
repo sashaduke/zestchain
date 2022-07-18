@@ -2,8 +2,9 @@
   <SpSidebar v-on:sidebar-open="sidebarOpen = true" v-on:sidebar-close="sidebarOpen = false">
     <template v-slot:default>
       <SpLinkIcon link="/" text="Dashboard" icon="Dashboard" />
+      <SpLinkIcon link="/createPromo" text="Create Promo" icon="Docs" />
       <div class="sp-dash"></div>
-      <SpLinkIcon href="https://github.com/cytruslabs/zestchain" target="_blank" text="Source Code" icon="Docs" />
+      <SpLinkIcon href="https://github.com/cytruslabs/zestchain" target="_blank" text="Source Code" icon="Settings" />
     </template>
     <template v-slot:footer>
       <SpStatusAPI :showText="sidebarOpen" />
